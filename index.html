@@ -1,0 +1,4827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="twitter:image:src" content="https://cocobeanzies.mizabot.xyz/coco">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Cocobeanzies">
+	<meta property="twitter:url" content="https://cocobeanzies.mizabot.xyz">
+	<meta property="og:image" content="https://cocobeanzies.mizabot.xyz/coco-small.gif">
+	<meta property="og:image:type" content="image/gif">
+	<meta property="og:url" content="https://cocobeanzies.mizabot.xyz">
+	<meta name="og:description" content="Hewwo, I'm cocobeanzies!!! Come see my art, interests and bio if you want!!! Have a nice day!!! ( •ω• )">
+	<title>Cocobeanzies' Abode!</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="icon" href="https://cocobeanzies.mizabot.xyz/favicon.ico?v=1" type="image/x-icon">
+	<script src="https://cocobeanzies.mizabot.xyz/misc/fontawesome.js" async></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+	<style>
+		@font-face {
+			font-family: 'Handlee';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/-F6xfjBsISg9aMakPm3wow.woff2') format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-weight: 700;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'YRDZST';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/YRDZST Semibold.ttf') format('truetype');
+			unicode-range: U+0000-FFFF;
+			font-weight: 100;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Atop';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/Atop-R99O3.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Godofthunder';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/Godofthunder-0WO1P.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Cloudier';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/Cloudier.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Cloudheads';
+			src: url('https://cocobeanzies.mizabot.xyz/misc/Cloudheads.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			pointer-events: none;
+			margin: 0;
+			padding: 0;
+			color: white;
+			font-size: 16px;
+			font-family: 'Handlee', 'YRDZST', cursive, sans-serif;
+			font-weight: 400;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			z-index: -2;
+			background-color: #1f003f;
+		}
+
+		:root {
+			--sidebar-margin: clamp(96px, 12vw, 480px);
+		}
+
+		h1 {
+			margin: 10px;
+			font-weight: 600;
+			font-family: 'YRDZST', cursive, sans-serif;
+		}
+		.container {
+			width: clamp(256px, 75%, 960px);
+			margin: 0 auto;
+			overflow: visible;
+		}
+		.paragraph {
+			width: calc(100% - 10px);
+			display: flex;
+			text-align: left;
+			align-items: center;
+			justify-content: center;
+			padding: 10px;
+			padding-left: 0px;
+			margin-bottom: 10px;
+			background-color: #400080c0;
+			border-radius: 0px 20px 0px 20px;
+			position: relative;
+			border: solid 2px #00ffffc0;
+			animation: borderAnimation 3s infinite;
+		}
+		@keyframes borderAnimation {
+			0%, 100% {
+				border-color: #00ffffc0;
+			}
+			33.3% {
+				border-color: #7f7fffc0;
+			}
+			66.7% {
+				border-color: #ff00ffc0;
+			}
+		}
+		#banner {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin-left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			height: 320px;
+			background-image: url('https://cocobeanzies.mizabot.xyz/pictures/Together.webp');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			mask-image: linear-gradient(white, white, transparent);
+			mask-type: alpha;
+			mask-mode: alpha;
+			z-index: 1;
+		}
+		#banner2 {
+			position: relative;
+			bottom: 0px;
+			left: 0px;
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			mask-image: linear-gradient(transparent, white, white);
+			mask-type: alpha;
+			mask-mode: alpha;
+			z-index: 1;
+		}
+		#background {
+			position: absolute;
+			z-index: 0;
+			top: 0px;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			height: 100vw;
+			margin: 0;
+			padding: 0;
+			background-color: #1f003f;
+			display: block;
+		}
+		#left-sidebar, #right-sidebar {
+			position: fixed;
+			top: 0px;
+			bottom: 0px;
+			width: calc(var(--sidebar-margin) - 8px);
+			background-image: linear-gradient(0deg, #404040, #000000);
+			padding: 0px;
+			z-index: -1;
+			display: block;
+			overflow: clip;
+			height: clamp(0px, 100vh, 1440px);
+			cursor: move;
+		}
+		#left-sidebar {
+			left: 0;
+		}
+		#right-sidebar {
+			left: calc(100vw + 8px - var(--sidebar-margin));
+		}
+		.stamp-carriage {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			height: 100%;
+			width: 96px;
+			overflow: clip;
+			pointer-events: none;
+		}
+		.stamp {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 6;
+			pointer-events: auto;
+		}
+
+		#content {
+			position: relative;
+			text-align: center;
+			display: block;
+			align-items: start;
+			justify-content: center;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			z-index: 1;
+			max-width: 100vw;
+			overflow: clip;
+			pointer-events: auto;
+		}
+		#content2 {
+			position: relative;
+			text-align: center;
+			display: block;
+			align-items: start;
+			justify-content: center;
+			margin-top: 0px;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			z-index: 1;
+			max-width: 100vw;
+			overflow: clip;
+			pointer-events: auto;
+		}
+		#content3 {
+			position: relative;
+			text-align: center;
+			display: block;
+			align-items: start;
+			justify-content: center;
+			margin-top: 0px;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			z-index: 1;
+			max-width: 100vw;
+			overflow: clip;
+			pointer-events: auto;
+		}
+		#content4 {
+			position: relative;
+			text-align: center;
+			display: block;
+			align-items: start;
+			justify-content: center;
+			margin-top: 0px;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			z-index: 1;
+			max-width: 100vw;
+			overflow: clip;
+			pointer-events: auto;
+		}
+		#star-container {
+			position: fixed;
+			top: 0px;
+			left: var(--sidebar-margin);
+			width: calc(100vw - 2 * var(--sidebar-margin));
+			height: clamp(0px, 100%, 2160px);
+			margin: 0;
+			padding: 0;
+			pointer-events: none;
+			z-index: 0;
+			transform-origin: 0px 0px;
+		}
+		.star {
+			position: absolute;
+			background-color: white;
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+		}
+		.trail {
+			position: absolute;
+			background-color: white;
+			width: 8px;
+			height: 8px;
+			opacity: 0.9;
+			border-radius: 50%;
+			pointer-events: none;
+			transform: translate(-50%, -50%);
+			z-index: -2;
+		}
+		.star-particle {
+			position: absolute;
+			background-color: white;
+			width: 8px;
+			height: 8px;
+			opacity: 0.9;
+			border-radius: 50%;
+			pointer-events: none;
+			transform: translate(-50%, -50%);
+			z-index: -2;
+			clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+		}
+
+		#paw-container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			pointer-events: none;
+			z-index: 100;
+		}
+		.paw {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background-image: url('https://cocobeanzies.mizabot.xyz/misc/paw.webp');
+			background-size: cover;
+			pointer-events: none;
+		}
+
+		.ripples {
+			overflow: clip;
+		}
+		.ripple {
+			position: absolute;
+			border-radius: 50%;
+			background-image: radial-gradient(circle, rgba(255, 0, 127, 0.5), rgba(255, 0, 0, 0.25), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+			transform: scale(0);
+			animation: ripple-animation 0.6s;
+			pointer-events: none;
+		}
+		@keyframes ripple-animation {
+			to {
+				transform: scale(4);
+				opacity: 0;
+			}
+		}
+
+		.bullet {
+			line-height: 32px;
+			width: clamp(16px, 2vw, 32px);
+			height: clamp(16px, 2vw, 32px);
+			min-width: clamp(16px, 2vw, 32px);
+			min-height: clamp(16px, 2vw, 32px);
+			background-color: #ffff00;
+			clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.text {
+			flex: 1;
+		}
+
+		.rainbow-border {
+			position: fixed;
+			margin: 0;
+			top: 0;
+			bottom: 0;
+			width: 8px;
+			opacity: 75%;
+			background: linear-gradient(0deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+			background-size: 100% 200%;
+			animation: rainbowSlide 10s linear infinite;
+			pointer-events: auto;
+			cursor: grab;
+			z-index: 7;
+		}
+		.rainbow-border:hover {
+			background: linear-gradient(0deg, #ff7f7f, #ffff7f, #7fff7f, #7fffff, #7f7fff, #ff7fff, #ff7f7f, #ffff7f, #7fff7f, #7fffff, #7f7fff, #ff7fff, #ff7f7f);
+			opacity: 100%;
+			cursor: grabbing;
+		}
+		@keyframes rainbowSlide {
+			0% {
+				background-position: top;
+			}
+			100% {
+				background-position: bottom;
+			}
+		}
+		.left-border {
+			margin-left: calc(var(--sidebar-margin) - 8px);
+		}
+		.right-border {
+			margin-left: -8px;
+		}
+
+		.hero {
+			position: relative;
+			margin: auto;
+			width: 400px;
+			height: 400px;
+			max-width: 100vw;
+			max-height: 100vw;
+			margin-top: 0px;
+			margin-bottom: -60px;
+			border-radius: 50%;
+			display: grid;
+			place-items: center;
+			background-image: radial-gradient(circle, rgba(191, 127, 255, 0.5), rgba(255, 0, 127, 0.25), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+			z-index: 6;
+			overflow: visible;
+			pointer-events: auto;
+		}
+		.title {
+			position: absolute;
+			font-family: 'Atop', cursive, sans-serif;
+			font-size: clamp(16px, 72px, 12vw);
+			font-weight: 100;
+			color: #bf7fff;
+			margin-top: -430px;
+			z-index: 2;
+			animation: title-animation 10s ease-in-out infinite;
+			max-width: 100vw;
+			overflow: visible;
+		}
+		@keyframes title-animation {
+			0% {
+				transform: translate(0, -30%);
+			}
+			50% {
+				transform: translate(0, 30%);
+			}
+			100% {
+				transform: translate(0, -30%);
+			}
+		}
+		.linear-flash {
+			margin: 0;
+			padding: 0;
+			animation: flashAnimation 16s infinite;
+			text-shadow:
+				0 0 clamp(1px, 5px, 1vw) #ffffff,
+				0 0 clamp(2px, 10px, 2vw) #ffffff,
+				0 0 clamp(3px, 15px, 3vw) #ffffff,
+				0 0 clamp(4px, 20px, 4vw) #ffffff;
+		}
+		/* 0%~50% idle purple, white flash, fade to cyan */
+		/* 50%~100% idle cyan, white flash, fade to purple */
+		@keyframes flashAnimation {
+			0%, 22%, 90%, 100% {
+				color: #bf7fff;
+			}
+			25%, 75% {
+				color: #ffffff;
+			}
+			40%, 72% {
+				color: #00c0ff;
+			}
+		}
+		.float {
+			position: absolute;
+			animation: float-animation 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+			z-index: 1;
+		}
+		@keyframes float-animation {
+			0%, 100% {
+				transform: translate(0, -15%);
+			}
+			50% {
+				transform: translate(0, 15%);
+			}
+		}
+		.blurred {
+			pointer-events: auto;
+		}
+		.bob {
+			color: #bf7fff;
+			position: absolute;
+			animation: bob-animation 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+			z-index: 1;
+		}
+		@keyframes bob-animation {
+			0%, 100% {
+				transform: translate(0, -10px);
+			}
+			50% {
+				transform: translate(0, 10px);
+			}
+		}
+		.dog-worm {
+			position: absolute;
+		}
+		.worm {
+			animation: worm-animation 5s linear infinite;
+			outline: 0px solid transparent;
+		}
+		@keyframes worm-animation {
+			0%, 50%, 100% {
+				transform: rotate(0deg);
+			}
+			25% {
+				transform: rotate(-15deg);
+			}
+			75% {
+				transform: rotate(15deg);
+			}
+		}
+		.flicker {
+			pointer-events: none;
+			position: absolute;
+			transform: translate(-50%, -50%);
+		}
+		.everythings-alright-trigger {
+			cursor: url('https://cocobeanzies.mizabot.xyz/icons/sound.png') 12 12, auto;
+		}
+		.snake-game-trigger {
+			cursor: url('https://cocobeanzies.mizabot.xyz/icons/cosmic-worm.webp') 14 11, auto;
+		}
+		.dog-theme-trigger {
+			cursor: url('https://cocobeanzies.mizabot.xyz/icons/sound.png') 12 12, auto;
+		}
+		#snake-game {
+			position: relative;
+			background: #00000080;
+			width: clamp(132px, 75vw, 512px);
+			height: clamp(132px, 75vw, 512px);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: clip;
+		}
+		#snake-galaxy {
+			width: 128px;
+			height: 128px;
+			animation: spinning 3s linear infinite;
+		}
+		#worm-galaxy {
+			display: none;
+			width: 128px;
+			height: 128px;
+			left: 0px;
+			top: 32px;
+			animation: spinning 3s linear infinite;
+			z-index: 10;
+		}
+		.snake-score {
+			position: absolute;
+			margin: 0px;
+			color: #00ffff;
+			border-radius: 24px;
+			text-shadow:
+				0 0 8px #c0ffff,
+				0 0 16px #e0ffff,
+				0 0 24px #ffffff;
+		}
+		@keyframes spinning {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.thought-bubble {
+			font-size: 18px;
+			padding: 10px;
+			position: absolute;
+			left: -10px;
+			top: 60px;
+			width: 180px;
+		}
+		.bubble {
+			width: 48px;
+			height: 24px;
+			position: absolute;
+			border-radius: 50%;
+			background-color: #400080c0;
+			border: solid 2px #00ffffc0;
+			animation: borderAnimation 3s infinite;
+		}
+		.hero-image {
+			width: 288px;
+			height: 288px;
+			max-width: 80vw;
+			max-height: 80vw;
+		}
+
+		.heading {
+			display: flex;
+			text-align: left;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			margin-bottom: 10px;
+			position: relative;
+			overflow: clip;
+			color: #e0ffff;
+			font-size: clamp(20px, 2.5vw, 40px);
+			text-shadow:
+				0 0 8px #c0ffff,
+				0 0 16px #e0ffff,
+				0 0 24px #ffffff;
+		}
+
+		.emoji {
+			width: 1em;
+			height: auto;
+			vertical-align: middle;
+			margin-top: -12px;
+			margin-left: 2px;
+		}
+
+		.rainbow {
+			color: #ff0000;
+			text-shadow:
+				0 0 2px #c00000,
+				0 0 2px #c00000;
+			animation: rainbowAnimation 8s infinite;
+		}
+		@keyframes rainbowAnimation {
+			0%, 100% {
+				color: #ff0000;
+				text-shadow:
+					0 0 2px #c00000,
+					0 0 2px #c00000;
+			}
+			17% {
+				color: #ffff00;
+				text-shadow:
+					0 0 2px #c0c000,
+					0 0 2px #c0c000;
+			}
+			33% {
+				color: #00ff00;
+				text-shadow:
+					0 0 2px #00c000,
+					0 0 2px #00c000;
+			}
+			50% {
+				color: #00ffff;
+				text-shadow:
+					0 0 2px #00c0c0,
+					0 0 2px #00c0c0;
+			}
+			67% {
+				color: #0000ff;
+				text-shadow:
+					0 0 2px #0000c0,
+					0 0 2px #0000c0;
+			}
+			83% {
+				color: #ff00ff;
+				text-shadow:
+					0 0 2px #c000c0,
+					0 0 2px #c000c0;
+			}
+		}
+
+		.rainbow-hr {
+			border-color: #ff0000;
+			animation: rainbowHR 16s infinite;
+		}
+		@keyframes rainbowHR {
+			0%, 100% {
+				border-color: #ff0000;
+			}
+			17% {
+				border-color: #ff00ff;
+			}
+			33% {
+				border-color: #0000ff;
+			}
+			50% {
+				border-color: #00ffff;
+			}
+			67% {
+				border-color: #00ff00;
+			}
+			83% {
+				border-color: #ffff00;
+			}
+		}
+
+		.playable {
+			color: #00ffff;
+			text-decoration: none;
+		}
+		.invisible {
+			position: fixed;
+			margin: 0px;
+			width: 0px;
+			height: 0px;
+		}
+
+		.subtitle {
+			position: relative;
+			font-family: 'Godofthunder', cursive, sans-serif;
+			font-size: 48px;
+			line-height: 42px;
+			font-weight: 400;
+			text-shadow:
+				0 0 2px #bfbfff,
+				0 0 2px #bfbfff,
+				0 0 4px #ffffff,
+				0 0 4px #ffffff,
+				0 0 4px #ffffff;
+			z-index: 2;
+			animation: subtitleAnimation 10s ease-in-out infinite;
+		}
+		@keyframes subtitleAnimation {
+			0%, 100% {
+				transform: translate(clamp(-10vw, -64px, 0px), 0);
+			}
+			50% {
+				transform: translate(clamp(0px, 64px, 10vw), 0);
+			}
+		}
+		.subtitle2 {
+			position: relative;
+			font-family: 'Cloudheads', cursive, sans-serif;
+			font-size: clamp(8px, 48px, 12vw);
+			font-weight: 400;
+			text-shadow:
+				0 0 4px #ffffff,
+				0 0 4px #ffffff,
+				0 0 4px #ffffff;
+			z-index: 2;
+		}
+		.subtext {
+			animation: subtextAnimation 5s infinite;
+		}
+		@keyframes subtextAnimation {
+			3%, 13%, 25%, 98% {
+				color: #7f7fff;
+			}
+			0%, 5%, 15% {
+				color: #ffffff;
+			}
+		}
+		.subtext2 {
+			font-size: clamp(8px, 48px, 10vw);
+			line-height: clamp(8px, 48px, 10vw);
+			text-shadow:
+				0 0 2px #c00000,
+				0 0 2px #c00000;
+			animation: rainbowAnimation 8s infinite;
+		}
+		.subtitle3 {
+			position: relative;
+			font-family: 'Cloudier', 'YRDZST', cursive, sans-serif;
+			font-size: clamp(6px, 40px, 8vw);
+			line-height: clamp(5px, 32px, 6vw);
+			font-weight: 200;
+			text-shadow:
+				0 0 clamp(1px, 12px, 4vw) #7fffff;
+			z-index: 2;
+		}
+		.subtext3 {
+			display: inline-block;
+			animation: subtextAnimation2 12s infinite;
+		}
+		@keyframes subtextAnimation2 {
+			0%, 100% {
+				transform: translate(0px, -3px) scale(1);
+			}
+			30%, 70% {
+				opacity: 1;
+				transform: translate(0px, -7px) scale(1);
+			}
+			50% {
+				opacity: 0.5;
+				transform: translate(0px, -5px) scale(1.5);
+			}
+		}
+		.soft-edge {
+			-webkit-mask-box-image: url('https://cocobeanzies.mizabot.xyz/misc/soft-edge.svg') 30 stretch;
+			mask-image: url('https://cocobeanzies.mizabot.xyz/misc/soft-edge.svg');
+			mask-size: cover;
+			mask-repeat: round;
+			mask-type: alpha;
+			mask-mode: alpha;
+		}
+		.soft-edge:hover {
+			outline: 2px solid white;
+			box-shadow:
+				0px 0px 64px rgba(0, 255, 255, 255),
+				0px 0px 48px rgba(127, 255, 255, 255),
+				0px 0px 32px rgba(255, 255, 255, 255);
+			mask-image: none;
+			-webkit-mask-box-image: none;
+			z-index: 10;
+		}
+
+		.peepys-theme {
+			position: relative;
+			cursor: pointer;
+			display: inline-block;
+		}
+		.peepys-theme:hover {
+		}
+		.peepys-theme:after {
+			content: "🏳️‍⚧️ ";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: inline;
+			visibility: hidden;
+		}
+		.peepys-theme:hover::after {
+			pointer-events: none;
+			visibility: visible;
+		}
+		.rick-roll {
+			position: relative;
+			cursor: pointer;
+			display: inline-block;
+		}
+		.rick-roll:hover {
+		}
+		.rick-roll:after {
+			content: "💖";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: inline;
+			visibility: hidden;
+		}
+		.rick-roll:hover::after {
+			pointer-events: none;
+			visibility: visible;
+		}
+		.bad-apple {
+			position: relative;
+			cursor: pointer;
+			display: inline-block;
+		}
+		.bad-apple:hover {
+		}
+		.bad-apple::after {
+			content: "🍏";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: inline;
+			visibility: hidden;
+		}
+		.bad-apple:hover::after {
+			pointer-events: none;
+			visibility: visible;
+		}
+
+		.autism {
+			color: white;
+			animation: none;
+		}
+
+		.non-selectable {
+			user-select: none; /* Standard syntax */
+			/* For older browsers */
+			-webkit-user-select: none; /* Safari */
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* Internet Explorer */
+		}
+
+		a {
+			color: #00ffff;
+			text-decoration: none;
+			animation: linkAnimation 7s infinite;
+		}
+		a: visited {
+			color: #00ffff;
+			animation: linkAnimation 7s infinite;
+		}
+		a: hover {
+			color: #ffffff;
+			animation-play-state: paused;
+		}
+		@keyframes linkAnimation {
+			0%, 45%, 100% {
+				color: #00ffff;
+			}
+			50% {
+				color: #ffffff;
+			}
+		}
+		.glow-a {
+			text-shadow: 0 0 2px #ffffff;
+		}
+
+		@media (max-width: 800px) {
+			#left-sidebar, #right-sidebar {
+				display: none;
+			}
+			#star-container {
+				left: 0px;
+				width: clamp(0px, 100vw, 3840px);
+			}
+			:root {
+				--sidebar-margin: 0px;
+			}
+		}
+		@media (max-width: 1200px) {
+			.float {
+				display: none;
+			}
+		}
+
+		.mobile-styles #banner {
+			margin: 0;
+			width: 100%;
+		}
+		.mobile-styles #content {
+			left: 0px;
+			width: 100%;
+		}
+		.mobile-styles #content2 {
+			left: 0px;
+			width: 100%;
+		}
+		.mobile-styles #content3 {
+			left: 0px;
+			width: 100%;
+		}
+		.mobile-styles #content4 {
+			left: 0px;
+			width: 100%;
+		}
+		.mobile-styles #left-sidebar, .mobile-styles #right-sidebar {
+			display: none;
+		}
+		.mobile-styles #star-container {
+			left: 0px;
+			width: clamp(0px, 100vw, 3840px);
+		}
+		.mobile-styles .float {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner"></div>
+	<div id="left-sidebar">
+		<div id="left-rainbow" class="left-border rainbow-border"></div>
+	</div>
+	<div id="right-sidebar">
+		<div id="right-rainbow" class="right-border rainbow-border"></div>
+		<!-- Right Sidebar -->
+	</div>
+	<div id="background"></div>
+	<div style="height: 320px"></div>
+	<div class="hero sub-anim">
+		<a class="float blurred" style="width: 200px; margin-left: calc(-30vw - 384px); margin-top: -400px" href="https://toyhou.se/18601345.snowdrop"><img width="100%" src="https://cocobeanzies.mizabot.xyz/pictures/Snowdrop_Cacao.webp"></a>
+		<a class="float blurred" style="width: 200px; margin-left: calc(30vw + 384px); margin-top: -400px" href="https://toyhou.se/25195503.golden-silver"><img width="100%" src="https://cocobeanzies.mizabot.xyz/pictures/Gold_Bean_Sausage.webp"></a>
+		<div class="title">
+			<!-- Hacky "cocobeanzies" text! This can be cleaned up using JS, but I kept it this way so it works as standalone -->
+			<span class="linear-flash">c</span><span class="linear-flash" style="animation-delay: 0.1s">o</span><span class="linear-flash" style="animation-delay: 0.2s">c</span><span class="linear-flash" style="animation-delay: 0.3s">o</span><span class="linear-flash" style="animation-delay: 0.4s">b</span><span class="linear-flash" style="animation-delay: 0.5s">e</span><span class="linear-flash" style="animation-delay: 0.6s">a</span><span class="linear-flash" style="animation-delay: 0.7s">n</span><span class="linear-flash" style="animation-delay: 0.8s">z</span><span class="linear-flash" style="animation-delay: 0.9s">i</span><span class="linear-flash" style="animation-delay: 1s">e</span><span class="linear-flash" style="animation-delay: 1.1s">s</span>
+		</div>
+		<a href="https://toyhou.se/23279170.coco-beanzies">
+			<img class="hero-image" src="https://cocobeanzies.mizabot.xyz/coco.avif">
+		</a>
+		<div class="thought-bubble paragraph ripples everythings-alright-trigger" style="color: #00ffff; text-shadow: 0 0 2px #00c0c0, 0 0 2px #00c0c0" onclick="playAudio('everythings-alright')">
+			🌙 只要你在我身边，就一切都好。。。 💫
+		</div>
+		<div class="bubble" style="width: 24px; height: 12px; left: 45px; top: 148px; animation-delay: -0.5s">
+		</div>
+		<div class="bubble" style="width: 16px; height: 8px; left: 70px; top: 170px; animation-delay: -1s">
+		</div>
+	</div>
+	<div id="content" class="sub-anim">
+		<h1 id="titles" class="heading">
+			<div class="bullet"></div><span>Coco</span>
+			<div class="bullet"></div><span>they/all</span>
+			<div class="bullet"></div><span>non-binary</span>
+			<div class="bullet"></div><span>non-theistic</span>
+			<div class="bullet"></div>
+		</h1>
+		<h1 id="socials">
+			<img id="worm-galaxy" class="snake-score" src="https://cocobeanzies.mizabot.xyz/pictures/galaxy.webp">
+			<span class="dog-worm"><b class="bob playable snake-game-trigger" style="margin-left: calc(-165px - 0.25em); margin-top: -15px; animation-delay: 0s">
+				<img src="https://cocobeanzies.mizabot.xyz/icons/dog-head.webp" alt="Delicious..." class="emoji worm" style="animation-delay: 0s; width: 1.5em">
+			</b></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: -120px; margin-top: -15px; animation-delay: -4s" href="https://toyhou.se/cocobeanzies">
+				<img src="https://cocobeanzies.mizabot.xyz/icons/toyhouse.png" alt="https://toyhou.se/cocobeanzies" class="emoji worm" style="animation-delay: -4s">
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: -80px; margin-top: -15px; animation-delay: -3s" href="https://reddit.com/u/cocobeanzies">
+				<i class="fa fa-reddit-alien worm" style="animation-delay: -3s" aria-hidden="true"></i>
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: -40px; margin-top: -15px; animation-delay: -2s" href="https://tumblr.com/cocobeanzies">
+				<i class="fa fa-tumblr-square worm" style="animation-delay: -2s" aria-hidden="true"></i>
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: 0px; margin-top: -15px; animation-delay: -1s" href="https://youtube.com/@cocobeanzies">
+				<i class="fa fa-youtube-play worm" style="animation-delay: -1s" aria-hidden="true"></i>
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: 40px; margin-top: -15px; animation-delay: 0s" href="https://artfight.net/~cocobeanzies">
+				<img src="https://cocobeanzies.mizabot.xyz/icons/artfight.png" alt="https://artfight.net/~cocobeanzies" class="emoji worm" style="animation-delay: 0s">
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: 80px; margin-top: -15px; animation-delay: -4s" href="https://github.com/cocobeanzies">
+				<i class="fa fa-github worm" style="animation-delay: -4s" aria-hidden="true"></i>
+			</a></span>
+			<span class="dog-worm"><a class="bob" style="margin-left: 116px; margin-top: -15px; animation-delay: -3s" href="https://bsky.app/profile/did:plc:i6vmrvbfeo7qlvi6iuebvoft">
+				<img src="https://cocobeanzies.mizabot.xyz/icons/bluesky.png" alt="https://bsky.app/profile/did:plc:i6vmrvbfeo7qlvi6iuebvoft" class="emoji worm" style="animation-delay: -3s">
+			</a></span>
+			<span class="dog-worm"><b class="bob playable dog-theme-trigger" style="margin-left: calc(165px - 0.25em); margin-top: -15px; animation-delay: -2s" onclick="playAudio('dog-theme')">
+				<img src="https://cocobeanzies.mizabot.xyz/icons/dog-tail.webp" alt="It's not over yet!" class="emoji worm" style="animation-delay: -2s; width: 1.5em">
+			</b></span>
+		</h1>
+		<br />
+		<div id="snake-game-block" style="display: none; justify-content: center">
+			<div id="snake-game">
+				<img id="snake-galaxy" class="snake-score" src="https://cocobeanzies.mizabot.xyz/pictures/galaxy.webp">
+				<p id="snake-score-high" class="snake-score" style="left: 4px; top: 4px">
+					High Score: 0
+				</p>
+				<p id="snake-score-current" class="snake-score" style="right: 4px; top: 4px">
+					Score: 0
+				</p>
+				<p id="snake-pause" class="snake-score" style="background-color: #000000c0; font-size: 32px; color: #ff7fbf; z-index: 10001">
+					<span style="color: white; font-size: 16px; cursor: pointer" onclick="closeSnakeGame()">ESC: Quit</span><br />
+					Press any arrow key to start!
+				</p>
+			</div>
+		</div>
+		<br />
+		<div class="container">
+			<div class="paragraph ripples" style="animation-delay: 0s">
+				<div class="bullet"></div>
+				<div class="text">
+					<b class="rainbow">Hiii I'm Coco/可可!!!</b> (Adult)<br />
+					I am a <b class="rainbow">CRINGE FURRY!!!</b> OC hoarder and self-taught, autistic, AroAce artist online, and attending special education irl!<br />
+					Currently telling an original story involving my Furry OCs through artworks, videos and little hints, but also have future dreams for much bigger things that have been buzzing around in my noodle for years!!! &gt;w&lt;
+				</div>
+			</div>
+			<div class="paragraph ripples" style="animation-delay: -0.25s">
+				<div class="bullet"></div>
+				<div class="text">
+					I draw <b class="rainbow" style="animation-delay: 1s">furries</b> and <b class="rainbow" style="animation-delay: 1s">multifandoms</b> the most, but sometimes other things which can be generally found through my interests scroll below???!!!<br />
+					Some people know me for <b style="text-shadow: 0 0 2px #ffffff"><b style="color: #00bfff">Bloons</b><b style="color: #ff7f00">TD</b><b style="color: #ff3f00">6</b></b> (or formerly <b style="color: #ffff00; text-shadow: 0 0 2px #007fff, 0 0 2px #0000ff, 0 0 2px #0000ff">Sonic the Hedgehog</b>) through my old usernames <b class="rainbow" style="animation-delay: 1s">smudgedpasta</b> and <b class="rainbow" style="animation-delay: 1s">Illouminant</b>, but I don't mind why you're here I appreciate you nonetheless! ( •ω• ) 
+				</div>
+			</div>
+			<div class="paragraph ripples" style="animation-delay: -0.5s">
+				<div class="bullet"></div>
+				<div class="text">
+					<b class="rainbow" style="animation-delay: 2s">YES</b>: Ask me about Commissions and Art Trades!<br />
+					Show me things or ask for feedback on your art, I don't mind! :3<br />
+					Use my art or draw my characters, just so long as you give credit and don't repost my art places for your own clout!<br />
+					Drawing my OCs interacting with your OCs, if you think your characters would be friends with any of mine please go ahead, I'd love to see it!<br />
+					用中文和我聊天儿吧，我在学这个语言，会尽力的！中文俚语也没问题，不过如果我听起来有点冷请多包涵！（）
+				</div>
+			</div>
+			<div class="paragraph ripples" style="animation-delay: -0.75s">
+				<div class="bullet"></div>
+				<div class="text">
+					<b class="rainbow" style="animation-delay: 3s">NO</b>: Requests are somewhat closed!<br />
+					Please don't talk to me about NSFW, politics or religion, or joke about these topics or use disabilities and illnesses in your sense of humor around me!<br />
+					Proship and NSFW of minors (even if fictional), offensive transid identities, Generative AI, Crypto, blah blah blah, that stuff is all a no from me!<br />
+					Please don't take it personally if our friendship would be incompatible or try to pressure me into one!<br />
+					Just please remember I am very socially shy and don't start convos or consider someone a friend very easily "^-^
+				</div>
+			</div>
+			<div class="paragraph ripples" style="animation-delay: -1s">
+				<div class="bullet"></div>
+				<div class="text">
+					<b class="rainbow" style="animation-delay: 4s">SOCIAL MEDIA</b>:<br />
+					<a class="glow-a" style="animation-delay: 0.0s" href="https://toyhou.se/cocobeanzies">Toyhouse</a> is for all the in-depth information on my silly litol bapeys<br />
+					<a class="glow-a" style="animation-delay: 0.3s" href="https://reddit.com/u/cocobeanzies">Reddit</a> I pretty much just use to comment on things now LOL<br />
+					<a class="glow-a" style="animation-delay: 0.6s" href="https://tumblr.com/cocobeanzies">Tumblr</a> is my main social media and gallery of artwork, I post everything on there!!!<br />
+					<a class="glow-a" style="animation-delay: 0.9s" href="https://youtube.com/@cocobeanzies">YouTube</a> I hope to make more animations hooray!!!!!!<br />
+					<a class="glow-a" style="animation-delay: 1.2s" href="https://artfight.net/~Illouminant">Art Fight</a> WE BATTLE TO THE DEATH WUAHAHAHAHAHA<br />
+					<a class="glow-a" style="animation-delay: 1.5s" href="https://github.com/cocobeanzies">GitHub</a> just exists :P I update my Chinese study notes and stuff there<br />
+					<a class="glow-a" style="animation-delay: 1.8s" href="https://bsky.app/profile/did:plc:i6vmrvbfeo7qlvi6iuebvoft">Bluesky</a> is a shared account for me and WavePlasma to evacuate Twitter
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content3">
+		<h1 class="heading">
+			<div class="bullet"></div><span>Art Styles</span>
+			<div class="bullet"></div><span>Commissions</span>
+			<div class="bullet"></div>
+		</h1>
+		<div class="container">
+			All artwork examples are from 2024!<br />
+			Only accepting <span style="color: #ff7fbf">lineless cell shade</span> commissions on PayPal at this time,<br />
+			All prices are in USD, DM me on any <a class="glow-a" style="cursor: pointer" onclick="scrollTitles()">social platform</a> if you're interested!<br />
+			<br />
+			<b class="rainbow" style="font-size: 24px; animation-delay: -0.6s">Headshot/bust ~ $25</b><br />
+			<b class="rainbow" style="font-size: 24px; animation-delay: -0.3s">Half body ~ $40</b><br />
+			<b class="rainbow" style="font-size: 24px; animation-delay: -0.0s">Full body ~ $65</b><br />
+			<b style="color: #bf7fff; text-shadow: 0 0 2px #ffbfff">(Additional character is $10 extra)</b>
+		</div>
+		<br />
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet">
+		<defs>
+			<clipPath id="roselandGlowClipPath">
+				<path d="M0 0 C0.08636719 0.59167969 0.17273438 1.18335938 0.26171875 1.79296875 C1.240512 7.2975583 2.30015024 10.55344351 7 14 C8.19625 14.28875 9.3925 14.5775 10.625 14.875 C11.73875 15.24625 12.8525 15.6175 14 16 C15.06652192 18.30368736 16.06421005 20.64018187 17 23 C20.52728 25.91384 23.44832549 27.46450888 28 28 C28.15855469 28.61488281 28.31710937 29.22976563 28.48046875 29.86328125 C29.91238499 34.94443114 29.91238499 34.94443114 33.125 39 C37.04054322 40.36192808 40.87798746 40.73956783 45 41 C47.66751123 53.23527878 48.3465484 67.1096299 41.64453125 78.25390625 C38.15754018 83.12135136 34.80184718 87.28580366 28.8125 88.8125 C24.81813642 89.00894411 21.17845004 88.65265474 17.234375 88.05859375 C14.70923989 87.77760783 14.70923989 87.77760783 12 90 C9.40726173 89.74908984 8.1286191 89.09957607 6.0625 87.5 C3.70141782 85.78284932 1.86309322 85.39765184 -1 85 C-1.33 85.66 -1.66 86.32 -2 87 C-2.845625 86.79375 -3.69125 86.5875 -4.5625 86.375 C-8.63806173 85.93039327 -11.08925561 86.78189929 -15 88 C-18.65490763 88.73592059 -22.32460094 89.37524862 -26 90 C-26.144375 89.236875 -26.28875 88.47375 -26.4375 87.6875 C-26.9632594 84.91827092 -26.9632594 84.91827092 -28 82 C-30.20152247 81.49246656 -30.20152247 81.49246656 -33 82 C-35.53572282 83.79177109 -37.77174488 85.84238121 -40 88 C-45.31504934 86.59307518 -48.20082109 83.56244122 -51 79 C-55.42020921 69.08119274 -56.8317395 59.78396823 -57 49 C-57.804375 49.804375 -58.60875 50.60875 -59.4375 51.4375 C-63.29858893 54.6413823 -67.05329029 55.2852157 -72 55 C-77.30690173 53.33508965 -81.28670348 49.83917833 -84 45 C-84.95802198 40.52144198 -84.34474728 36.96166347 -82.8125 32.6875 C-80.16047205 28.7551827 -77.50305441 26.50101814 -73 25 C-65.62101571 24.76574653 -65.62101571 24.76574653 -63.01171875 25.75 C-60.84651137 26.25867166 -60.84651137 26.25867166 -58.984375 24.4453125 C-58.24703125 23.67960937 -57.5096875 22.91390625 -56.75 22.125 C-50.7734135 16.44016994 -44.06806001 12.86705801 -36.83007812 9.00927734 C-34.39214568 7.66477191 -32.08009902 6.14708081 -29.75 4.625 C-20.96625441 -0.68953515 -9.97179412 -2.76005016 0 0 Z " fill="#FFFFFF" transform="translate(560,334)"/>
+			</clipPath>
+			<clipPath id="roselandGlowClipPath2">
+				<path d="M0 0 C0.66 0.33 1.32 0.66 2 1 C1.9375 3.3125 1.9375 3.3125 1 6 C-2.4375 7.625 -2.4375 7.625 -6 9 C-6.99 10.485 -6.99 10.485 -8 12 C-8.99 11.67 -9.98 11.34 -11 11 C-11.25 4.375 -11.25 4.375 -9 1 C-5.77390955 -0.07536348 -3.37822416 -0.14375422 0 0 Z " fill="#FFFFFF" transform="translate(502,207)"/>
+			</clipPath>
+		</defs>
+	</svg>
+	<div id="content2">
+	</div>
+	<div id="content4">
+		<img src="https://cocobeanzies.mizabot.xyz/pictures/Wainbow_Pee_Enn_Gee.avif" style="width: 100%; position: absolute; left: 0px; z-index: -3">
+		<div style="height: 35vw"></div>
+		<h1 class="heading"><div class="bullet"></div>Full Interests<div class="bullet"></div></h1>
+		<div id="interests" style="display: grid; line-height: 0px">
+		</div>
+		<br />
+		<hr class="rainbow-hr" style="width: 60%">
+		<div id="bottom" style="display: grid">
+			<p style="justify-self: center; margin: 0px">Website made with <a class="peepys-theme" onclick="peepysTheme()">🏳️‍🌈</a>, <a class="rick-roll" onclick="rickRoll()">💜</a> and <a class="bad-apple" onclick="badApple()">🍎</a> by <a class="rainbow" href="https://ko-fi.com/waveplasma">txin/WavePlasma</a>!</p>
+			<p style="justify-self: center; margin: 0px; color: #efefef">(And Coco's endless <a class="autism" href="https://wikipedia.org/wiki/Autism">Autism</a>)</p>
+			<img id="banner2" src="https://cocobeanzies.mizabot.xyz/pictures/Roseland.webp">
+		</div>
+	</div>
+	<div id="star-container"></div>
+	<div id="paw-container"></div>
+</body>
+<script>
+/// Right Sidebar Stamps
+const STAMPS = `
+"1171817812042469448.gif"
+"1171823884111200297.gif"
+"1171824186868629605.gif"
+"1171824240517992468.gif"
+"1171824418020917278.gif"
+"1171824580311130163.gif"
+"1171824752046907492.gif"
+"1171824789724348436.gif"
+"1171824869210603642.gif"
+"1171827465870639214.gif"
+"1171827885116493824.gif"
+"1171828313929568257.gif"
+"1171828524332634182.gif"
+"1218873498999459901.gif"
+"Ants_Canadant.png"
+"Biáng-order(complete).gif"
+"bloontonium_stamp.png"
+"chipichipi-boykisser-boykisser.gif"
+"circus-hop-yonkagor.gif"
+"clap-clapping.mp4__youtubedl_s..23A22https3A2F2Ftenor.gif"
+"d9qskxa-d477b1cf-d2c9-4f96-9ca4-3b762eadce3b.gif"
+"daulbh3-c7f46b01-41ea-49bb-900a-2a1c73955440.gif"
+"death-note.gif"
+"E38090E69DB1E696B9E3..E5BDB1E7B5B5E38091.webp"
+"EgxfBLHmWQAHWpKgVbXh.gif"
+"f16bbf7ab5ee1f06e6eca8232506ed2f_5bd7990c_250.gif"
+"gintan.gif"
+"gintan2.gif"
+"guppy-insaniquarium.gif"
+"ikan-fish.gif"
+"image.webp"
+"images.jpg"
+"inscryption-stoat.gif"
+"jericho_stamp.png"
+"KGLCMRJXmyWymWYgtsdB.webp"
+"kitten-boop.gif"
+"konata-lucky-star.gif"
+"konata-point.gif"
+"luke-carder-inscryption.gif"
+"me-and-the-boys-at-3-am-me-and-the-boys-at-three-am.gif"
+"mononykus.png"
+"mononykus-dinosaur.gif"
+"nana_stamp.png"
+"NZYsQfdggQKVQTYFlEWV.webp"
+"oops_stamp.png"
+"pectinodon.webp"
+"pokemon-lick.gif"
+"Pterosaur_PFP.png"
+"quincy_stamp.png"
+"realizing-everyone-knows-what-y..23A22https3A2F2Ftenor.gif"
+"rIqHmSPaTyXLDmOfjALA.webp"
+"slay-shawty-slay.gif"
+"sniper_stamp.png"
+"sonic-x-sonic.gif"
+"spinofaarus.webp"
+"terapagos-gloogy.gif"
+"tetra-yonkagor.gif"
+"this-is-what-you-look-like-when..-like-kissing-boys-dont-you.gif"
+"tumblr_0a31c2e1d2bcc5df2eb98e31eb2110b1_4b7c20c8_100.webp"
+"tumblr_0d9967136fab69c81d2ccc22ef9a8867_efbeca7f_100.png"
+"tumblr_01e08075ff66024b8f82a06d33e63986_ca615886_100.png"
+"tumblr_1dbb30453f7ede44751e40a928e9c802_21d8db3c_250.png"
+"tumblr_1f0bcdcbcdae7c31291da15a3618508e_8890914a_100.png"
+"tumblr_2cdb35859fa5de00a3b3a311b3de99ff_fefea662_250.png"
+"tumblr_2df4b1c0029824f53aca67567a386bf4_40e8ba72_250.webp"
+"tumblr_3abb940bc6e1747aabf0d4965df0737a_9117984a_100.png"
+"tumblr_3b937b1518fdf036969068d6a21713c9_6bc6d16f_100.webp"
+"tumblr_4a91821bd359204427fd7fc473310161_cce75f23_100.png"
+"tumblr_4b8fab404a7ac52015501d4faa5a839a_e8396b46_100.webp"
+"tumblr_4b8513ef071775fda1657529792105ea_b3acde25_100.png"
+"tumblr_4f6a8535a1c2fc320ad7bef834801396_e3531b93_100.png"
+"tumblr_4f6c34101d4d4bf25c904ab29d94bab4_5f6098b3_100.png"
+"tumblr_5b813f45b7aab6bb0c92620e55e94e0f_b5857806_100.webp"
+"tumblr_5c2f1bdd38faf88199fc6d4e07abdc72_95a20190_100.webp"
+"tumblr_5d1f34ddeb66789e54306c948e95a8ee_62d843f5_100.webp"
+"tumblr_5e1c82eab347ff9c422c1722644ce1e7_e87c6686_100.webp"
+"tumblr_6dc6cec4b420372368c4340ab0fb69df_64676e36_100.webp"
+"tumblr_7e644e115bbd0f0508a49c613378f81f_7799280a_100.png"
+"tumblr_7f34c15bf08c9dd6b879443bf9543b08_ca458d34_100.webp"
+"tumblr_8d600bf5dbe939b408bc37482a7068b7_123a7f90_100.png"
+"tumblr_9b0844514b0b33148fa2c1a3a6064eb8_ef60c5a0_100.webp"
+"tumblr_9e1e6ad51f64cbaae1bd7b52967c3457_b2db032f_100.png"
+"tumblr_9e663d41da238775fc93b6e14283d885_27d29616_100.webp"
+"tumblr_9f7aa7377efe3125cd1b656005fafed6_4b578370_100.webp"
+"tumblr_13d261e20e9fb84c5d9e2881478098fc_14b6c022_100.webp"
+"tumblr_17a2d176bc056a5346e39cdadf672382_0623552e_100.webp"
+"tumblr_22bc5c2da70c86b3ef09e00525cd8911_6b173cbd_100.png"
+"tumblr_30f12718ffe2ed74a10349fe092a9cb6_5feb7857_75.webp"
+"tumblr_34c2170f55083192156a27940f3c4cac_b2d44bf6_100.png"
+"tumblr_35c30e1b24561b947398be6d7af73cc1_2718bd10_100.gif"
+"tumblr_36e45f00e34fc965237fcf6965b76148_a27e787d_100.webp"
+"tumblr_37a29a084b543e72c50b7a66251c6da8_2112d9fc_100.webp"
+"tumblr_39a94a8e906e351e71232baac48b5707_56af5c99_100.webp"
+"tumblr_41c41d9f16c2bee5e0fa5475b22cedeb_5318bb39_100.webp"
+"tumblr_42fe829b9179a5086ebc06f8ae4dce4a_b3df24cc_250.gif"
+"tumblr_44be30cefa3c64253b3a17e661e427c8_ca8d8ef4_100.png"
+"tumblr_49d942d916bd0deed7a5ed1a7b4fe1d9_f2fc5bfe_100.webp"
+"tumblr_51ba1a5bfa5cf5b2b926bc31b5e06297_b58afd60_250.webp"
+"tumblr_052fc8a70abfbe1f50ab359b33ed7c50_ae983ad9_100.webp"
+"tumblr_55f47e454ec3f8eeea03b0de79d5c6f3_1c25ff4a_100.webp"
+"tumblr_79ac6c7d4580f095678624bd84f703a6_ce531827_100.png"
+"tumblr_88c47e2f25fed8c00b3796cba0e3e089_da2b22f3_100.png"
+"tumblr_90be7eadfc1e1919c656ce78327f4862_949d00a1_250.webp"
+"tumblr_92eb5ede4dae283a6464c6dbab7aff3c_2569bc29_100.webp"
+"tumblr_112d27b5fc9c72c4e8aa890c97116309_ac83a069_100.png"
+"tumblr_327eaf2f23894ec413e78d4c578a5e22_0be6ab76_250.png"
+"tumblr_379ad0c41c556a71df39e9db759156ba_b07394bb_100.gif"
+"tumblr_751d734d6214b441c91672b67a126ad6_a3420cd7_100.webp"
+"tumblr_876b0724a4b1981926a7ee492bea26ea_5206ef4f_100.webp"
+"tumblr_924f8c88e4ea6a7ac629d4e29c6e4ef1_a766317e_250.png"
+"tumblr_967dd2eb1bceeb591938290ac4013df8_e077332c_100.webp"
+"tumblr_2117f192978bcd5c9352c704f2bc6091_5b70790e_100.webp"
+"tumblr_4582a184c64cb39379688a8a71c48cdd_6f9e9499_100.webp"
+"tumblr_8227bf940f5fe34495a40ccda922ba61_c345d42f_100.webp"
+"tumblr_13493b13237b507288bbb1c2a32a7265_3e234cc9_250.webp"
+"tumblr_20655ccf6cbe1ba67de4e5b604b26c05_190d42a4_100.webp"
+"tumblr_21458dd8544a1e5496dd0c8e7e0d0e28_4ed2bb5c_100.png"
+"tumblr_62212c5c7e63a4897204192cf1c28bb2_9527a38a_100.webp"
+"tumblr_81593ee597127fa4345c10bf6662fe1f_4aa5270b_100.png"
+"tumblr_84308f71e7194b1665e71a6c5c6c491c_a15d7b98_100.gif"
+"tumblr_89606bd4cb0db90ca4e22fb152fd8a29_a35decc6_100.webp"
+"tumblr_231796cb0902abbc37f0dccc0e2e8c0f_3c54da33_100.webp"
+"tumblr_404390e70ad96ce0bee6c4b6cd5c851e_84e48d82_100.webp"
+"tumblr_3864817a78797c2893734e2138c33c08_86a92b89_100.png"
+"tumblr_22231001377df9e4d85a5fe93fec4c86_ca1b01f8_100.webp"
+"tumblr_a4d383f2dd4b4fb820082d9bd527ebd4_79947276_100.png"
+"tumblr_a9c70a5463decddc62cb71dcaafc4d9a_7fc8136a_100.png"
+"tumblr_a24947c3c9b7379072768df469b54218_046b1959_100.png"
+"tumblr_ac9577ddf2217b072734373ad4d1a7b7_cd66a1eb_100.webp"
+"tumblr_b87f852a7d1b29c7e0475939fb54eb90_0ffe0634_540.gif"
+"tumblr_b206b2ba54456b12791233195a5849cc_a70b51e0_250.webp"
+"tumblr_b6497761b2e2bc1e4bf77e5dcb413be4_e9ad56c5_100.png"
+"tumblr_b66099773172cac28bd143c5ef6b8df1_7e825d01_100.png"
+"tumblr_bb296d811a5bb350ab0bc93c89a28cab_baedcdde_100.webp"
+"tumblr_c5640368e12666c9bc7f05a031aece0d_e6d44b9a_100.png"
+"tumblr_cb8d773569eafffb9f6978a26ee65711_cd4d35d4_100.webp"
+"tumblr_cd0b1c61e445ef1769ec10ea44d4a5b9_804a79d2_100.png"
+"tumblr_cf135c0db10c1ab49b8a573b63824824_292b227e_100.webp"
+"tumblr_cf5936a19155f05ed861c0ce3fcbfa9c_8cda1a1f_100.webp"
+"tumblr_d64b3dc25159dd6467a2e0bb359df6c7_5f2e7995_100.png"
+"tumblr_ddf8d0606dd62efd03a8c5db72f5908a_ec14e511_100.png"
+"tumblr_de90a1c60c6705e25131d273fcee8626_df1c94af_100.webp"
+"tumblr_df5d69195db02462c349142e82a4eb62_9ab05b1d_250.png"
+"tumblr_df22dd5659ffbebe4ca5d1afd4efc742_0b797084_100.png"
+"tumblr_e13e9e5b564ba0b62abaa431441d43f7_a8801837_100.webp"
+"tumblr_e97abad6011daaa28cf86c43d6176ddc_fe488bcc_100.webp"
+"tumblr_e1481786d45da10e996d14381d8918dd_b093ba66_250.webp"
+"tumblr_eb23a0ff1bdf11fdec70fae72f395746_7d57d977_100.webp"
+"tumblr_f0e21ac554a528afda1520a8f0276025_b1ee7ef7_100.gif"
+"tumblr_f1fc079ac25af96fc127272b037911af_1a251d05_100.gif"
+"tumblr_f6c3f8e541c2aa814de80be59c621fc7_cc8b42bd_250.webp"
+"tumblr_f7a17f59e95eb7fcd017593b883dcc1e_ff67e135_100.webp"
+"tumblr_fc8d07ec1ab9e01dc0bdb4964eb35e92_097db41c_100.gif"
+"tumblr_fccdc2606c29e856d58473833b4ddb82_aa305342_100.webp"
+"tumblr_fe2c2f3ca2c690ea71ff6b6cdc3f8cdd_2a18a216_100.webp"
+"tumblr_ff1d42b156881a70c48e6b03631ddb5c_6a26b4f0_100.webp"
+"vehicle-vehicular-manslaughter...23A22https3A2F2Ftenor.gif"
+"world-so-scary-mononykus.gif"
+"2024-04-02_18-54-10.gif"
+"1167785689170055189.gif"
+"1167785710875574293.gif"
+"1167785806270828684.gif"
+"1167785958452756580.gif"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length });
+
+/// Left Sidebar Stamps
+const JWST = `
+"au-mic1.webp"
+"carinanebula3.webp"
+"EIGER1.webp"
+"JADES2.webp"
+"jades5.webp"
+"jupiter-auroras1.webp"
+"L1527-1.webp"
+"pillarsofcreation_composite.webp"
+"potm2207a.webp"
+"potm2208a.webp"
+"potm2209a.webp"
+"potm2211a.webp"
+"potm2211c.webp"
+"potm2212a.webp"
+"potm2301b.webp"
+"potm2302a.webp"
+"potm2303a.webp"
+"potm2305a.webp"
+"potm2305b.webp"
+"potm2305c.webp"
+"potm2306a.webp"
+"potm2306b.webp"
+"potm2307a.webp"
+"potm2307b.webp"
+"potm2308c.webp"
+"potm2309a.webp"
+"potm2310a.webp"
+"potm2311a.webp"
+"potm2312a.webp"
+"potm2401b.webp"
+"potm2402a.webp"
+"potm2403b.webp"
+"potm2404b.webp"
+"potm2405b.webp"
+"potm2405c.webp"
+"potm2406a.webp"
+"potm2407a.webp"
+"saturn1.webp"
+"SN1987a-1.webp"
+"southernring2.webp"
+"southernring3.webp"
+"supernova-encore3.webp"
+"VV191a.webp"
+"weic2205a.webp"
+"weic2205b.webp"
+"weic2207b.webp"
+"weic2207c.webp"
+"weic2208a.webp"
+"weic2209a.webp"
+"weic2211a.webp"
+"weic2211b.webp"
+"weic2212a.webp"
+"weic2212b.webp"
+"weic2214c.webp"
+"weic2216b.webp"
+"weic2217b.webp"
+"weic2217c.webp"
+"weic2218a.webp"
+"weic2219a.webp"
+"weic2301a.webp"
+"weic2303a.webp"
+"weic2305a.webp"
+"weic2306a.webp"
+"weic2306c.webp"
+"weic2307a.webp"
+"weic2310a.webp"
+"weic2311a.webp"
+"weic2312a.webp"
+"weic2313b.webp"
+"weic2315b.webp"
+"weic2316a.webp"
+"weic2319a.webp"
+"weic2320b.webp"
+"weic2320c.webp"
+"weic2322a.webp"
+"weic2323a.webp"
+"weic2324a.webp"
+"weic2326a.webp"
+"weic2326d.webp"
+"weic2327a.webp"
+"weic2328a.webp"
+"weic2330a.webp"
+"weic2330f.webp"
+"weic2331a.webp"
+"weic2332b.webp"
+"weic2401a.webp"
+"weic2402b.webp"
+"weic2403b.webp"
+"weic2403c.webp"
+"weic2403d.webp"
+"weic2403e.webp"
+"weic2403f.webp"
+"weic2403g.webp"
+"weic2403h.webp"
+"weic2403i.webp"
+"weic2403j.webp"
+"weic2403l.webp"
+"weic2403m.webp"
+"weic2403n.webp"
+"weic2403o.webp"
+"weic2403p.webp"
+"weic2403q.webp"
+"weic2403r.webp"
+"weic2403s.webp"
+"weic2403t.webp"
+"weic2407a.webp"
+"weic2407b.webp"
+"weic2407d.webp"
+"weic2407e.webp"
+"weic2408a.webp"
+"weic2409a.webp"
+"weic2410b.webp"
+"weic2410c.webp"
+"weic2411a.webp"
+"weic2411b.webp"
+"weic2413a.webp"
+"weic2415a.webp"
+"weic2417a.webp"
+"weic2418d.webp"
+"weic2418e.webp"
+"weic2420a.webp"
+"weic2420b.webp"
+"weic2420g.webp"
+"WLMb.webp"
+"WR140a.webp"
+"arp220a.webp"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length });
+
+// Scroll clouds
+const CLOUDS = `
+"cloud_PNG18.webp"
+"cloud1.webp"
+"f5a93ff14ce02da16a79658f4713e7e6.webp"
+"R (1).webp"
+"R (2).webp"
+"R (3).webp"
+"R (4).webp"
+"R (5).webp"
+"R (6).webp"
+"R (7).webp"
+"R.webp"
+"realistic-white-cloud-free-png.webp"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length });
+
+/// Style Gallery
+const STYLES = [
+	{
+		name: "Lineless Rendered",
+		path: "lineless-rendered",
+		images: `
+"Stellar_Absolution.avif"
+"Celestial_Encounter_Blue.avif"
+"Gadgeteer_Geraldo.avif"
+"Joy_in_the_Cretaceous.avif"
+"Making_SMore_Memories.avif"
+"Snowdrop.avif"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length }),
+		shuffle: true
+	}, {
+		name: "Lineless Cell Shade",
+		path: "lineless-cell-shade",
+		images: `
+"Arobas.webp"
+"Astro.webp"
+"Besties.webp"
+"Blep.webp"
+"Cameramaxxing.webp"
+"Cashel.webp"
+"Chinchilla_in_the_Aurora.webp"
+"Cruffle_DTA_.webp"
+"Daf_Ducky.webp"
+"Depression_Hug.webp"
+"Depths.webp"
+"Deteriorating.webp"
+"Distortion_No_Logo.webp"
+"Ellabell.webp"
+"Filled_With_Whimsy_and_Grace.webp"
+"Fin..webp"
+"Foxo_Duo.webp"
+"Hoshikage.webp"
+"ICE-CREAM_MONSTER.webp"
+"Intergalactic_Mayonnaise.webp"
+"Kandi_Boy_Raver.webp"
+"Kittydog_Patch_w.webp"
+"Lets_Go.webp"
+"Lightning_Spirit.webp"
+"Love_in_the_Stars_w.webp"
+"Lyki.webp"
+"Man..webp"
+"Megax.webp"
+"Monkey_in_Space_3.webp"
+"Mononykus.webp"
+"Peaceful_Night.webp"
+"Peekaboo.webp"
+"Photosynthesis.webp"
+"Playing_With_The_Moon.webp"
+"Programs_Are_O_p_e_r_a_t_i_o_n_a_l.webp"
+"RAINBOW_BLOONS_BATTLE.webp"
+"Rainbow_Pup.webp"
+"Riding_the_Cosmic_Waves.webp"
+"Roseland.webp"
+"Say_Cheese.webp"
+"Serene_Evening.webp"
+"She_So_Spacey.webp"
+"Shimp.webp"
+"Shooting_Stars.webp"
+"Sonic_Symphony_Vibes.webp"
+"Space_Candies_3.webp"
+"Spacial_Waters.webp"
+"Spinofaarus_Autismus.webp"
+"Stardust_and_Seafoam.webp"
+"Starlove.webp"
+"Striiking_Through_the_Cosmos.webp"
+"Sugary_and_Sweet.webp"
+"Sun_Gazer.webp"
+"Take_Flight_in_Music.webp"
+"Techies_at_Work.webp"
+"Together.webp"
+"Tokiboki.webp"
+"Winter_Solstice.webp"
+"Xaiden.webp"
+"Zap_Yourself_NOW.webp"
+"Zeruky.webp"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length }),
+		shuffle: true
+	}, {
+		name: "BTD6 Style",
+		path: "btd6-style",
+		images: `
+"Big_Monkeys_VS_Small_Bloons.webp"
+"Bonnie_Lovin_the_Mines.webp"
+"Cyber_Quincy__Total_Transformation_BG.webp"
+"Jackie_BG.webp"
+"LMK_OCs_x_Bloons_Collage.webp"
+"Mental_Health_Monkey_-_A_Little_Down_BG.webp"
+"Mental_Health_Monkey_-_Kinda_Happy_BG.webp"
+"Mental_Health_Monkey_-_Kinda_Sad_BG.webp"
+"Mental_Health_Monkey_-_Neutral_BG.webp"
+"Mental_Health_Monkey_-_Really_Sad_BG.webp"
+"Mental_Health_Monkey_-_Super_Happy_BG.webp"
+"Mental_Health_Monkey_-_Very_Happy_BG.webp"
+"Tewtiy_Comp.webp"
+"TSG__Corvus_BG.webp"
+"Vegeta_Sprite_1_BG.webp"
+"Vegeta_Sprite_2_BG.webp"
+"Vegeta_Sprite_3_BG.webp"
+"Vegeta_Sprite_4_BG.webp"
+"Vegeta_Sprite_5_BG.webp"
+"Vegeta_Sprite_6_BG.webp"
+"Vegeta_Sprite_7_BG.webp"
+"Vegeta_Sprite_8_BG.webp"
+"Vegeta_Sprite_9_BG.webp"
+"Vegeta_Sprite_10_BG.webp"
+"Vegeta_Sprite_11_BG.webp"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length }),
+		shuffle: false
+	}, {
+		name: "Animated",
+		path: "animated",
+		images: `
+"Coco_Hair_Sway.avif"
+"JAWS.avif"
+"Silli_Mlep.avif"
+"Silli_Mlep_Rainbow.avif"
+"Smudge_1.avif"
+"Smudge_2.avif"
+"Tessin_1.avif"
+"Tessin_2.avif"
+"Tessin_Coco_Running.avif"
+"Train.avif"
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length }),
+		animated: true,
+		shuffle: false
+	}
+];
+
+/// Interests List
+const INTERESTLIST = `
+Animals & Dinosaurs
+- AntsCanada
+- Bondi Vet
+- Prehistoric Planet
+Anime
+- Another
+- Beastars
+- Death Note
+- Dragon Ball Z
+- Lucky Star
+- Naruto
+- Pokémon Horizons
+- Pokémon Movies
+- Pokémon Series: Black & White
+- Pokémon Series: XYZ
+- Sonic X
+- Studio Ghibli
+- Tokyo Ghoul
+Bands/Singers
+- Arrows to Athens
+- Bentley Jones
+- Bring Me The Horizon
+- Caleb Hyles
+- CG5
+- Coldplay
+- Crown the Empire
+- Crush40
+- DM Dokuro
+- Dream
+- EDEN
+- Fox Stevenson
+- Guns N' Roses
+- Hans Zimmer
+- Hatsune Miku
+- Imagine Dragons
+- Jellyrox
+- kittydoggo
+- Lanaurii
+- Laura Shigihara
+- Learke
+- Linkin Park
+- My Little Pony songs
+- Panic! at the Disco
+- Queen
+- Rob Lea
+- Set It Off
+- Skillet
+- Sonic the Hedgehog songs
+- suzie
+- Thousand Foot Krutch
+- TryHardNinja
+- WavePlasma :3
+- YonKaGor
+- ZUTOMAYO
+Games
+- Animal Crossing
+- Bloons Card Storm
+- Bloons Monkey City
+- Bloons POP!
+- Bloons TD6
+- Cave Story
+- Cuphead
+- Deltarune
+- Five Nights at Freddy's
+- Geometry Dash
+- Hollow Knight
+- Insaniquarium
+- Inscryption
+- Little Kitty, Big City
+- Minecraft
+- Muse Dash
+- Neko Atsume
+- Oneshot
+- Overcooked! 2
+- Placid Plastic Duck Simulator
+- Pokémon GO
+- Pokémon Legends
+- Pokémon Mystery Dungeon
+- Pokémon Sleep
+- Pokémon Mainline Games
+- Rain World
+- Sigmund Corp. Series
+- Sonic the Hedgehog
+- Stray
+- Terraria
+- Terraria Calamity
+- Undertale
+- Wobbledogs
+Non-Anime Shows & Movies
+- Adventure Time
+- Bluey
+- Gravity Falls
+- Hazbin Hotel
+- Helluva Boss
+- Inception
+- Interstellar
+- Lego Monkie Kid
+- Murder Drones
+- My Little Pony: A New Generation
+- My Little Pony: Friendship is Magic
+- My Little Pony: Make Your Mark
+- Regular Show
+- Sonic Prime
+- Sonic SatAM
+- Sonic the Hedgehog Paramount Movies
+- Sonic Underground
+- SpongeBob Squarepants
+- Steven Universe
+- Terminator
+- The Adventures of Sonic the Hedgehog
+- The Amazing Digital Circus
+- The Amazing World of Gumball
+- The Cuphead Show
+- The Knuckles Paramount Series
+- The Lion Guard
+- The Lion King movies
+- YooHoo & Friends
+- Zootopia
+Misc
+- Animation Memes
+- Build-a-Bear
+- Fursuit Dances
+- LEGO Mythica
+- LEGO Sonic the Hedgehog
+- Plushie Collecting!!!
+- Roller Coasters
+- Science & Computer Science
+- Sonic Figurines Collecting!!!
+- Space
+`.replace(/"/g, '').split('\n').filter((fn) => { return fn.length });
+const INTERESTS = {};
+var icurr = 'N/A';
+INTERESTLIST.forEach((line) => {
+	if (line.startsWith('- ')) {
+		if (!INTERESTS[icurr]) INTERESTS[icurr] = [];
+		INTERESTS[icurr].push(line.substring(2));
+	} else {
+		icurr = line;
+	}
+});
+
+
+<!-- CODE STARTS HERE (only modify/delete if you know what you're doing!) -->
+const displayArea = screen.width * screen.height;
+const resolution = Math.sqrt(displayArea);
+const background = document.getElementById('background');
+const content = document.getElementById('content');
+const content2 = document.getElementById('content2');
+const content4 = document.getElementById('content4');
+
+if (document.location.href.includes('#') || document.location.href.includes("?")) {
+	const newURL = document.location.href.replace("?", "#").split('#', 1)[0];
+	history.replaceState(null, null, newURL);
+}
+
+function randint(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function lerp(x, y, z) {
+	return x + (y - x) * z;
+}
+function hsvToRgb(h, s, v) {
+	let r, g, b;
+	const i = Math.floor(h * 6);
+	const f = h * 6 - i;
+	const p = v * (1 - s);
+	const q = v * (1 - f * s);
+	const t = v * (1 - (1 - f) * s);
+	switch (i % 6) {
+		case 0:
+			r = v;
+			g = t;
+			b = p;
+			break;
+		case 1:
+			r = q;
+			g = v;
+			b = p;
+			break;
+		case 2:
+			r = p;
+			g = v;
+			b = t;
+			break;
+		case 3:
+			r = p;
+			g = q;
+			b = v;
+			break;
+		case 4:
+			r = t;
+			g = p;
+			b = v;
+			break;
+		case 5:
+			r = v;
+			g = p;
+			b = q;
+			break;
+	}
+	return [r, g, b];
+}
+function rgbToHsl(r, g, b) {
+	r /= 255;
+	g /= 255;
+	b /= 255;
+	const max = Math.max(r, g, b);
+	const min = Math.min(r, g, b);
+	let h, s, l = (max + min) / 2;
+	if (max === min) {
+		h = s = 0;
+	} else {
+		const d = max - min;
+		s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+		switch (max) {
+			case r:
+				h = (g - b) / d + (g < b ? 6 : 0);
+				break;
+			case g:
+				h = (b - r) / d + 2;
+				break;
+			case b:
+				h = (r - g) / d + 4;
+				break;
+		}
+		h /= 6;
+	}
+	return [h * 360, s * 100, l * 100];
+}
+function shuffle(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]]; // Swap elements
+	}
+	return array;
+}
+function splitIntoPairs(str) {
+	return str.match(/.{1,2}/g) || [];
+}
+// Define a debounce function
+function debounce(func, delay) {
+	let timeoutId;
+	let lastSent = Date.now();
+
+	return function(...args) {
+		// Clear the previous timeout if it exists
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+		const currentTime = Date.now();
+		const delta = currentTime - lastSent;
+		lastSent = currentTime;
+
+		const usedDelay = Math.min(delta, delay * 4) + delay;
+
+		// Set a new timeout
+		timeoutId = setTimeout(() => {
+			func.apply(this, args);
+		}, usedDelay);
+	};
+}
+
+function isIOS() {
+	return (navigator.userAgent.includes("AppleWebKit") && !navigator.userAgent.includes("Chrome")) || /iP(?:hone|od|ad)|Safari|Mac OS/.test(navigator.userAgent);
+}
+ISIOS = isIOS();
+function replaceIOS(url) {
+	if (ISIOS) {
+		if (url && url.endsWith('.avif')) {
+			return url.replace('.avif', '.webp');
+		}
+	}
+	return url;
+}
+
+const colorCache = {};
+const tempCanvas = document.createElement('canvas');
+tempCanvas.width = 144;
+tempCanvas.height = 96;
+const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true });
+function getMeanColour(element, mode='raw') {
+	if (!isLoaded(element)) return 'white';
+	const src = element.src + '??' + mode;
+	if (element.animated == false) {
+		const color = colorCache[src];
+		if (color) {
+			return color;
+		}
+	}
+	tempCtx.drawImage(element, 0, 0, element.width / 2, element.height / 2);
+	const imageData = tempCtx.getImageData(0, 0, element.width / 2, element.height / 2);
+	const data = imageData.data;
+	let r = 0, g = 0, b = 0;
+	let pixelCount = 0;
+	for (let i = 0; i < data.length; i += 4) {
+		const a = data[i + 3] != null ? data[i + 3] : 1;
+		r += data[i] * a;
+		g += data[i + 1] * a;
+		b += data[i + 2] * a;
+		pixelCount += a;
+	}
+	r = Math.round(r / pixelCount);
+	g = Math.round(g / pixelCount);
+	b = Math.round(b / pixelCount);
+	let color;
+	if (mode == 'raw') {
+		color = `rgb(${r}, ${g}, ${b})`;
+	} else {
+		let [h, s, l] = rgbToHsl(r, g, b);
+		s = 100;
+		l = l / 2 + 50;
+		color = `hsl(${h}, ${s}%, ${l}%)`;
+	}
+	if (element.animated == false) {
+		colorCache[src] = color;
+	}
+	return color;
+}
+
+var prevPos = [0, 0];
+function getMouseVelocity(event) {
+	const currPos = [event.clientX, event.clientY];
+	const diff = [currPos[0] - prevPos[0], currPos[1] - prevPos[1]];
+	prevPos = currPos;
+	return diff;
+}
+
+function getCookie(name) {
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let cookiesArray = decodedCookie.split(';');
+	name = name + "=";
+	for (let i = 0; i < cookiesArray.length; i++) {
+		let cookie = cookiesArray[i];
+		while (cookie.charAt(0) == ' ') {
+			cookie = cookie.substring(1);
+		}
+		if (cookie.indexOf(name) == 0) {
+			return cookie.substring(name.length, cookie.length);
+		}
+	}
+	return "";
+}
+
+function isLoaded(image) {
+	return image.complete && image.naturalHeight !== 0;
+}
+function isVisible(element) {
+	if (document.hidden || !element) {
+		return false;
+	}
+	if (element.onscreen == false) {
+		return false;
+	}
+	// Check if element has dimensions (offsetWidth/offsetHeight will be 0 if not visible)
+	if (element.offsetWidth === 0 && element.offsetHeight === 0) {
+		return false;
+	}
+	// Check if display is none
+	if (element.style.display === 'none') {
+		return false;
+	}
+	// Check if visibility is hidden
+	if (element.style.visibility === 'hidden') {
+		return false;
+	}
+	// Check computed style
+	const computedStyle = window.getComputedStyle(element);
+	if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
+		return false;
+	}
+	// Check if element is in the DOM
+	if (!document.body.contains(element)) {
+		return false;
+	}
+	return true;
+}
+
+const playingAudio = [];
+const players = {};
+function playAudio(name, position, callback, loop) {
+	const info = players[name];
+	let player;
+	let audio;
+	let independent = loop == false;
+	function func() {
+		if (audio.cpfunc) {
+			audio.removeEventListener('canplay', func);
+			audio.cpfunc = null;
+		}
+		player.audio = audio;
+		if (playingAudio.length) {
+			const prev = playingAudio.pop();
+			if (prev.video) prev.video.pauseVideo();
+			prev.audio.pause();
+			if (prev == player) return;
+		}
+		playingAudio.push(player);
+		if (!player.video) {
+			if (callback) player.audio.addEventListener('playing', callback);
+			if (position != null) player.audio.currentTime = position;
+			player.audio.play();
+		} else {
+			player.video.playVideo();
+			if (callback) callback();
+		}
+	}
+	if (independent) {
+		audio = document.createElement('audio');
+		audio.addEventListener('canplay', audio.play);
+		audio.src = "https://cocobeanzies.mizabot.xyz/music/" + name + ".webm";
+	} else if (info) {
+		[player, audio] = info;
+		func();
+	} else {
+		player = document.createElement('div');
+		audio = document.createElement('audio');
+		audio.addEventListener('canplay', func);
+		audio.cpfunc = true;
+		if (!independent) audio.setAttribute('loop', true);
+		players[name] = [player, audio];
+		audio.src = "https://cocobeanzies.mizabot.xyz/music/" + name + ".webm";
+	}
+}
+
+function inElement(point, element) {
+	const rect = element.getBoundingClientRect();
+	if (point[0] >= rect.x && point[0] <= rect.x + rect.width && point[1] >= rect.y && point[1] <= rect.y + rect.height) {
+		return true;
+	}
+	return false;
+}
+function intersectsElement(point1, point2, element) {
+	// Simple bounding box intersection for the line segment
+	// between point1 and point2 and the element's bounding box
+	const rect = element.getBoundingClientRect();
+	return (
+		lineIntersectsRect(point1, point2, rect)
+	);
+}
+function lineIntersectsRect(p1, p2, rect) {
+	// Check if the line between p1 and p2 intersects any of the
+	// sides of the rectangle.
+	return (
+		lineIntersectsLine(p1, p2, [rect.left, rect.top], [rect.right, rect.top]) ||
+		lineIntersectsLine(p1, p2, [rect.left, rect.bottom] , [rect.right, rect.bottom]) ||
+		lineIntersectsLine(p1, p2, [rect.left, rect.top], [rect.left, rect.bottom]) ||
+		lineIntersectsLine(p1, p2, [rect.right, rect.top], [rect.right, rect.bottom])
+	);
+}
+function lineIntersectsLine(l1Start, l1End, l2Start, l2End) {
+	// Use a line intersection algorithm to test if two line segments intersect
+	const det = (l1End[0] - l1Start[0]) * (l2End[1] - l2Start[1]) - (l1End[1] - l1Start[1]) * (l2End[0] - l2Start[0]);
+	if (det === 0) {
+		return false; // Lines are parallel
+	}
+	const lambda = ((l2End[1] - l2Start[1]) * (l2End[0] - l1Start[0]) + (l2Start[0] - l2End[0]) * (l2End[1] - l1Start[1])) / det;
+	const gamma = ((l1Start[1] - l1End[1]) * (l2End[0] - l1Start[0]) + (l1End[0] - l1Start[0]) * (l2End[1] - l1Start[1])) / det;
+	return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+}
+
+const stampWidth = 96;
+const stampHeight = 64;
+const stampDelay = 1000;
+
+const stampsToReuse = [];
+const jwstToReuse = [];
+const leftBar = document.getElementById('left-sidebar');
+const rightBar = document.getElementById('right-sidebar');
+const leftRain = document.getElementById('left-rainbow');
+const rightRain = document.getElementById('right-rainbow');
+leftRain.addEventListener('mousedown', function() {
+	leftRain.held = 2;
+});
+leftRain.addEventListener('mouseup', function() {
+	leftRain.held = Math.min(leftRain.held, 1);
+});
+leftRain.addEventListener('mouseleave', function() {
+	leftRain.held = Math.min(leftRain.held, 1);
+});
+rightRain.addEventListener('mousedown', function() {
+	rightRain.held = 2;
+});
+rightRain.addEventListener('mouseup', function() {
+	rightRain.held = Math.min(rightRain.held, 1);
+});
+rightRain.addEventListener('mouseleave', function() {
+	rightRain.held = Math.min(rightRain.held, 1);
+});
+leftRain.held = 0;
+rightRain.held = 0;
+
+var synchronisedSource = null;
+function playStampVideo(video, audio) {
+	if (synchronisedSource != video) {
+		synchronisedSource = video;
+	} else {
+		synchronisedSource = null;
+	}
+	let callback = null;
+	if (synchronisedSource && isVisible(leftBar) && isVisible(rightBar)) {
+		callback = () => {
+			for (const stamp of document.getElementsByClassName('stamp')) {
+				stamp.src = synchronisedSource;
+				stamp.setAttribute('loading', 'eager');
+				stamp.shape = 'star';
+			}
+			const temp = [];
+			for (const stamp of stampsToReuse) {
+				stamp.src = synchronisedSource;
+				stamp.setAttribute('loading', 'eager');
+				stamp.shape = 'star';
+				document.body.appendChild(stamp);
+				stamp.parent = document.body;
+				stamp.style.visibility = 'hidden';
+				temp.push(stamp);
+			}
+			stampsToReuse.length = 0;
+			for (let i = 0; i < Math.max(0, stampHard - temp.length); i++) {
+				const stamp = spawnStamp(document.body, i & 1 ? 'left' : 'right', 0);
+				stamp.style.visibility = 'hidden';
+				temp.push(stamp);
+			}
+			stampsToReuse.push(...temp);
+			setTimeout(hideToReuse, 500);
+		};
+	} else {
+		stampsToReuse.length = 0;
+	}
+	playAudio(audio, 0, callback);
+}
+function hideToReuse() {
+	for (const stamp of stampsToReuse) {
+		if (stamp.parent) {
+			stamp.parent.removeChild(stamp);
+			stamp.parent = null;
+		}
+	}
+}
+
+function peepysTheme() {
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFJiaygxg.webp' + `?v=${new Date().getTime()}`, 'peepys-theme');
+}
+function rickRoll() {
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFF4TEJmg.webp' + `?v=${new Date().getTime()}`, 'rickroll');
+}
+function badApple() {
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/E38090E69DB1E696B9E3..E5BDB1E7B5B5E38091.webp' + `?v=${new Date().getTime()}`, 'bad-apple');
+}
+
+const stampSoft = 192;
+const stampHard = 288;
+const usedIter = {};
+var jwstList = Array.from(JWST);
+var stampList = Array.from(STAMPS);
+function spawnStamp(parent, mode, rowIndex) {
+	const reuseFactor = Math.random();
+	let stamp;
+	let reuse;
+	let reuseChance;
+	let shape;
+	let generateURL;
+	let lazy = true;
+	if (synchronisedSource) {
+		generateURL = () => {
+			return [synchronisedSource, true];
+		}
+		reuse = stampsToReuse;
+		reuseChance = 1;
+		shape = 'star';
+		lazy = false;
+	} else if (mode == 'left') {
+		generateURL = () => {
+			let url = "https://cocobeanzies.mizabot.xyz/jwst/" + jwstList.pop();
+			if (!jwstList.length) jwstList = shuffle(Array.from(JWST));
+			return [url, false];
+		}
+		reuse = jwstToReuse;
+		reuseChance = 0.5;
+		shape = 'star';
+	} else {
+		generateURL = () => {
+			let url = "https://cocobeanzies.mizabot.xyz/stamps/" + stampList.pop();
+			if (!stampList.length) stampList = shuffle(Array.from(STAMPS));
+			//
+			isAnim = url.endsWith('.gif') || url.endsWith('.webp');
+			if (isAnim) {
+				const info = usedIter[url];
+				let [uiv, ult] = info || [0, 0];
+				if (parent.timestamp != ult) {
+					usedIter[url] = [(uiv + 1) % 8, parent.timestamp];
+				}
+				if (uiv) url += "?timestamp=" + uiv;
+			}
+			return [url, isAnim];
+		}
+		reuse = stampsToReuse;
+		// Reuse stamps 95% of the time, letting them be placed into a different spot in the sidebar
+		reuseChance = 0.95;
+		shape = 'circle';
+	}
+	const rereuseChance = reuse.length < stampSoft ? 1 - (1 - reuseChance) * 2 : 1;
+	let isAnim = true;
+	let url;
+	if (reuse.length && reuseFactor < rereuseChance) {
+		stamp = reuse.shift();
+		stamp.reused = false;
+		stamp.style.position = 'absolute';
+		stamp.style.pointerEvents = 'auto';
+		stamp.style.visibility = 'visible';
+		if (reuseFactor >= reuseChance) {
+			[url, isAnim] = generateURL();
+			stamp.src = url;
+		}
+	} else {
+		stamp = document.createElement('img');
+		if (lazy) {
+			stamp.setAttribute('loading', 'lazy');
+		} else {
+			stamp.setAttribute('loading', 'eager');
+		}
+		stamp.crossOrigin = "anonymous";
+		stamp.className = 'stamp';
+		[url, isAnim] = generateURL();
+		stamp.src = url;
+	}
+	stamp.animated = isAnim;
+	//stamp.style.display = 'block';
+	stamp.mode = mode;
+	stamp.shape = shape;
+	parent.appendChild(stamp);
+	stamp.parent = parent;
+	stamp.width = stampWidth;
+	stamp.height = stampHeight;
+	stamp.rowIndex = rowIndex;
+	const y = rowIndex * stampHeight;
+	stamp.style.transform = `translateY(${y}px)`;
+	stamp.yeeted = false;
+
+	stamp.reuseOr = () => {
+		if (stamp.reused) return;
+		stamp.reused = true;
+		if (stamp.anim) stamp.anim.cancel();
+		stamp.anim = null;
+		while (reuse.length >= stampHard) {
+			reuse.shift().remove();
+		}
+		if (synchronisedSource && stamp.src != synchronisedSource) {
+			stamp.remove();
+			return;
+		}
+		//stamp.style.display = 'none';
+		stamp.parent.removeChild(stamp);
+		stamp.parent = null;
+		//document.body.appendChild(stamp);
+		//stamp.parent = document.body;
+		reuse.push(stamp);
+	}
+
+	stamp.yeet = (mx, my) => {
+		const rect = stamp.getBoundingClientRect();
+		// Stamp should only be yeetable once
+		stamp.style.pointerEvents = 'none';
+		stamp.yeeted = true;
+
+		stamp.explode = (rect) => {
+			if (!rect) rect = stamp.getBoundingClientRect();
+			stamp.reuseOr();
+			if (allParticles.length > 256) {
+				removals = Math.floor(allParticles.length / 64);
+				const i = randint(0, allParticles.length - removals);
+				for (let j = i; j < i + removals; j++) {
+					if (!allParticles[j]) continue;
+					allParticles[j].reuseOr();
+				}
+			}
+			spawns = Math.floor(64 / (1 + particleCooldown));
+			if (spawns <= 0) return;
+
+			// Make each stamp explode into its currently displayed colours
+			let col;
+			if (stamp.shape == 'star' && !synchronisedSource) {
+				col = getMeanColour(stamp, 'scale');
+			} else {
+				col = getMeanColour(stamp);
+			}
+			let spawned = 0;
+			const spawnEach = 12;
+			function spawnNext() {
+				const toSpawn = Math.min(spawns - spawned, spawnEach);
+				for (let i = 0; i < toSpawn; i++) {
+					const x = rect.x + Math.random() * rect.width;
+					const y = rect.y + Math.random() * rect.height;
+					if (x < 0 || y < -16 || x > window.innerWidth || y > window.innerHeight) continue;
+					const cx = rect.x + rect.width / 2;
+					const cy = rect.y + rect.height / 2;
+					const dx = x - cx;
+					const dy = y - cy;
+					const z = Math.atan2(dy, dx);
+					const vx = Math.cos(z) * 5 * 100 * (Math.random() * 1.5 + 0.25);
+					const vy = Math.sin(z) * 5 * 100 * (Math.random() * 1.5 + 0.25);
+					spawnParticle(stamp.shape, col, x, y, vx, vy, 100, 0.1, 250, 750);
+				}
+				particleCooldown += toSpawn / 64;
+				spawned += toSpawn;
+				if (spawned < spawns) {
+					requestAnimationFrame(spawnNext);
+				}
+			}
+			requestAnimationFrame(spawnNext);
+		}
+		document.body.appendChild(stamp);
+		stamp.parent = document.body;
+		stamp.style.position = 'fixed';
+		stamp.sx = rect.x;
+		stamp.sy = rect.y;
+
+		// New code for stamp yeet physics, traces out entire trajectory in a single loop iteration (frame-skipped transform animation to avoid lag!)
+		const fpsDelay = 1000 / 45;
+		const frameSkip = 0.75;
+		const gravity = 1;
+		let x1 = stamp.sx;
+		let y1 = stamp.sy;
+		let time = 0;
+		const transforms = [];
+		let offscreen = false;
+		while (true) {
+			if (x1 < 0 || y1 < 0 || x1 + stampWidth > window.innerWidth || y1 + stampHeight > window.innerHeight) {
+				if (offscreen && transforms.length > 1) break;
+				offscreen = true;
+			}
+			const x2 = Math.round(x1);
+			const y2 = Math.round(y1);
+			transforms.push({ transform: `translate(${x2}px, ${y2}px)` });
+			time += frameSkip;
+			x1 += mx * frameSkip;
+			y1 += my * frameSkip + 0.5 * gravity * frameSkip * frameSkip;
+			mx *= 0.97;
+			my *= 0.97;
+			my += gravity * frameSkip;
+		}
+		const animation = stamp.animate(transforms, { duration: time * fpsDelay, easing: 'linear' });
+		stamp.anim = animation;
+		animation.onfinish = () => {
+			const explosion = { x: x1, y: y1, width: stampWidth, height: stampHeight };
+			if (explosion.x < 0) explosion.x = -explosion.width / 2;
+			if (explosion.y < 0) explosion.y = -explosion.height / 2;
+			if (explosion.x + explosion.width > window.innerWidth) explosion.x = window.innerWidth - explosion.width / 2;
+			if (explosion.y + explosion.height > window.innerHeight) explosion.y = window.innerHeight - explosion.height / 2;
+			stamp.explode(explosion);
+		}
+	}
+	if (!stamp.listener) {
+		const listener = (event) => {
+			if (stamp.yeeted) return;
+			const rect = stamp.getBoundingClientRect();
+			const px = rect.x + rect.width / 2;
+			const py = rect.y + rect.height / 2;
+			const dx = px - event.clientX;
+			const dy = py - event.clientY;
+			const z = Math.atan2(dy, dx);
+			let mx = Math.cos(z) * 16 + mouseV[0];
+			let my = Math.sin(z) * 16 + mouseV[1];
+			stamp.yeet(mx, my);
+		};
+		stamp.listener = listener;
+		stamp.addEventListener('mouseenter', listener);
+	}
+	return stamp;
+}
+
+var stampRowSpawned = 0;
+var lastCarriage = 0;
+const stampInterval = stampDelay / 4;
+const carriagesToReuse = [];
+function spawnStampCarriage() {
+	const currentTime = document.timeline.currentTime;
+	Array.from(document.getElementsByClassName('stamp-carriage')).forEach((carriage) => {
+		if (currentTime > carriage.end + 100) carriage.reuseOr();
+	});
+	if (!lastCarriage) lastCarriage = currentTime - stampInterval;
+	const lastDelay = Math.min(currentTime - lastCarriage, stampInterval * 8);
+	const nDelay = stampInterval - lastDelay;
+	lastCarriage = currentTime + nDelay;
+	stampRowSpawned++;
+	const currentRow = Math.floor(stampRowSpawned / 4);
+	const currentOffset = stampRowSpawned % 4;
+	for (const [b, bar] of [leftBar, rightBar].entries()) {
+		if (!isVisible(bar)) continue;
+		const rect = bar.getBoundingClientRect();
+		const maxRowSpawned = Math.min(stampRowSpawned, rect.height / stampHeight);
+		const lrDirection = (currentOffset & 1) ^ b
+		let carriage;
+		if (carriagesToReuse.length) {
+			carriage = carriagesToReuse.pop();
+		} else {
+			carriage = document.createElement('div');
+			carriage.className = 'stamp-carriage';
+		}
+		carriage.timestamp = currentTime + nDelay;
+		carriage.reuseOr = () => {
+			if (carriage.anim) carriage.anim.cancel();
+			carriage.anim = null;
+			for (const stamp of Array.from(carriage.children)) {
+				stamp.reuseOr();
+			}
+			bar.removeChild(carriage);
+			carriagesToReuse.push(carriage);
+		}
+		bar.appendChild(carriage);
+		const lrStart = lrDirection ? rect.width : -stampWidth;
+		const lrEnd = lrDirection ? -stampWidth : rect.width;
+		const lrDistance = lrStart - lrEnd;
+		const lrDuration = Math.abs(lrDistance) / stampWidth * stampDelay;
+		carriage.end = currentTime + nDelay + lrDuration;
+		carriage.style.transform = `translateX(${lrStart}px)`;
+		const animation = carriage.animate([
+			{ transform: `translateX(${lrStart}px)` },
+			{ transform: `translateX(${lrEnd}px)` }
+		], {
+			easing: 'linear',
+			duration: lrDuration,
+			delay: nDelay
+		});
+		carriage.anim = animation;
+		animation.onfinish = () => {
+			carriage.reuseOr();
+		};
+		for (let i = currentOffset; i < maxRowSpawned; i += 4) {
+			spawnStamp(carriage, b ? 'right' : 'left', i);
+		}
+	}
+	setTimeout(spawnStampCarriage, Math.max(0, stampInterval + nDelay));
+}
+spawnStampCarriage();
+
+function isYeetable(stamp, currentTime) {
+	if (stamp.yeeted) return false;
+	if (!currentTime) return true;
+	return currentTime - stamp.parent.timestamp > stampDelay;
+}
+
+var mouseX = 0;
+var mouseY = 0;
+var mouseV = [0, 0];
+var lastX = 0;
+var lastY = 0;
+var mouseAlt = false;
+var pawsToReuse = [];
+var yeetEvent = null;
+function mousemove(event, boundary) {
+	mouseX = event.clientX;
+	mouseY = event.clientY;
+	const mouseP = prevPos;
+	mouseV = getMouseVelocity(event);
+
+	const distX = mouseX - lastX;
+	const distY = mouseY - lastY;
+	const dist = Math.sqrt(distX * distX + distY * distY);
+	if (dist > 24) {
+		const container = document.getElementById('paw-container');
+		lastX = mouseX;
+		lastY = mouseY;
+		requestAnimationFrame(() => {
+			let paw;
+			if (pawsToReuse.length) {
+				paw = pawsToReuse.pop();
+				paw.reused = false;
+				paw.style.display = 'block';
+			} else {
+				paw = document.createElement('div');
+				paw.className = 'paw';
+				container.appendChild(paw);
+			}
+			const px = mouseX - 10;
+			const py = mouseY - 10;
+			paw.style.left = `${px}px`;
+			paw.style.top = `${py}px`;
+
+			// Paw walky cycle :D
+			const z = Math.atan2(mouseV[1], mouseV[0]);
+			const angle = z * 180 / Math.PI + 90;
+			const angle2 = angle + Math.random() * 30 - 15;
+			const offset = mouseAlt ? 1 : -1
+			mouseAlt = !mouseAlt;
+			const X = -50 + offset * (75 * Math.cos(z + Math.PI / 2));
+			const Y = -50 + offset * (75 * Math.sin(z + Math.PI / 2));
+			// Trail particles end dispersed up to 60% of their diameter
+			const tx = Math.random() * 120 - 60 + X;
+			const ty = Math.random() * 120 - 60 + Y;
+
+			paw.reuseOr = () => {
+				if (paw.reused) return;
+				paw.reused = true;
+				if (paw.anim) paw.anim.cancel();
+				paw.anim = null;
+				paw.style.display = 'none';
+				pawsToReuse.push(paw);
+			}
+			const animation = paw.animate([
+				{ transform: `translate(${X}%, ${Y}%) rotate(${angle}deg)`, opacity: '1' },
+				{ transform: `translate(${tx}%, ${ty}%) rotate(${angle2}deg)`, opacity: '0' }
+			], {
+				// Trail particles last between 250ms and 750ms
+				duration: Math.random() * 500 + 250,
+				easing: 'linear'
+			});
+			paw.anim = animation;
+			animation.onfinish = () => {
+				paw.reuseOr();
+			};
+		});
+	}
+
+	if (boundary) return;
+	const elements = document.getElementsByClassName('bullet');
+	for (const element of elements) {
+		if (!isVisible(element)) continue;
+		const rect = element.getBoundingClientRect();
+		const elementCenterX = rect.left + rect.width / 2;
+		const elementCenterY = rect.top + rect.height / 2;
+		const diffX = mouseX - elementCenterX;
+		const diffY = mouseY - elementCenterY;
+		// Apply inverse square law
+		const distance = Math.max(1, Math.sqrt(diffX * diffX + diffY * diffY));
+		// Dot product of force and distance vectors
+		let torque = (diffX * mouseV[1] - diffY * mouseV[0]);
+		torque *= 300 / distance / distance;
+		element.angVel = isNaN(element.angVel) ? torque : element.angVel + torque;
+	}
+
+	// Yeet all stamps "sliced" by the cursor (passed within a single animation frame, which would otherwise bypass the onmouseenter event)
+	if (Math.abs(distX) > stampWidth / 2 || Math.abs(distY) > stampHeight / 2) {
+		function yeetSliced() {
+			for (const bar of [leftBar, rightBar]) {
+				if (!inElement(mouseP, bar) && !inElement([mouseX, mouseY], bar)) continue;
+				Array.from(bar.querySelectorAll('.stamp')).forEach((stamp) => {
+					if (!stamp.listener || !isYeetable(stamp)) return;
+					if (intersectsElement(mouseP, [mouseX, mouseY], stamp)) {
+						const fakeEvent = {
+							target: stamp,
+							clientX: mouseP[0],
+							clientY: mouseP[1]
+						}
+						stamp.listener(fakeEvent);
+					}
+				});
+			}
+		}
+		requestAnimationFrame(yeetSliced);
+	}
+}
+document.addEventListener('mousemove', mousemove);
+document.addEventListener('mouseenter', (event) => {
+	mousemove(event, true);
+});
+document.addEventListener('mouseleave', (event) => {
+	mousemove(event, true);
+});
+
+function animateWorm() {
+	Array.from(document.getElementsByClassName('worm')).forEach((worm, i) => {
+		if (worm.anim2) worm.anim2.cancel();
+		const animation = worm.animate([
+			{ boxShadow: '0px 0px 16px #ffffff, 0px 0px 24px #7fffff, 0px 0px 32px #00ffff', outlineColor: 'white', outlineWidth: '2px' },
+			{ boxShadow: 'none', outlineColor: 'transparent', outlineWidth: '0px' }
+		], {
+			duration: 500,
+			easing: 'linear',
+			delay: 100 * i
+		});
+		worm.anim2 = animation;
+	});
+}
+function scrollTitles() {
+	const titles = document.getElementById('titles');
+	const rect = titles.getBoundingClientRect();
+	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	window.scrollTo({
+		top: rect.y + scrollTop,
+		behavior: 'smooth'
+	});
+	if (snakeGame.isRendered) {
+		closeSnakeGame();
+	}
+	setTimeout(animateWorm, 800);
+}
+
+const snakeBoardSize = 11;
+const snakeGameCanvas = document.getElementById('snake-game');
+const snakeGameScore = document.getElementById('snake-score-current');
+const snakeGameHighScore = document.getElementById('snake-score-high');
+const snakeGamePause = document.getElementById('snake-pause');
+var snakeHighScore = getCookie('snakeHighScore') || 0;
+snakeGameHighScore.textContent = `High Score: ${snakeHighScore}`;
+var snakeGame = {
+	isRendered: false,
+	isPlaying: false,
+	isDead: false,
+	isPaused: false,
+	boardSize: snakeBoardSize,
+	snake: [],
+	snakeHead: null,
+	snakeTail: null,
+	snakeBodies: [],
+	apples: [],
+	appleObjects: []
+};
+function snakeUpdateApple(apple) {
+	const sg = snakeGame;
+	if (!sg.isRendered) return;
+	const rect = snakeGameCanvas.getBoundingClientRect();
+	const cw = rect.width / sg.boardSize;
+	const ch = rect.height / sg.boardSize;
+	const [x, y] = apple.xy;
+	const tx = (x + 0.25) * cw;
+	const ty = (y + 0.25) * ch;
+	apple.width = rect.width / sg.boardSize / 2;
+	apple.style.left = '0px';
+	apple.style.top = '0px';
+	apple.style.position = 'absolute';
+	apple.style.height = 'auto';
+	apple.style.zIndex = '1';
+	apple.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+function snakeSpawnApple(exclude) {
+	const sg = snakeGame;
+	if (!sg.isRendered) return;
+	const occupied = new Array(sg.boardSize * sg.boardSize).fill(false);
+	for (let i = 0; i < sg.snake.length; i++) {
+		const x = sg.snake[i][0];
+		const y = sg.snake[i][1];
+		occupied[y * sg.boardSize + x] = true;
+	}
+	if (exclude != null) {
+		occupied[exclude[1] * sg.boardSize + exclude[0]] = true;
+	}
+	const available = [];
+	for (let i = 0; i < occupied.length; i++) {
+		if (!occupied[i]) {
+			available.push(i);
+		}
+	}
+	const i = randint(0, available.length - 1);
+	const index = available[i];
+	const x = index % sg.boardSize;
+	const y = (index - x) / sg.boardSize;
+
+	sg.apples.push([x, y]);
+	const appleImages = [
+		"blood-orange.webp",
+		"dragonfruit.webp",
+		"elderberry.webp",
+		"miracle-fruit.webp"
+	]
+	const appleInd = randint(0, appleImages.length - 1);
+	const appleName = appleImages[appleInd];
+	apple = document.createElement('img');
+	apple.crossOrigin = "anonymous";
+	apple.className = 'apple';
+	apple.src = "https://cocobeanzies.mizabot.xyz/icons/" + appleName;
+	apple.animated = false;
+	apple.xy = [x, y];
+	snakeUpdateApple(apple);
+	snakeGameCanvas.appendChild(apple);
+	sg.appleObjects.push(apple);
+
+	const animation = apple.animate([
+		{ opacity: '0' },
+		{ opacity: '1' }
+	], {
+		duration: 500,
+		easing: 'linear',
+		fill: 'forwards'
+	});
+	apple.anim = animation;
+}
+function getStartTransform(body, precompute) {
+	if (!body.initialised) return [null, 0];
+	if (precompute) {
+		const style = window.getComputedStyle(body);
+		return [
+			style.transform || style.webkitTransform || style.mozTransform,
+			-40
+		];
+	}
+	return [
+		body.lastTransform,
+		0
+	];
+}
+function renderSnakeGame(precompute) {
+	if (0) {
+		const sg = snakeGame;
+		const rect = snakeGameCanvas.getBoundingClientRect();
+		const cw = rect.width / sg.boardSize;
+		const ch = rect.height / sg.boardSize;
+		for (const debug of Array.from(document.getElementsByClassName('debug'))) {
+			debug.remove();
+		}
+		sg.snake.forEach((pos, i) => {
+			const [x, y] = pos;
+			debug = document.createElement('div');
+			debug.className = 'debug';
+			const tx = x * cw;
+			const ty = y * ch;
+			debug.style.left = `${tx}px`;
+			debug.style.top = `${ty}px`;
+			debug.style.width = `${cw}px`;
+			debug.style.height = `${ch}px`;
+			debug.style.position = 'absolute';
+			const c = (1 - i / sg.snake.length / 2) * 255;
+			debug.style.backgroundColor = `rgb(${c}, ${c}, ${c})`;
+			debug.style.zIndex = '1';
+			snakeGameCanvas.appendChild(debug);
+		});
+	}
+
+	const lookAhead = 1 / 3;
+	const sg = snakeGame;
+	const fpsDelay = 1000 / sg.FPS;
+	const rect = snakeGameCanvas.getBoundingClientRect();
+	const cw = rect.width / sg.boardSize;
+	const ch = rect.height / sg.boardSize;
+	const sgNext = structuredClone(sg.snake);
+	const sgnx = sg.x + sg.vx * lookAhead;
+	const sgny = sg.y + sg.vy * lookAhead;
+	for (let i = sgNext.length - 1; i > 0; i--) {
+		sgNext[i][0] = lerp(sg.snake[i][0], sg.snake[i - 1][0], lookAhead);
+		sgNext[i][1] = lerp(sg.snake[i][1], sg.snake[i - 1][1], lookAhead);
+	}
+	sgNext[0][0] = sgnx;
+	sgNext[0][1] = sgny;
+	let sgpvx = sg.snake[0][0] - sg.snake[1][0];
+	let sgpvy = sg.snake[0][1] - sg.snake[1][1];
+	let sgvx = sg.vx;
+	let sgvy = sg.vy;
+	if (precompute) {
+		sgvx += sgpvx;
+		sgvy += sgpvy;
+	}
+	let tx;
+	let ty;
+	let z;
+	{
+		const body = sg.snakeHead;
+		const [transform, delay] = getStartTransform(body, precompute);
+		tx = sgnx * cw - body.width / 2 + cw / 2;
+		ty = sgny * ch - body.height / 2 + ch / 2;
+		z = Math.atan2(-sgvy, -sgvx) * 180 / Math.PI;
+		body.Z = z;
+		z -= body.currentRotation;
+		z %= 360;
+		if (z < -180) z += 360;
+		if (z > 180) z -= 360;
+		z += body.currentRotation;
+		body.currentRotation = z;
+		const finalState = `translate(${tx}px, ${ty}px) rotate(${z}deg)`;
+		if (body.anim) body.anim.cancel();
+		const opacity = '' + body.currentOpacity;
+		const animation = body.animate([
+			{ transform: (transform || finalState), opacity: opacity },
+			{ transform: finalState, opacity: '1' }
+		], {
+			duration: fpsDelay,
+			delay: delay,
+			easing: 'linear',
+			fill: 'forwards'
+		});
+		body.currentOpacity = 1;
+		body.lastTransform = finalState;
+		body.anim = animation;
+		animation.onfinish = () => {
+			body.style.transform = finalState;
+		};
+		if (!body.initialised) {
+			body.style.visibility = 'visible';
+			body.initialised = true;
+		}
+	}
+	for (let i = 0; i < sg.snakeBodies.length; i++) {
+		const body = sg.snakeBodies[i];
+		const [transform, delay] = getStartTransform(body, precompute);
+		const sgi = Math.floor(i / 2) + 1;
+		const isAlt = i & 1;
+		const px = sgNext[sgi - 1][0];
+		const py = sgNext[sgi - 1][1];
+		const cx = sgNext[sgi][0];
+		const cy = sgNext[sgi][1];
+		const nx = sgNext[sgi + 1][0];
+		const ny = sgNext[sgi + 1][1];
+		const dx1 = px - cx;
+		const dy1 = py - cy;
+		const dx2 = cx - nx;
+		const dy2 = cy - ny;
+		let z1;
+		let z2;
+		if (dx1 == 0 && dy1 == 0) {
+			z1 = sg.snakeHead.Z;
+		} else {
+			z1 = Math.atan2(-dy1, -dx1);
+		}
+		if (dx2 == 0 && dy2 == 0) {
+			z2 = sg.snakeHead.Z;
+		} else {
+			z2 = Math.atan2(-dy2, -dx2);
+		}
+		if (z2 - z1 > Math.PI) z2 -= Math.PI * 2;
+		if (z1 - z2 > Math.PI) z1 -= Math.PI * 2;
+		let z;
+		if (Math.abs(z1 - z2) < 1) {
+			if (isAlt) {
+				const px = sg.snake[sgi - 1][0];
+				const py = sg.snake[sgi - 1][1];
+				const cx = sg.snake[sgi][0];
+				const cy = sg.snake[sgi][1];
+				const nx = sg.snake[sgi + 1][0];
+				const ny = sg.snake[sgi + 1][1];
+				const dx1 = px - cx;
+				const dy1 = py - cy;
+				const dx2 = cx - nx;
+				const dy2 = cy - ny;
+				let z1;
+				let z2;
+				if (dx1 == 0 && dy1 == 0) {
+					z1 = sg.snakeHead.Z;
+				} else {
+					z1 = Math.atan2(-dy1, -dx1);
+				}
+				if (dx2 == 0 && dy2 == 0) {
+					z2 = sg.snakeHead.Z;
+				} else {
+					z2 = Math.atan2(-dy2, -dx2);
+				}
+				if (z2 - z1 > Math.PI) z2 -= Math.PI * 2;
+				if (z1 - z2 > Math.PI) z1 -= Math.PI * 2;
+				z = lerp(z2, z1, 1 / 4);
+			} else {
+				z = z1;
+			}
+		} else if (isAlt) {
+			z = lerp(z2, z1, 1 / 4);
+		} else {
+			z = lerp(z2, z1, 3 / 4);
+		}
+		z *= 180 / Math.PI;
+		z -= body.currentRotation;
+		z %= 360;
+		if (z < -180) z += 360;
+		if (z > 180) z -= 360;
+		z += body.currentRotation;
+		body.currentRotation = z;
+		if (isAlt) {
+			tx = lerp(cx, nx, 1 / 4);
+			ty = lerp(cy, ny, 1 / 4);
+		} else {
+			tx = lerp(cx, px, 1 / 4);
+			ty = lerp(cy, py, 1 / 4);
+		}
+		tx *= cw;
+		ty *= ch;
+		tx = tx - body.width / 2 + cw / 2;
+		ty = ty - body.height / 2 + ch / 2;
+		let initialState;
+		if (!transform) {
+			let ix;
+			let iy;
+			if (isAlt) {
+				ix = lerp(cx, nx, 3 / 4) * cw - body.width / 2 + cw / 2;
+				iy = lerp(cy, ny, 3 / 4) * ch - body.height / 2 + ch / 2;
+			} else {
+				ix = lerp(cx, nx, 1 / 4) * cw - body.width / 2 + cw / 2;
+				iy = lerp(cy, ny, 1 / 4) * ch - body.height / 2 + ch / 2;
+			}
+			initialState = `translate(${ix}px, ${iy}px) rotate(${z2}deg)`;
+		}
+		const finalState = `translate(${tx}px, ${ty}px) rotate(${z}deg)`;
+		if (body.anim) body.anim.cancel();
+		const opacity = '' + body.currentOpacity;
+		const animation = body.animate([
+			{ transform: (transform || initialState), opacity: opacity },
+			{ transform: finalState, opacity: '1' }
+		], {
+			duration: fpsDelay,
+			delay: delay,
+			easing: 'linear',
+			fill: 'forwards'
+		});
+		body.currentOpacity = 1;
+		body.lastTransform = finalState;
+		body.anim = animation;
+		animation.onfinish = () => {
+			body.style.transform = finalState;
+		};
+		if (!body.initialised) {
+			body.style.visibility = 'visible';
+			body.initialised = true;
+		}
+	}
+	{
+		const body = sg.snakeTail;
+		const [transform, delay] = getStartTransform(body, precompute);
+		const px = sgNext[sgNext.length - 2][0];
+		const py = sgNext[sgNext.length - 2][1];
+		const cx = sgNext[sgNext.length - 1][0];
+		const cy = sgNext[sgNext.length - 1][1];
+		const vx = px - cx;
+		const vy = py - cy;
+		tx = cx * cw - body.width / 2 + cw / 2;
+		ty = cy * ch - body.height / 2 + ch / 2;
+		if (vx == 0 && vy == 0) {
+			z = sg.snakeHead.Z;
+		} else {
+			z = Math.atan2(-vy, -vx) * 180 / Math.PI;
+		}
+		z -= body.currentRotation;
+		z %= 360;
+		if (z < -180) z += 360;
+		if (z > 180) z -= 360;
+		z += body.currentRotation;
+		body.currentRotation = z;
+		const finalState = `translate(${tx}px, ${ty}px) rotate(${z}deg)`;
+		if (body.anim) body.anim.cancel();
+		const opacity = '' + body.currentOpacity;
+		const animation = body.animate([
+			{ transform: (transform || finalState), opacity: opacity },
+			{ transform: finalState, opacity: '1' }
+		], {
+			duration: fpsDelay,
+			delay: delay,
+			easing: 'linear',
+			fill: 'forwards'
+		});
+		body.currentOpacity = 1;
+		body.lastTransform = finalState;
+		body.anim = animation;
+		animation.onfinish = () => {
+			body.style.transform = finalState;
+		};
+		if (!body.initialised) {
+			body.style.visibility = 'visible';
+			body.initialised = true;
+		}
+	}
+}
+function ensureSnakeSprites() {
+	const sg = snakeGame;
+	const rect = snakeGameCanvas.getBoundingClientRect();
+	const cw = rect.width / sg.boardSize;
+	const ch = rect.height / sg.boardSize;
+	let rerender = false;
+	if (!sg.snakeHead) {
+		dog = document.createElement('img');
+		dog.className = 'dog';
+		dog.src = "https://cocobeanzies.mizabot.xyz/icons/dog-head.webp";
+		dog.style.left = '0px';
+		dog.style.top = '0px';
+		dog.style.position = 'absolute';
+		dog.style.zIndex = '10000';
+		dog.style.opacity = '0';
+		dog.style.visibility = 'hidden';
+		dog.currentOpacity = 0;
+		dog.currentRotation = 0;
+		snakeGameCanvas.appendChild(dog);
+		sg.snakeHead = dog;
+	}
+	if (sg.snakeHead.UW != rect.width / sg.boardSize) {
+		sg.snakeHead.width = rect.width / sg.boardSize;
+		sg.snakeHead.UW = rect.width / sg.boardSize;
+		sg.snakeHead.style.height = 'auto';
+		rerender = true;
+	}
+	const usedHeight = sg.snakeHead.height;
+	if (!usedHeight) {
+		return;
+	}
+	if (!sg.snakeTail) {
+		dog = document.createElement('img');
+		dog.className = 'dog';
+		dog.src = "https://cocobeanzies.mizabot.xyz/icons/dog-tail.webp";
+		dog.style.left = '0px';
+		dog.style.top = '0px';
+		dog.style.position = 'absolute';
+		dog.style.zIndex = '9999';
+		dog.style.opacity = '0';
+		dog.style.visibility = 'hidden';
+		dog.currentOpacity = 0;
+		dog.currentRotation = 0;
+		snakeGameCanvas.appendChild(dog);
+		sg.snakeTail = dog;
+	}
+	if (sg.snakeTail.UH != usedHeight) {
+		sg.snakeTail.height = usedHeight;
+		sg.snakeTail.UH = usedHeight;
+		sg.snakeTail.style.width = 'auto';
+	}
+	if (sg.snake.length - 2 < sg.snakeBodies.length / 2) {
+		sg.snakeBodies.length = (sg.snake.length - 2) * 2;
+	} else {
+		while (sg.snake.length - 2 > sg.snakeBodies.length / 2) {
+			dog = document.createElement('img');
+			dog.className = 'dog';
+			dog.src = "https://cocobeanzies.mizabot.xyz/icons/dog-body.png";
+			dog.style.left = '0px';
+			dog.style.top = '0px';
+			dog.style.position = 'absolute';
+			const z = 9998 - sg.snakeBodies.length;
+			dog.style.zIndex = `${z}`;
+			dog.style.opacity = '0';
+			dog.style.visibility = 'hidden';
+			dog.currentOpacity = sg.snakeBodies.length < 2 ? 0 : 1;
+			dog.currentRotation = 0;
+			snakeGameCanvas.appendChild(dog);
+			sg.snakeBodies.push(dog);
+		}
+	}
+	for (const body of sg.snakeBodies) {
+		if (body.UH != usedHeight) {
+			body.height = usedHeight;
+			body.UH = usedHeight;
+			body.style.width = 'auto';
+		}
+	}
+	if (rerender) {
+		for (const apple of sg.appleObjects) {
+			snakeUpdateApple(apple);
+		}
+	}
+	return true;
+}
+function updateSnakeGame(interval) {
+	const sg = snakeGame;
+	if (!sg.isRendered || sg.isPaused || sg.isDead || interval[0]) return;
+	requestAnimationFrame(() => { updateSnakeGame(interval) });
+	const fpsDelay = 1000 / sg.FPS;
+	const time = Date.now();
+	if (time - sg.timer < fpsDelay) return;
+	sg.timer = Math.max(sg.timer + fpsDelay, time - fpsDelay);
+	const rect = snakeGameCanvas.getBoundingClientRect();
+	const cw = rect.width / sg.boardSize;
+	const ch = rect.height / sg.boardSize;
+	if (!ensureSnakeSprites()) return;
+	const currentScore = sg.snake.length - 3;
+	snakeGameScore.textContent = `Score: ${currentScore}`;
+	if (currentScore > snakeHighScore) {
+		snakeHighScore = currentScore;
+		document.cookie = "snakeHighScore=" + snakeHighScore;
+		snakeGameHighScore.textContent = `High Score: ${snakeHighScore}`;
+	}
+	if (sg.vx != 0 || sg.vy != 0) {
+		sg.x += sg.vx;
+		sg.y += sg.vy;
+		if (sg.x < 0 || sg.y < 0 || sg.x >= sg.boardSize || sg.y >= sg.boardSize) {
+			sg.isDead = true;
+		}
+		for (let i = 0; i < sg.snake.length - 1; i++) {
+			if (sg.x == sg.snake[i][0] && sg.y == sg.snake[i][1]) {
+				sg.isDead = true;
+			}
+		}
+		if (sg.isDead) {
+			snakeGamePause.innerHTML = '<span style="color: white; font-size: 16px"><a style="cursor: pointer" onclick="closeSnakeGame()">ESC: Quit</a>, <a style="cursor: pointer" onclick="endSnakeGame(); startSnakeGame()">SPACE: Restart</a></span><br />' + `Game Over!<br />Score: ${currentScore}/${snakeHighScore}`;
+			snakeGamePause.style.display = "block";
+		}
+		for (let i = 0; i < sg.apples.length; i++) {
+			const x = sg.apples[i][0];
+			const y = sg.apples[i][1];
+			if (x == sg.x && y == sg.y) {
+				const apple = sg.appleObjects[i];
+				if (apple.anim) apple.anim.cancel();
+				apple.anim = null;
+				sg.apples.splice(i, 1);
+				sg.appleObjects.splice(i, 1);
+				let isReset = false;
+				if (sg.snake.length + 1 >= sg.boardSize * sg.boardSize / 2) {
+					sg.boardSize += 2;
+					for (const snake of sg.snake) {
+						snake[0] += 1;
+						snake[1] += 1;
+					}
+					sg.x += 1;
+					sg.y += 1;
+					sg.FPS += 2;
+					isReset = true;
+				}
+				snakeSpawnApple([x, y]);
+				sg.snake.push([0, 0]);
+				const animation = apple.animate([
+					{ opacity: '1' },
+					{ opacity: '0' }
+				], {
+					duration: fpsDelay / 5,
+					easing: 'linear',
+					fill: 'forwards'
+				});
+				const rect = apple.getBoundingClientRect();
+				const col = getMeanColour(apple);
+				for (let i = 0; i < 16; i++) {
+					const x = rect.x + rect.width / 2;
+					const y = rect.y + rect.height / 2;
+					const z = Math.random() * 360;
+					const vx = Math.cos(z) * 3 * 100 * (Math.random() * 1.5 + 0.25);
+					const vy = Math.sin(z) * 3 * 100 * (Math.random() * 1.5 + 0.25);
+					spawnParticle('circle', col, x, y, vx, vy, 100, 0.1, 250, 750);
+				}
+				animation.onfinish = () => {
+					apple.remove();
+				};
+				ensureSnakeSprites();
+			}
+		}
+		for (let i = sg.snake.length - 1; i > 0; i--) {
+			sg.snake[i][0] = sg.snake[i - 1][0];
+			sg.snake[i][1] = sg.snake[i - 1][1];
+		}
+		sg.snake[0][0] = sg.x;
+		sg.snake[0][1] = sg.y;
+		renderSnakeGame();
+		if (sg.buffer) {
+			if (sg.buffer[0] == sg.vx && sg.buffer[1] == sg.vy) {
+				sg.buffer = null;
+			} else {
+				sg.vx = sg.buffer[0];
+				sg.vy = sg.buffer[1];
+				setTimeout(() => { requestAnimationFrame(() => { renderSnakeGame(true) }) }, fpsDelay / 2);
+			}
+		}
+		if (!snakeGame.isPlaying) {
+			snakeGame.isPlaying = true;
+			const galaxy = document.getElementById('snake-galaxy');
+			if (galaxy.anim) galaxy.anim.cancel();
+			const animation = galaxy.animate([
+				{},
+				{ opacity: '0' }
+			], {
+				duration: 1000,
+				easing: 'linear'
+			});
+			galaxy.anim = animation;
+			animation.onfinish = () => {
+				galaxy.style.display = 'none';
+			};
+			snakeGamePause.style.display = "none";
+		}
+	}
+}
+function snakeGameLoop() {
+	const sg = snakeGame;
+	if (snakeGame.interval) snakeGame.interval[0] = true;
+	const fpsDelay = 1000 / sg.FPS;
+	sg.interval = [false];
+	updateSnakeGame(sg.interval);
+}
+function startSnakeGame() {
+	document.cookie = "snakeOpen=1";
+	snakeGame.isRendered = true;
+	const c = (snakeGame.boardSize - 1) / 2;
+	snakeGame.FPS = snakeGame.boardSize * 2 / 3;
+	snakeGame.x = c;
+	snakeGame.y = c;
+	snakeGame.vx = 0;
+	snakeGame.vy = 0;
+	snakeGame.buffer = null;
+	snakeGame.timer = Date.now();
+	snakeGame.snake = [
+		[c, c],
+		[c, c],
+		[c, c],
+	];
+	const galaxy = document.getElementById('snake-galaxy');
+	if (galaxy.anim) galaxy.anim.cancel();
+	galaxy.anim = null;
+	galaxy.style.display = 'block';
+	galaxy.style.opacity = '0.75';
+	snakeSpawnApple();
+}
+function endSnakeGame() {
+	snakeGame.isRendered = false;
+	const snakes = document.getElementsByClassName('dog');
+	Array.from(snakes).forEach((e) => { e.remove() });
+	const apples = document.getElementsByClassName('apple');
+	Array.from(apples).forEach((e) => { e.remove() });
+	snakeGame = {
+		isRendered: false,
+		isPlaying: false,
+		isDead: false,
+		isPaused: false,
+		boardSize: snakeBoardSize,
+		snake: [],
+		snakeHead: null,
+		snakeTail: null,
+		snakeBodies: [],
+		apples: [],
+		appleObjects: []
+	};
+	snakeGamePause.innerHTML = '<span style="color: white; font-size: 16px"><a style="cursor: pointer" onclick="closeSnakeGame()">ESC: Quit</a></span><br />Press any arrow key to start!';
+	snakeGamePause.style.display = "block";
+}
+function closeSnakeGame() {
+	endSnakeGame();
+	document.body.classList.remove('mobile-styles');
+	resizeCanvas();
+	if (snakeGame.interval) snakeGame.interval[0] = true;
+	document.cookie = "snakeOpen=0";
+	const animation = snakeGameBlock.animate([
+		{ opacity: '1' },
+		{ opacity: '0' }
+	], {
+		duration: 1000,
+		easing: 'linear',
+		fill: 'forwards'
+	});
+	animation.onfinish = () => {
+		snakeGameBlock.style.display = 'none';
+		const portal = document.getElementById('worm-galaxy');
+		portal.style.display = 'block';
+		const w = content.getBoundingClientRect().width;
+		const x = w - portal.width;
+		portal.style.left = `${x}px`;
+		if (portal.anim) portal.anim.cancel();
+		const animation = portal.animate([
+			{ opacity: '0' },
+			{ opacity: '1' },
+			{ opacity: '1' },
+			{ opacity: '1' },
+			{ opacity: '1' },
+			{ opacity: '0' }
+		], {
+			duration: 3000,
+			easing: 'linear'
+		});
+		portal.anim = animation;
+		animation.onfinish = () => {
+			portal.style.display = 'none';
+		};
+		setTimeout(() => {
+			const port = portal.getBoundingClientRect();
+			const sx = port.x + port.width / 2;
+			Array.from(document.getElementsByClassName('dog-worm')).forEach((worm, index) => {
+				if (worm.anim) worm.anim.cancel();
+				const tx = worm.initX + w / 2;
+				const keyframes = [];
+				let x = sx - tx;
+				let vx = -Math.sqrt(10) * Math.sqrt(x) * 0.95;
+				let duration = 0;
+				while (x > 0) {
+					keyframes.push({
+						transform: `translate(${x}px, 0px)`,
+						opacity: duration == 0 ? '0' : '1'
+					});
+					x += vx;
+					vx = Math.min(vx + 5, -5);
+					duration += 100;
+				}
+				keyframes.push({
+					transform: 'translate(0px, 0px)',
+					opacity: '1'
+				});
+				const animation = worm.animate(keyframes, {
+					duration: duration,
+					delay: index * 80,
+					easing: 'linear',
+					fill: 'forwards'
+				});
+				worm.anim = animation;
+				worm.style.opacity = '0';
+				worm.style.display = 'inline';
+				worm.style.pointerEvents = 'auto';
+			});
+		}, 500);
+		snakeCanStart = true;
+	};
+}
+snakeTriggers = document.getElementsByClassName('snake-game-trigger');
+const snakeGameBlock = document.getElementById('snake-game-block');
+var snakeCanStart = true;
+Array.from(snakeTriggers).forEach((e) => {
+	e.addEventListener('click', function(event) {
+		if (snakeGame.isRendered) {
+			closeSnakeGame();
+		} else if (snakeCanStart) {
+			snakeCanStart = false;
+			const portal = document.getElementById('worm-galaxy');
+			portal.style.left = '0px';
+			portal.style.display = 'block';
+			if (portal.anim) portal.anim.cancel();
+			const animation = portal.animate([
+				{ opacity: '0' },
+				{ opacity: '1' },
+				{ opacity: '1' },
+				{ opacity: '1' },
+				{ opacity: '1' },
+				{ opacity: '0' }
+			], {
+				duration: 3000,
+				easing: 'linear'
+			});
+			portal.anim = animation;
+			animation.onfinish = () => {
+				portal.style.display = 'none';
+			};
+			const port = portal.getBoundingClientRect();
+			const tx = port.x + port.width / 2;
+			Array.from(document.getElementsByClassName('dog-worm')).forEach((worm, index) => {
+				if (worm.anim) worm.anim.cancel();
+				worm.style.pointerEvents = 'none';
+				const rect = worm.children[0].getBoundingClientRect();
+				const w = content.getBoundingClientRect().width;
+				worm.initX = rect.x + rect.width / 2 - w / 2;
+				const keyframes = [];
+				let x = 0;
+				let vx = 0;
+				let duration = 0;
+				while (x + rect.x + rect.width / 2 > tx) {
+					keyframes.push({
+						transform: `translate(${x}px, 0px)`,
+						opacity: '1'
+					});
+					vx -= 5;
+					x += vx;
+					duration += 100;
+				}
+				keyframes[keyframes.length - 1].opacity = '0.5';
+				const tx2 = tx - (rect.x + rect.width / 2);
+				keyframes.push({
+					transform: `translate(${tx2}px, 0px)`,
+					opacity: '0'
+				});
+				const animation = worm.animate(keyframes, {
+					duration: duration,
+					delay: index * 20,
+					easing: 'linear'
+				});
+				animation.onfinish = () => {
+					worm.style.transform = 'translate(0px, 0px)';
+					worm.style.opacity = '0';
+					worm.style.display = 'none';
+				};
+				worm.anim = animation;
+			});
+			setTimeout(() => {
+				snakeGameBlock.style.display = 'flex';
+				const animation = snakeGameBlock.animate([
+					{ opacity: '0' },
+					{ opacity: '1' }
+				], {
+					duration: 1000,
+					easing: 'linear',
+					fill: 'forwards'
+				});
+				document.body.classList.add('mobile-styles');
+				resizeCanvas();
+			}, 2000);
+			startSnakeGame();
+		}
+	});
+});
+if (getCookie('snakeOpen') == '1') {
+	Array.from(document.getElementsByClassName('dog-worm')).forEach((worm) => {
+		if (worm.anim) worm.anim.cancel();
+		worm.anim = null;
+		worm.style.pointerEvents = 'none';
+		const rect = worm.children[0].getBoundingClientRect();
+		const w = content.getBoundingClientRect().width;
+		worm.initX = rect.x + rect.width / 2 - w / 2;
+		worm.style.display = 'none';
+	});
+	snakeGameBlock.style.display = 'flex';
+	document.body.classList.add('mobile-styles');
+	resizeCanvas();
+	startSnakeGame();
+}
+document.addEventListener('keydown', (event) => {
+	const sg = snakeGame;
+	if (sg.isRendered) {
+		const i = [37, 38, 39, 40].indexOf(event.keyCode);
+		if (i > -1) {
+			event.preventDefault();
+			let vx = 0;
+			let vy = 0;
+			if (i == 0) {
+				vx = -1;
+			} else if (i == 1) {
+				vy = -1;
+			} else if (i == 2) {
+				vx = 1;
+			} else {
+				vy = 1;
+			}
+			if (!sg.buffer) {
+				if ((sg.vx == 0 && sg.vy == 0) || (sg.vx != vx && sg.vy != vy)) {
+					sg.vx = vx;
+					sg.vy = vy;
+					sg.buffer = [vx, vy];
+					if (sg.isPlaying) {
+						requestAnimationFrame(() => { renderSnakeGame(true) });
+					}
+				}
+			} else if (sg.vx != vx && sg.vy != vy) {
+				sg.buffer = [vx, vy];
+			}
+			if (!sg.isPlaying) {
+				snakeGameLoop();
+			}
+		} else if (event.code == "Space") {
+			event.preventDefault();
+			if (sg.isPlaying) {
+				if (sg.isDead) {
+					endSnakeGame();
+					startSnakeGame();
+				} else if (sg.isPaused) {
+					sg.isPaused = false;
+					snakeGamePause.style.display = "none";
+					snakeGameLoop();
+				}
+			}
+		} else if (event.key == "Escape") {
+			event.preventDefault();
+			if (sg.isPlaying) {
+				if (sg.isPaused || sg.isDead) {
+					closeSnakeGame();
+				} else {
+					snakeGamePause.innerHTML = '<span style="color: white; font-size: 16px"><a style="cursor: pointer" onclick="closeSnakeGame()">ESC: Quit</a>, <a style="cursor: pointer" onclick="snakeGame.isPaused = false; snakeGamePause.style.display = `none`; snakeGameLoop()">SPACE: Resume</a></span><br />' + `Paused`;
+					snakeGamePause.style.display = "block";
+					sg.isPaused = true;
+				}
+			} else if (sg.isRendered) {
+				closeSnakeGame();
+			}
+		}
+	}
+});
+
+const particlesToReuse = [];
+var particleCooldown = 0;
+var allParticles = [];
+const fxToReuse = {};
+const particleList = [];
+function spawnParticle(shape, col, x, y, vx, vy, gravity, resistance, minDuration, maxDuration) {
+	// Particle animation split into 5 keyframes, with gravity applied
+	const dc = resistance;
+	const gr = gravity;
+	const op = Math.random() * 0.5 + 0.5;
+	const x1 = vx - 50;
+	const y1 = vy - 50;
+	const x2 = vx * (2 - dc) - 50;
+	const y2 = vy * (2 - dc) + gr - 50;
+	const x3 = vx * (3 - dc * 3) - 50;
+	const y3 = vy * (3 - dc * 3) + gr * 3 - 50;
+	const x4 = vx * (4 - dc * 6) - 50;
+	const y4 = vy * (4 - dc * 6) + gr * 6 + 30 - 50;
+	const s1 = Math.random() * 3 + 2;
+	const s2 = s1 * 3 / 4;
+	const s3 = s1 * 2 / 4;
+	const s4 = s1 * 1 / 4;
+	let r1 = 0;
+	let r2 = 0;
+	let r3 = 0;
+	let r4 = 0;
+	let r5 = 0;
+
+	let particle;
+	let reuse;
+	if (shape == 'star') {
+		reuse = fxToReuse['star'];
+		if (!reuse) {
+			reuse = [];
+			fxToReuse['star'] = reuse;
+		}
+		if (reuse.length) {
+			particle = reuse.pop();
+			particle.reused = false;
+			particle.style.display = 'block';
+		} else {
+			particle = document.createElement('div');
+			particle.className = 'star-particle';
+			particle.style.position = 'fixed';
+			document.body.appendChild(particle);
+		}
+		r1 = Math.random() * 360;
+		r5 = (Math.random() - 0.5) * 360 * 3 + r1;
+		r3 = (r1 + r5) / 2;
+		r2 = (r1 + r3) / 2;
+		r4 = (r3 + r5) / 2;
+	} else {
+		reuse = particlesToReuse;
+		if (reuse.length) {
+			particle = reuse.pop();
+			particle.reused = false;
+			particle.style.display = 'block';
+		} else {
+			particle = document.createElement('div');
+			particle.className = 'trail';
+			particle.style.position = 'fixed';
+			document.body.appendChild(particle);
+		}
+	}
+	particle.style.zIndex = 9;
+	particle.style.left = `${x}px`;
+	particle.style.top = `${y}px`;
+	particle.style.opacity = `${op}`;
+	particle.style.backgroundColor = col;
+
+	particle.reuseOr = () => {
+		if (particle.reused) return;
+		particle.reused = true;
+		if (particle.anim) particle.anim.cancel();
+		particle.style.display = 'none';
+		reuse.push(particle);
+	}
+	const animation = particle.animate([
+		{ transform: `translate(-50%, -50%) rotate(${r1}deg) scale(${s1})` },
+		{ transform: `translate(${x1}%, ${y1}%) rotate(${r2}deg) scale(${s2})` },
+		{ transform: `translate(${x2}%, ${y2}%) rotate(${r3}deg) scale(${s3})` },
+		{ transform: `translate(${x3}%, ${y3}%) rotate(${r4}deg) scale(${s4})` },
+		{ transform: `translate(${x4}%, ${y4}%) rotate(${r5}deg) scale(0)`, opacity: '0' }
+	], {
+		duration: Math.random() * (maxDuration - minDuration) + minDuration,
+		easing: 'linear'
+	});
+	particle.anim = animation;
+	animation.onfinish = () => {
+		particle.reuseOr();
+	};
+}
+
+var lastUpdate = 0;
+function animateUpdate() {
+	if (document.hidden) {
+		setTimeout(animateUpdate, 1000);
+		return;
+	}
+	const currentTime = document.timeline.currentTime;
+	const delay = (currentTime - lastUpdate) / 1000;
+	lastUpdate = currentTime;
+	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+	if (isVisible(rightBar)) {
+		allParticles = document.getElementsByClassName('trail');
+		const yeetAllStamps = leftRain.held || rightRain.held;
+		if (yeetAllStamps && (leftRain.held < 2 && rightRain.held < 2)) {
+			leftRain.held = 0;
+			rightRain.held = 0;
+		}
+		const scrollStamps = document.getElementsByClassName('stamp');
+		if (yeetAllStamps) {
+			for (const stamp of scrollStamps) {
+				if (isYeetable(stamp, currentTime)) {
+					mx = stamp.mode == 'right' ? -1 : 1;
+					stamp.yeet((Math.random() * 3 + 1) * mx * 16, (Math.random() - 1) * 4);
+				}
+			}
+		}
+		particleCooldown *= 0.8;
+	}
+
+	if (resolution >= 1440) {
+		// Pictures displayed up top have a blur trail effect
+		const moving = document.getElementsByClassName('blurred');
+		for (const element of moving) {
+			if (element.cooldown > currentTime || !isVisible(element) || scrollTop > 400) continue;
+			const rect = element.getBoundingClientRect();
+			const x = rect.x
+			const y = scrollTop + rect.y
+			const blurred = document.createElement('img');
+			blurred.className = 'flicker';
+			blurred.width = rect.width;
+			blurred.height = rect.height;
+			blurred.style.left = '0px';
+			blurred.style.top = '0px';
+			blurred.style.transform = `translate(${x}px, ${y}px)`;
+			blurred.src = element.src || element.children[0].src;
+			blurred.style.zIndex = '5';
+			document.body.appendChild(blurred);
+			element.cooldown = currentTime + 500;
+
+			const animation = blurred.animate([
+				{ opacity: '0.25' },
+				{ opacity: '0' }
+			], {
+				duration: 2000,
+				easing: 'linear'
+			});
+			animation.onfinish = () => {
+				blurred.remove();
+			};
+		}
+	}
+
+	const elements = document.getElementsByClassName('bullet');
+	for (const element of elements) {
+		if (!element.origColor) {
+			const style = window.getComputedStyle(element);
+			const col = style.backgroundColor;
+			const rgbMatch = col.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+			const r = parseInt(rgbMatch[1], 10);
+			const g = parseInt(rgbMatch[2], 10);
+			const b = parseInt(rgbMatch[3], 10);
+			element.origColor = [r, g, b];
+		}
+		const white = Math.abs(element.angVel) / 4;
+		const [r, g, b] = element.origColor;
+		const r2 = r + white;
+		const g2 = g + white;
+		const b2 = b + white;
+		const angVel = element.angVel * delay;
+		element.rotDeg = isNaN(element.rotDeg) ? angVel : element.rotDeg + angVel;
+		element.angVel *= Math.pow(0.5, delay);
+		const absVel = Math.abs(angVel);
+		const rotDeg = element.rotDeg;
+		if (!isVisible(element) || !(Math.abs(rotDeg - (element.lastRot || 0)) > 0.5)) continue;
+		element.lastRot = rotDeg;
+		element.style.transform = `rotate(${rotDeg}deg)`;
+		if (absVel < element.lastVel) {
+			element.lastVel = absVel;
+			continue;
+		}
+		element.lastVel = absVel;
+		if (element.anim) element.anim.cancel();
+		const animation = element.animate([
+			{ backgroundColor: `rgb(${r2}, ${g2}, ${b2})` },
+			{ backgroundColor: `rgb(${r}, ${g}, ${b})` }
+		], {
+			duration: 500,
+			easing: 'linear'
+		});
+		element.anim = animation;
+	}
+
+	updateCanvas();
+	requestAnimationFrame(animateUpdate);
+}
+const starExit = 300;
+function updateCanvas() {
+	if (!camera || !scene || !renderer) return;
+	const timestamp = Date.now();
+	const verts = [];
+	const cols = [];
+	const verts2 = [];
+	const cols2 = [];
+	const removed = [];
+	const rect = starContainer.getBoundingClientRect();
+	shootingStars.forEach((star) => {
+		const mx = (mouseX - rect.x) / rect.width * window.innerWidth;
+		const my = (mouseY - rect.y) / rect.height * window.innerHeight;
+		const elapsed = (timestamp - star.timestamp) / 1000;
+		const delay = (timestamp - star.prev) / 1000;
+		star.prev = timestamp;
+
+		let rem = delay;
+		let steps = 0;
+		while (rem > 0) {
+			let dd = rem;
+			// Verlet integration for smooth gravity simulation
+			// Mouse cursor is arbitrarily given a gravity of 1 million units
+			let ax;
+			let ay;
+			{
+				const dx = mx - star.x;
+				const dy = my - star.y;
+				const z = Math.atan2(dy, dx);
+				const r2 = 1 + dx * dx + dy * dy;
+
+				const v2 = 1 + star.vx * star.vx + star.vy * star.vy;
+				// Adaptive timestep
+				dd = Math.min(dd, Math.sqrt(r2) / Math.sqrt(v2) / 64);
+
+				ax = 1000000 * Math.cos(z) / r2;
+				ay = 1000000 * Math.sin(z) / r2;
+			}
+
+			star.x += star.vx * dd + 0.5 * ax * dd * dd;
+			star.y += star.vy * dd + 0.5 * ay * dd * dd;
+
+			if (star.x < -starExit || star.y < -starExit || star.x > window.innerWidth + starExit || star.y > window.innerHeight + starExit) {
+				removed.push(star.timestamp);
+				return;
+			}
+
+			let ax2;
+			let ay2;
+			{
+				const dx = mx - star.x;
+				const dy = my - star.y;
+				const z = Math.atan2(dy, dx);
+				const r2 = 1 + dx * dx + dy * dy;
+				ax2 = 1000000 * Math.cos(z) / r2;
+				ay2 = 1000000 * Math.sin(z) / r2;
+			}
+
+			star.vx += 0.5 * (ax + ax2) * dd;
+			star.vy += 0.5 * (ay + ay2) * dd;
+
+			if (Number.isInteger(Math.sqrt(steps))) {
+				const px = (star.x / window.innerWidth) * 2 - 1;
+				const py = -(star.y / window.innerHeight) * 2 + 1;
+				const vector = new THREE.Vector3(px, py, 0);
+				vector.unproject(camera);
+				star.trail.push([vector.x, vector.y, vector.z]);
+				star.times.push(timestamp);
+			}
+			steps++;
+			rem -= dd;
+		}
+		const speed = Math.sqrt(star.vx * star.vx + star.vy * star.vy);
+		const trail = star.trail;
+		const maxLength = 256;
+		while (trail.length > maxLength || timestamp - star.times[0] > 500) {
+			trail.shift();
+			star.times.shift();
+		}
+
+		// Terraria Rainbow Rod effect; create a pentagon at the head, trapezoids at each body, and triangle at the tail
+		// Trail effect has a layered glow for 1/3 of the length
+		const skip = Math.max(1, trail.length / 16);
+		const width = star.scale / 1024 * sceneResMult;
+		const glow = Math.sqrt(speed) / star.scale / 6;
+		const glowStart = 1 / 3;
+		for (let i = 0; i < trail.length - 1; i += skip) {
+			const ii = Math.floor(i);
+			const tailIndex = ii;
+			const headIndex = Math.min(Math.floor(i + skip), trail.length - 1);
+			const nextIndex = Math.floor(i + skip * 2);
+			const inFront = headIndex >= trail.length - skip;
+			const [tx, ty, tz] = trail[tailIndex];
+			const [hx, hy, hz] = trail[headIndex];
+			const [nx, ny, nz] = nextIndex >= trail.length ? [] : trail[nextIndex];
+			const z = Math.atan2(hy - ty, hx - tx);
+			const z2 = nextIndex >= trail.length ? z : Math.atan2(ny - hy, nx - hx);
+			let angle;
+			if (inFront) {
+				angle = Math.PI * 3 / 4;
+			} else {
+				angle = Math.PI / 2;
+			}
+			const headSize = headIndex / trail.length * width;
+			const h_rx = hx + Math.cos(z2 + angle) * headSize;
+			const h_ry = hy + Math.sin(z2 + angle) * headSize;
+			const h_lx = hx + Math.cos(z2 - angle) * headSize;
+			const h_ly = hy + Math.sin(z2 - angle) * headSize;
+			const tailSize = tailIndex / trail.length * width;
+			angle = Math.PI / 2;
+			const t_rx = tx + Math.cos(z + angle) * tailSize;
+			const t_ry = ty + Math.sin(z + angle) * tailSize;
+			const t_lx = tx + Math.cos(z - angle) * tailSize;
+			const t_ly = ty + Math.sin(z - angle) * tailSize;
+			const headColour = hsvToRgb((elapsed + headIndex / trail.length) % 1, (trail.length - headIndex - 1) / trail.length, 1);
+			const tailColour = hsvToRgb((elapsed + tailIndex / trail.length) % 1, (trail.length - tailIndex - 1) / trail.length, 1);
+
+			if (inFront) {
+				verts.push(hx, hy, hz);
+				cols.push(...headColour);
+				verts.push(h_lx, h_ly, hz);
+				cols.push(...headColour);
+				verts.push(t_lx, t_ly, tz);
+				cols.push(...tailColour);
+
+				verts.push(hx, hy, hz);
+				cols.push(...headColour);
+				verts.push(t_rx, t_ry, tz);
+				cols.push(...tailColour);
+				verts.push(h_rx, h_ry, tz);
+				cols.push(...headColour);
+
+				verts.push(hx, hy, hz);
+				cols.push(...headColour);
+				verts.push(t_lx, t_ly, tz);
+				cols.push(...tailColour);
+				verts.push(t_rx, t_ry, tz);
+				cols.push(...tailColour);
+			} else {
+				verts.push(h_lx, h_ly, hz);
+				cols.push(...headColour);
+				verts.push(t_lx, t_ly, tz);
+				cols.push(...tailColour);
+				verts.push(t_rx, t_ry, tz);
+				cols.push(...tailColour);
+
+				verts.push(h_rx, h_ry, hz);
+				cols.push(...headColour);
+				verts.push(h_lx, h_ly, hz);
+				cols.push(...headColour);
+				verts.push(t_rx, t_ry, tz);
+				cols.push(...tailColour);
+			}
+
+			if (i >= trail.length * (1 - glowStart)) {
+				let angle;
+				if (inFront) {
+					angle = Math.PI * 3 / 4;
+				} else {
+					angle = Math.PI / 2;
+				}
+				const headSize2 = headSize * glow;
+				const h_rx = hx + Math.cos(z2 + angle) * headSize2;
+				const h_ry = hy + Math.sin(z2 + angle) * headSize2;
+				const h_lx = hx + Math.cos(z2 - angle) * headSize2;
+				const h_ly = hy + Math.sin(z2 - angle) * headSize2;
+				const tailSize2 = tailSize * glow;
+				angle = Math.PI / 2;
+				const t_rx = tx + Math.cos(z + angle) * tailSize2;
+				const t_ry = ty + Math.sin(z + angle) * tailSize2;
+				const t_lx = tx + Math.cos(z - angle) * tailSize2;
+				const t_ly = ty + Math.sin(z - angle) * tailSize2;
+				const headAlpha = ((ii + skip) / trail.length - (1 - glowStart)) / glowStart;
+				const tailAlpha = (ii - skip < trail.length * (1 - glowStart)) ? 0 : (i / trail.length - (1 - glowStart)) / glowStart;
+				const headColour2 = [...headColour, headAlpha];
+				const tailColour2 = [...tailColour, tailAlpha];
+				const altAlpha = [...headColour, 0];
+
+				verts2.push(hx, hy, hz);
+				cols2.push(...headColour2);
+				verts2.push(h_lx, h_ly, hz);
+				cols2.push(...altAlpha);
+				verts2.push(t_lx, t_ly, tz);
+				cols2.push(...altAlpha);
+
+				verts2.push(hx, hy, hz);
+				cols2.push(...headColour2);
+				verts2.push(t_rx, t_ry, tz);
+				cols2.push(...altAlpha);
+				verts2.push(h_rx, h_ry, tz);
+				cols2.push(...altAlpha);
+
+				verts2.push(hx, hy, hz);
+				cols2.push(...headColour2);
+				verts2.push(t_lx, t_ly, tz);
+				cols2.push(...altAlpha);
+				verts2.push(tx, ty, tz);
+				cols2.push(...tailColour2);
+
+				verts2.push(hx, hy, hz);
+				cols2.push(...headColour2);
+				verts2.push(tx, ty, tz);
+				cols2.push(...tailColour2);
+				verts2.push(t_rx, t_ry, tz);
+				cols2.push(...altAlpha);
+			}
+		}
+	});
+	if (removed.length) {
+		shootingStars = shootingStars.filter((star) => { return !removed.includes(star.timestamp) });
+	}
+
+	geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(verts), 3));
+	geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cols), 3));
+	geometry.attributes.position.needsUpdate = true;
+	geometry.attributes.color.needsUpdate = true;
+	geometry2.setAttribute('position', new THREE.BufferAttribute(new Float32Array(verts2), 3));
+	geometry2.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cols2), 4));
+	geometry2.attributes.position.needsUpdate = true;
+	geometry2.attributes.color.needsUpdate = true;
+
+	updateBubbles();
+	renderer.render(scene, camera);
+}
+
+const starContainer = document.getElementById('star-container');
+var shootingStars = [];
+function generateStars() {
+	if (!document.hidden) {
+		const rect = starContainer.getBoundingClientRect();
+		const timestamp = Date.now();
+		const scale = Math.random() + 0.5;
+		const star = {
+			timestamp: timestamp,
+			prev: timestamp,
+			scale: scale,
+			x: Math.random() * rect.width + rect.x,
+			y: -150,
+			vx: (Math.random() * 15 - 120) * scale,
+			vy: (Math.random() * 40 + 320) * scale,
+			trail: [],
+			times: []
+		}
+		if (renderer) {
+			shootingStars.push(star);
+		} else {
+			// If WebGL is unsupported, calculate would-be trajectory and instead render a text div
+			const t = (window.innerHeight + starExit - star.y) / star.vy;
+			const ex = star.x + (t * star.vx);
+			const ey = star.y + (t * star.vy);
+
+			const shootingStar = document.createElement('div');
+			shootingStar.style.position = 'fixed';
+			starContainer.appendChild(shootingStar);
+			shootingStar.textContent = 'Pls enable WebGL ;-;';
+			const animation = shootingStar.animate([
+				{ transform: `translate(${star.x}px, ${star.y}px)` },
+				{ transform: `translate(${ex}px, ${ey}px)`, opacity: '0' }
+			], {
+				duration: t * 1000,
+				easing: 'linear'
+			});
+			shootingStar.anim = animation;
+			shootingStar.onfinish = () => {
+				shootingStar.remove();
+			};
+		}
+	}
+	setTimeout(generateStars, Math.random() * 400 + 200);
+}
+
+const tessVerts = [
+	[0.0, 0.0, 0.0, 0.0],
+	[1.0, 0.0, 0.0, 0.0],
+	[0.0, 1.0, 0.0, 0.0],
+	[1.0, 1.0, 0.0, 0.0],
+	[0.0, 0.0, 1.0, 0.0],
+	[1.0, 0.0, 1.0, 0.0],
+	[0.0, 1.0, 1.0, 0.0],
+	[1.0, 1.0, 1.0, 0.0],
+	[0.0, 0.0, 0.0, 1.0],
+	[1.0, 0.0, 0.0, 1.0],
+	[0.0, 1.0, 0.0, 1.0],
+	[1.0, 1.0, 0.0, 1.0],
+	[0.0, 0.0, 1.0, 1.0],
+	[1.0, 0.0, 1.0, 1.0],
+	[0.0, 1.0, 1.0, 1.0],
+	[1.0, 1.0, 1.0, 1.0],
+];
+for (const vert of tessVerts) {
+	for (let i = 0; i < vert.length; i++) {
+		vert[i] -= 0.5;
+	}
+}
+console.log(tessVerts);
+const tessFaceMap = [
+	0, 1, 2, 3,
+	0, 1, 4, 5,
+	0, 2, 4, 6,
+	1, 3, 5, 7,
+	2, 3, 6, 7,
+	4, 5, 6, 7,
+	0, 1, 8, 9,
+	0, 2, 8, 10,
+	1, 3, 9, 11,
+	2, 3, 10, 11,
+	8, 9, 10, 11,
+	0, 4, 8, 12,
+	1, 5, 9, 13,
+	4, 5, 12, 13,
+	8, 9, 12, 13,
+	2, 6, 10, 14,
+	4, 6, 12, 14,
+	8, 10, 12, 14,
+	3, 7, 11, 15,
+	5, 7, 13, 15,
+	9, 11, 13, 15,
+	6, 7, 14, 15,
+	10, 11, 14, 15,
+	12, 13, 14, 15,
+];
+var bubbles = [];
+function generateBubble() {
+	const geometry = new THREE.BoxGeometry(1, 1, 1);
+	const egeometry = new THREE.EdgesGeometry(geometry);
+	const material = new THREE.MeshPhongMaterial({
+		color: 0xbf7fff,   // Base color of the cube
+		opacity: 0.75,
+		transparent: true,
+		shininess: 100,    // Higher shininess for more glossy surface
+		side: THREE.DoubleSide,
+		depthWrite: false
+	});
+	const ematerial = new THREE.LineBasicMaterial({
+		color: 0xffffff,
+		fog: false
+	});
+	const bubble = new THREE.Mesh(geometry, material);
+	const ebubble = new THREE.LineSegments(egeometry, ematerial);
+	const Bubble = {
+		solids: [bubble],
+		edges: [ebubble]
+	}
+	bubble.rotateX(1);
+	bubble.rotateY(1);
+	ebubble.rotateX(1);
+	ebubble.rotateY(1);
+	scene.add(bubble);
+	scene.add(ebubble);
+	bubbles.push(Bubble);
+}
+function updateBubbles() {
+	for (const Bubble of bubbles) {
+	}
+}
+
+const sceneResolution = 1920;
+var sceneResMult = 1;
+var scene;
+var camera;
+var renderer;
+var geometry;
+var geometry2;
+function setupScene() {
+	try {
+		scene = new THREE.Scene();
+		const parameters = {
+			precision: 'lowp',
+			alpha: true,
+			premultipliedAlpha: true,
+			antialias: true,
+			depth: false,
+		}
+		renderer = new THREE.WebGLRenderer(parameters);
+		renderer.setClearColor(new THREE.Color(0x000000), 0);
+		renderer.setSize(1, 1, true);
+		const canvas = renderer.domElement;
+		canvas.style.position = 'fixed';
+		canvas.style.pointerEvents = 'none';
+		canvas.style.padding = '0';
+		canvas.style.margin = '0';
+		starContainer.appendChild(canvas);
+	} catch (error) {
+		console.error(error);
+		return;
+	}
+	geometry = new THREE.BufferGeometry();
+	const material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
+	const triangle = new THREE.Mesh(geometry, material);
+	scene.add(triangle);
+	geometry2 = new THREE.BufferGeometry();
+	const material2 = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, side: THREE.DoubleSide });
+	const triangle2 = new THREE.Mesh(geometry2, material2);
+	scene.add(triangle2);
+	const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+	directionalLight.position.set(5, 5, 5);
+	scene.add(directionalLight);
+	const ambientLight = new THREE.AmbientLight(0x404040);
+	scene.add(ambientLight);
+}
+setupScene();
+function resizeCanvas() {
+	if (renderer) {
+		let preWidth;
+		if (window.innerWidth > 800 && !snakeGame.isRendered) {
+			const rect1 = rightBar.getBoundingClientRect();
+			const rect2 = starContainer.getBoundingClientRect();
+			preWidth = rect1.x - rect2.x - 8;
+		} else {
+			preWidth = window.innerWidth;
+		}
+		const width = Math.ceil(preWidth + 1);
+		const height = Math.ceil(window.innerHeight + 1);
+		camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+		camera.position.z = 2;
+		sceneResMult = Math.min(sceneResolution / Math.sqrt(width * height), 1);
+		const w = width * sceneResMult;
+		const h = height * sceneResMult;
+		renderer.setSize(w, h, sceneResMult == 1);
+		const canvas = renderer.domElement;
+		canvas.style.width = `${w}px`;
+		canvas.style.height = `${h}px`;
+		if (sceneResMult == 1) {
+			starContainer.style.transform = 'none';
+		} else {
+			const s = 1 / sceneResMult;
+			starContainer.style.transform = `scale(${s})`;
+		}
+	}
+}
+resizeCanvas();
+const debouncedResizeCanvas = debounce(resizeCanvas, 100);
+window.addEventListener('resize', debouncedResizeCanvas);
+
+const interests = document.getElementById('interests');
+function setupInterests() {
+	const interestList = Object.entries(INTERESTS);
+	let n = 0;
+	for (const [name, entries] of interestList) {
+		const e = n - interestList.length;
+		const subtitle = document.createElement('h2');
+		subtitle.className = 'subtitle2';
+		subtitle.style.marginBottom = '16px';
+		interests.appendChild(subtitle);
+		Array.from(name).forEach((c, i) => {
+			const ch = document.createElement('span');
+			if (c != ' ') ch.className = 'subtext2';
+			ch.textContent = c;
+			const d = (i - name.length + 1) / (name.length - 1) + e;
+			ch.style.animationDelay = `${d}s`;
+			subtitle.appendChild(ch);
+		});
+		const paragraph = document.createElement('p');
+		paragraph.className = 'paragraph ripples sub-anim';
+		paragraph.style.display = 'grid';
+		paragraph.style.justifySelf = 'center';
+		paragraph.style.width = 'fit-content';
+		paragraph.style.animationDelay = `${e}s`;
+		interests.appendChild(paragraph);
+		entries.forEach((entry, j) => {
+			const subtitle = document.createElement('span');
+			subtitle.className = 'subtitle3';
+			subtitle.style.zIndex = '3';
+			paragraph.appendChild(subtitle);
+			const star = document.createElement('span');
+			star.className = 'bullet';
+			star.style.display = 'inline-block';
+			star.style.backgroundColor = '#00ffff';
+			subtitle.appendChild(star);
+			let n = 0;
+			entry.split(' ').forEach((c) => {
+				const ch = document.createElement('span');
+				ch.className = 'subtext3';
+				ch.textContent = c;
+				const d = n / 24 - j / 8;
+				ch.style.animationDelay = `${d}s`;
+				subtitle.appendChild(ch);
+				const sp = document.createElement('span');
+				sp.textContent = ' ';
+				sp.display = 'inline-block';
+				sp.animation = 'none';
+				subtitle.appendChild(sp);
+				n += c.length + 1;
+			});
+		});
+		n++;
+	}
+}
+setupInterests();
+
+var imageScale = 256;
+var imageSep = 192;
+function adjustImageLimit() {
+	imageScale = Math.min(256, window.innerWidth / 2);
+	imageSep = Math.min(192, window.innerWidth / 3);
+}
+adjustImageLimit();
+window.addEventListener('resize', adjustImageLimit);
+function setupGallery() {
+	Array.from(content2.children).forEach((element) => { element.remove() });
+	if (content2.originalHeight == null) {
+		const contentStyle = window.getComputedStyle(content2);
+		content2.originalHeight = Number.parseFloat(contentStyle.height);
+	}
+	let newHeight = content2.originalHeight;
+	STYLES.forEach((style, n) => {
+		style.elements = [];
+		const subtitle = document.createElement('h2');
+		subtitle.className = 'subtitle sub-anim';
+		subtitle.style.top = `${newHeight}px`;
+		subtitle.style.left = '0px';
+		subtitle.style.width = '100%';
+		const d = n - STYLES.length;
+		subtitle.style.animationDelay = `${d}s`;
+		subtitle.style.zIndex = '3';
+		content2.appendChild(subtitle);
+		newHeight += imageSep;
+		style.top = newHeight;
+		Array.from(style.name).forEach((c, i) => {
+			const ch = document.createElement('span');
+			if (c != ' ') ch.className = 'subtext';
+			ch.textContent = c;
+			const d = Math.abs((i - style.name.length + 1) / (style.name.length - 1) + 0.5) * 2 / 20 + n - STYLES.length;
+			ch.style.animationDelay = `${d}s`;
+			subtitle.appendChild(ch);
+		});
+		style.positions = [];
+		if (style.shuffle) shuffle(style.images);
+		style.images.forEach((fn, i) => {
+			const fn2 = style.path + "/" + fn;
+			const sources = ["https://cocobeanzies.mizabot.xyz/styles/" + fn2];
+			const cloudCount = (Math.random() + 1) * window.innerWidth / imageSep / 8;
+			for (let j = 0; j < cloudCount; j++) {
+				const k = randint(0, CLOUDS.length - 1);
+				sources.push("https://cocobeanzies.mizabot.xyz/clouds/" + CLOUDS[k]);
+			}
+			sources.forEach((url, j) => {
+				const image = document.createElement('img');
+				image.isCloud = j;
+				image.style.display = 'none';
+				image.setAttribute('loading', 'lazy');
+				const url2 = replaceIOS(url);
+				image.src = url2;
+				image.osrc = url2;
+				image.style.position = 'fixed';
+				image.style.left = '0px';
+				image.style.top = '0px';
+				function appear(anim) {
+					let endOpacity = '1';
+					if (image.isCloud) {
+						let r = Math.random();
+						if (image.inFront) {
+							r = lerp(0.0625, 0.5, r);
+						} else {
+							r = lerp(0.25, 0.875, r);
+						}
+						endOpacity = `${r}`;
+					}
+					if (anim) {
+						const animation = image.animate([
+							{ visibility: 'visible', opacity: '0' },
+							{ opacity: endOpacity }
+						], {
+							duration: 250,
+							easing: 'linear',
+							fill: 'forwards'
+						});
+						image.anim = animation;
+						animation.onfinish = () => {
+							image.style.visibility = 'visible';
+							image.style.opacity = endOpacity;
+						};
+					} else {
+						image.style.visibility = 'visible';
+						image.style.opacity = endOpacity;
+					}
+				}
+				image.appear = appear;
+				image.onload = (() => {
+					const originalWidth = image.naturalWidth;
+					const originalHeight = image.naturalHeight;
+					const aspectRatio = originalWidth / originalHeight;
+					const newHeight = Math.sqrt(image.desiredArea / aspectRatio);
+					const newWidth = newHeight * aspectRatio;
+
+					if (style.animated && !image.isCloud) {
+						const tempCanvas = document.createElement('canvas');
+						tempCanvas.width = newWidth;
+						tempCanvas.height = newHeight;
+						const tempCtx = tempCanvas.getContext('2d');
+						tempCtx.drawImage(image, 0, 0, newWidth, newHeight);
+						image.inanimate = tempCanvas.toDataURL('image/jpeg');
+					}
+					image.style.width = `${newWidth}px`;
+					image.style.height = `${newHeight}px`;
+					if (image.isCloud) {
+						// Clouds don't block mouse cursor
+						image.style.pointerEvents = 'none';
+					} else {
+						image.className = 'soft-edge';
+					}
+					debouncedGalleryScroll();
+				});
+				if (!image.isCloud) {
+					// Non-cloud pictures redirect to their full image
+					image.style.cursor = 'pointer';
+					image.onclick = (() => {
+						window.open("https://cocobeanzies.mizabot.xyz/styles-full/" + fn2);
+					});
+				}
+				image.index = i + j / (cloudCount + 1);
+				image.isVisible = true;
+				image.reset = () => {
+					if (!image.isVisible) return;
+					if (image.anim) image.anim.cancel();
+					image.anim = null;
+					if (image.anim2) image.anim2.cancel();
+					image.anim2 = null;
+					let scale = 1;
+					if (image.isCloud) {
+						image.inFront = Math.random() >= 2 / 3;
+						image.style.zIndex = image.inFront ? '2' : '-1';
+						scale = Math.random() * 3 + 0.5;
+					} else {
+						scale = Math.random() + 0.5;
+					}
+					image.scrollSpeed = scale;
+					image.style.display = 'none';
+					image.style.visibility = 'hidden';
+					image.style.opacity = '0';
+					image.style.clipPath = 'none';
+					image.isVisible = false;
+					image.desiredArea = imageScale * imageScale * scale;
+					image.onload();
+					const r = imageSep / window.innerWidth * 3;
+					let x;
+					let y;
+					let allowed = false;
+					let i;
+					// Make sure pictures don't completely overlap
+					for (i = 0; i < 32; i++) {
+						allowed = true;
+						y = image.index * window.innerWidth / imageSep / 2;
+						if (!image.isCloud) {
+							x = Math.random() * 0.8 + 0.1;
+							for (const pos of style.positions) {
+								if (!pos) continue;
+								const dx = (x - pos[0]);
+								const dy = (y - pos[1]);
+								if (dx * dx + dy * dy < r * r) {
+									allowed = false;
+									break;
+								}
+							}
+							if (allowed) break;
+						} else {
+							// Clouds are allowed to spawn anywhere, including 50% outside the boundaries
+							x = Math.random() * 1.5 - 0.25;
+						}
+					}
+					image.offsetX = x;
+					image.offsetY = y;
+					if (!image.isCloud) style.positions[image.index] = [x, y];
+				};
+				image.reset();
+				style.elements.push(image);
+				content2.appendChild(image);
+			});
+		});
+		newHeight += imageSep * style.images.length;
+		style.bottom = newHeight;
+		newHeight += imageSep;
+	});
+	content2.style.minHeight = `${newHeight}px`;
+}
+function startImageFloating() {
+	const rect = content2.getBoundingClientRect();
+	const start = -rect.y - imageScale;
+	const end = -rect.y + window.innerHeight + imageScale;
+	STYLES.forEach((style) => {
+		if (style.top > end || style.bottom < start) return;
+		style.elements.forEach((image) => {
+			if (!image.isVisible || !image.lastTransform) return;
+			if (image.anim2) image.anim2.cancel();
+			if (image.inanimate) image.src = image.osrc;
+			// This animation must be initiated after the image loads, else it sometimes doesn't work
+			const [x, y] = image.lastTransform;
+			const m = Math.sqrt(image.desiredArea) * 0.2 * (Math.random() < 0.5 ? 1 : -1) * (Math.random() * 0.5 + 0.5);
+			const d = (Math.random() + 1) * 5000;
+			const hy = y - m;
+			const ly = y + m;
+			const animation = image.animate([
+				{ transform: `translate(${x}px, ${hy}px)`, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' },
+				{ transform: `translate(${x}px, ${ly}px)`, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' },
+				{ transform: `translate(${x}px, ${hy}px)`, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' }
+			], {
+				duration: d,
+				iterations: Infinity,
+				delay: -d / 4
+			});
+			image.anim2 = animation;
+		});
+	});
+}
+const debouncedImageFloating = debounce(startImageFloating, 100);
+function cancelImageFloating() {
+	const rect = content2.getBoundingClientRect();
+	const start = -rect.y - imageScale;
+	const end = -rect.y + window.innerHeight + imageScale;
+	STYLES.forEach((style) => {
+		if (style.top > end || style.bottom < start) return;
+		style.elements.forEach((image) => {
+			if (image.anim2) {
+				image.anim2.cancel();
+				image.anim2 = null;
+				if (image.inanimate) image.src = image.inanimate;
+			}
+		});
+	});
+	debouncedImageFloating();
+}
+var lastScroll = 0;
+function updateGalleryScroll(cancelAfter) {
+	const currentTime = Date.now();
+	const isFast = currentTime - lastScroll < 30;
+	lastScroll = currentTime;
+	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	const reqHeight = snakeGame.isRendered ? 2000 : 1600;
+	if (reqHeight - scrollTop > window.innerHeight) {
+		STYLES.forEach((style) => {
+			style.elements.forEach((image) => {
+				image.reset();
+			});
+		});
+		content2.style.display = 'none';
+		background.style.backgroundImage = 'none';
+		background.style.backgroundColor = '#1f003f';
+		return;
+	}
+	function updateScrollDown() {
+		content2.style.display = 'block';
+		const rect = content2.getBoundingClientRect();
+		const start = -rect.y - imageScale;
+		const end = -rect.y + window.innerHeight + imageScale;
+		STYLES.forEach((style) => {
+			if (style.top > end || style.bottom < start) {
+				style.elements.forEach((image) => {
+					image.reset();
+				});
+				return;
+			}
+			style.elements.forEach((image) => {
+				const i = image.index;
+				const top = style.top + i * imageSep;
+				const bottom = style.top + i * imageSep;
+				if (top - (imageSep / image.scrollSpeed) > end || bottom + (imageScale + imageSep) / image.scrollSpeed < start) {
+					image.reset();
+					return;
+				}
+				const width = image.width || image.getBoundingClientRect().width;
+				if (!image.isVisible) {
+					image.style.display = 'block';
+					image.isVisible = true;
+					if (image.anim) image.anim.cancel();
+					image.anim = null;
+					image.appear(isFast);
+					if (image.onrender) image.onrender();
+				}
+				// scrollSpeed property defined previously controls parallax factor
+				const x = image.offsetX * (rect.width - width) + rect.x;
+				const y = (top - start) * image.scrollSpeed;
+				image.lastTransform = [x, y];
+				image.style.transform = `translate(${x}px, ${y}px)`;
+				if (x < rect.x) {
+					const p = Math.floor(rect.x - x) / width * 100;
+					image.style.clipPath = `inset(0% 0% 0% ${p}%)`;
+				} else if (x + width > rect.x + rect.width) {
+					const p = Math.ceil(x + width - rect.x - rect.width) / width * 100;
+					image.style.clipPath = `inset(0% ${p}% 0% 0%)`;
+				}
+			});
+		});
+		if (cancelAfter) cancelImageFloating();
+	}
+	updateScrollDown();
+	const bodyRect = document.body.getBoundingClientRect();
+	background.style.height = `${bodyRect.height}px`;
+	background.style.backgroundImage = 'linear-gradient(#180030, #7fafff)';
+	background.style.backgroundColor = 'transparent';
+}
+debouncedGalleryScroll = debounce(updateGalleryScroll, 250);
+function updateScroll() {
+	requestAnimationFrame(() => {
+		// const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		// const scrollRatio = scrollTop / MINHEIGHT;
+		// if (renderer) {
+		// 	const r = Math.min(lerp(0.125, 1, scrollRatio), 0.5);
+		// 	const g = Math.max(lerp(-0.5, 0.5, scrollRatio), 0);
+		// 	const b = Math.min(lerp(0.25, 2, scrollRatio), 1);
+		// 	renderer.setClearColor(new THREE.Color(r, g, b), 1);
+		// }
+		updateGalleryScroll(true);
+	});
+}
+setupGallery();
+const roselandSources = [
+	"Roseland_Bottom.webp",
+	"Roseland_1.avif",
+	"Roseland_2.avif",
+	"Roseland_3.avif",
+	"Roseland_Sun.webp"
+];
+const roselandBanners = [];
+const bottom = document.getElementById('bottom');
+var bannerContainer;
+var cloudContainer;
+var cloudContainer2;
+var leafContainer;
+const bannerClouds = [];
+const bannerLeaves = [];
+const bannerLeafIndices = [
+	[-2, -2],
+	[-1, -2],
+	[-2.5, -1],
+	[-1.5, -1],
+	[-0.5, -1],
+	[-0.5, -1],
+	[-1, 0],
+	[0, 0],
+];
+const bannerLC = bannerLeafIndices.length;
+function setupBanner2() {
+	const banner2 = document.getElementById('banner2');
+	banner2.remove();
+	bannerContainer = document.createElement('div');
+	bannerContainer.style.height = '1080px';
+	bannerContainer.style.maskImage = 'linear-gradient(transparent, white, white, white)';
+	bannerContainer.style.pointerEvents = 'none';
+	content4.appendChild(bannerContainer);
+	var i = 0;
+	for (const src of roselandSources) {
+		const banner = document.createElement('img');
+		banner.className = 'non-selectable';
+		banner.src = replaceIOS("https://cocobeanzies.mizabot.xyz/pictures/" + src);
+		banner.style.display = 'none';
+		banner.style.position = 'fixed';
+		const z = 100 - i;
+		banner.style.zIndex = `${z}`;
+		banner.style.left = '0px';
+		banner.style.top = '0px';
+		banner.index = i;
+		bannerContainer.appendChild(banner);
+		roselandBanners.push(banner);
+		i++;
+	}
+	roselandBanners[0].className = '';
+	roselandBanners[0].style.pointerEvents = 'auto';
+	const n1 = roselandBanners.length - 1;
+	const sun = roselandBanners[n1];
+	sun.style.zIndex = '201';
+	sun.style.mixBlendMode = 'luminosity';
+	{
+		const grad = document.createElement('img');
+		grad.className = 'non-selectable';
+		grad.src = replaceIOS("https://cocobeanzies.mizabot.xyz/pictures/Roseland_Gradient.avif");
+		grad.style.display = 'none';
+		grad.style.position = 'fixed';
+		grad.style.left = '0px';
+		grad.style.top = '0px';
+		grad.style.zIndex = '202';
+		grad.style.mixBlendMode = 'overlay';
+		grad.index = sun.index;
+		bannerContainer.appendChild(grad);
+		roselandBanners.push(grad);
+	}
+	cloudContainer = document.createElement('div');
+	cloudContainer.className = 'non-selectable';
+	cloudContainer.style.width = '100%';
+	cloudContainer.style.height = '100%';
+	cloudContainer.style.left = '0px';
+	cloudContainer.style.top = '0px';
+	cloudContainer.style.zIndex = '90';
+	cloudContainer.style.position = 'fixed';
+	cloudContainer.style.overflow = 'clip';
+	bannerContainer.appendChild(cloudContainer);
+	cloudContainer2 = document.createElement('div');
+	cloudContainer2.className = 'non-selectable';
+	cloudContainer2.style.width = '100%';
+	cloudContainer2.style.height = '100%';
+	cloudContainer2.style.left = '0px';
+	cloudContainer2.style.top = '0px';
+	cloudContainer2.style.zIndex = '91';
+	cloudContainer2.style.position = 'fixed';
+	cloudContainer2.style.overflow = 'clip';
+	bannerContainer.appendChild(cloudContainer2);
+	for (let i = 0; i < 8; i++) {
+		const clouds = document.createElement('img');
+		clouds.className = 'non-selectable';
+		clouds.src = i >= 2 ? "https://cocobeanzies.mizabot.xyz/pictures/Roseland_Clouds2.webp" : "https://cocobeanzies.mizabot.xyz/pictures/Roseland_Clouds.webp";
+		clouds.style.display = 'block';
+		clouds.style.position = 'fixed';
+		clouds.style.left = '0px';
+		clouds.style.top = '0px';
+		const z = 10 - i;
+		clouds.style.zIndex = `${z}`;
+		clouds.heightMult = 1 - Math.floor(4 - i / 2) / 12;
+		(i >= 2 ? cloudContainer2 : cloudContainer).appendChild(clouds);
+		bannerClouds.push(clouds);
+		clouds.startAnimation = (clouds, x, y, x2, y2) => {
+			if (clouds.anim) clouds.anim.cancel();
+			if (clouds.anim2) clouds.anim2.cancel();
+			const animation = clouds.animate([
+				{ transform: `translate(${x}%, ${y}%)` },
+				{ transform: `translate(${x2}%, ${y2}%)` }
+			], {
+				duration: i >= 6 ? 49157 : i >= 4 ? 67339 : i >= 2 ? 92237 : 126359,
+				iterations: Infinity,
+				delay: -64000
+			});
+			clouds.anim = animation;
+		};
+		let yi;
+		if (i >= 6) yi = -0.25;
+		else if (i >= 4) yi = 0.05;
+		else if (i >= 2) yi = 0.35;
+		else yi = 0.55;
+		const [xo, yo] = i & 1 ? [-0.99, yi] : [0.01, yi];
+		const x = xo * 100;
+		const y = yo * 100;
+		const x2 = x + 100;
+		const y2 = y;
+		if (clouds.anim) clouds.anim.cancel();
+		if (clouds.anim2) clouds.anim2.cancel();
+		clouds.startAnimation(clouds, x, y, x2, y2);
+	}
+	{
+		const critterGlow = document.createElement('img');
+		critterGlow.className = 'non-selectable';
+		critterGlow.src = "https://cocobeanzies.mizabot.xyz/pictures/Roseland_Glow.png";
+		critterGlow.style.display = 'none';
+		critterGlow.style.position = 'fixed';
+		critterGlow.style.left = '0px';
+		critterGlow.style.top = '0px';
+		critterGlow.style.zIndex = '101';
+		critterGlow.style.mixBlendMode = 'plus-lighter';
+		critterGlow.index = 0;
+		critterGlow.noDisplay = true;
+		bannerContainer.appendChild(critterGlow);
+		roselandBanners.push(critterGlow);
+
+		const bannerGlow = document.createElement('div');
+		bannerGlow.className = 'non-selectable';
+		bannerGlow.style.zIndex = '102';
+		bannerGlow.style.position = 'fixed';
+		bannerGlow.style.left = '0px';
+		bannerGlow.style.top = '0px';
+		bannerGlow.style.width = '960px';
+		bannerGlow.style.height = '540px';
+		bannerGlow.style.transformOrigin = 'top left';
+		bannerGlow.style.clipPath = 'url(#roselandGlowClipPath)';
+		bannerGlow.index = 0;
+		bannerGlow.style.pointerEvents = 'auto';
+		bannerContainer.appendChild(bannerGlow);
+		roselandBanners.push(bannerGlow);
+		bannerGlow.addEventListener('mouseover', () => {
+			bannerGlow.style.cursor = "url('https://cocobeanzies.mizabot.xyz/icons/sound.png') 12 12, auto";
+			critterGlow.style.display = 'block';
+		});
+		bannerGlow.addEventListener('mouseout', () => {
+			bannerGlow.style.cursor = 'default';
+			critterGlow.style.display = 'none';
+		});
+		bannerGlow.addEventListener('click', () => {
+			playAudio('rainbow-critter');
+		});
+
+		const noseGlow = document.createElement('img');
+		noseGlow.src = "https://cocobeanzies.mizabot.xyz/pictures/Roseland_Glow2.png";
+		noseGlow.style.display = 'none';
+		noseGlow.style.position = 'fixed';
+		noseGlow.style.left = '0px';
+		noseGlow.style.top = '0px';
+		noseGlow.style.zIndex = '101';
+		noseGlow.style.mixBlendMode = 'plus-lighter';
+		noseGlow.index = 0;
+		noseGlow.noDisplay = true;
+		bannerContainer.appendChild(noseGlow);
+		roselandBanners.push(noseGlow);
+
+		const bannerGlow2 = document.createElement('div');
+		bannerGlow2.style.zIndex = '102';
+		bannerGlow2.style.position = 'fixed';
+		bannerGlow2.style.left = '0px';
+		bannerGlow2.style.top = '0px';
+		bannerGlow2.style.width = '960px';
+		bannerGlow2.style.height = '540px';
+		bannerGlow2.style.transformOrigin = 'top left';
+		bannerGlow2.style.clipPath = 'url(#roselandGlowClipPath2)';
+		bannerGlow2.index = 0;
+		bannerGlow2.style.pointerEvents = 'auto';
+		bannerContainer.appendChild(bannerGlow2);
+		roselandBanners.push(bannerGlow2);
+		bannerGlow2.addEventListener('mouseover', () => {
+			noseGlow.style.display = 'block';
+		});
+		bannerGlow2.addEventListener('mouseout', () => {
+			noseGlow.style.display = 'none';
+		});
+		bannerGlow2.addEventListener('click', () => {
+			playAudio('fnaf-nose-honk', null, null, false);
+		});
+	}
+	leafContainer = document.createElement('div');
+	leafContainer.className = 'non-selectable';
+	leafContainer.style.width = '100%';
+	leafContainer.style.height = '100%';
+	leafContainer.style.left = '0px';
+	leafContainer.style.top = '0px';
+	leafContainer.style.zIndex = '200';
+	leafContainer.style.position = 'fixed';
+	leafContainer.style.overflow = 'clip';
+	leafContainer.style.maskImage = 'linear-gradient(transparent, white, white, white)';
+	leafContainer.style.maskType = 'alpha';
+	leafContainer.style.maskMode = 'alpha';
+	bannerContainer.appendChild(leafContainer);
+	for (let i = 0; i < bannerLC; i++) {
+		leaf = document.createElement('img');
+		leaf.src = replaceIOS("https://cocobeanzies.mizabot.xyz/pictures/Roseland_Leaves.avif");
+		leaf.style.display = 'block';
+		leaf.style.position = 'absolute';
+		leaf.style.left = '0px';
+		leaf.style.top = '0px';
+		leaf.style.opacity = '0';
+		leafContainer.appendChild(leaf);
+		bannerLeaves.push(leaf);
+		leaf.startAnimation = (leaf, x, y, x2, y2) => {
+			if (leaf.anim) leaf.anim.cancel();
+			if (leaf.anim2) leaf.anim2.cancel();
+			const animation = leaf.animate([
+				{ transform: `translate(${x}%, ${y}%)` },
+				{ transform: `translate(${x2}%, ${y2}%)` }
+			], {
+				duration: 12000,
+				iterations: Infinity
+			});
+			leaf.anim = animation;
+			const animation2 = leaf.animate([
+				{ opacity: '0' },
+				{ opacity: '1' }
+			], {
+				duration: 1000,
+				fill: 'forwards',
+				easing: 'ease-in'
+			});
+			leaf.anim2 = animation2;
+		};
+		const [xo, yo] = bannerLeafIndices[i];
+		const x = xo * 100;
+		const y = yo * 100;
+		const x2 = x + 200;
+		const y2 = y + 200;
+		leaf.style.opacity = '0';
+		if (leaf.anim) leaf.anim.cancel();
+		if (leaf.anim2) leaf.anim2.cancel();
+		leaf.startAnimation(leaf, x, y, x2, y2);
+	}
+}
+setupBanner2();
+function updateBanner2() {
+	const top = bottom.getBoundingClientRect();
+	const rect = content4.getBoundingClientRect();
+	if (!isVisible(bottom) || top.y + top.height > window.innerHeight) {
+		for (const banner of roselandBanners) {
+			banner.style.display = 'none';
+		}
+		bannerContainer.style.visibility = 'hidden';
+		leafContainer.style.display = 'none';
+		return;
+	}
+	const standardWidth = Math.ceil(rect.width);
+	const standardHeight = Math.ceil(rect.width * 9 / 16);
+	const maxHeight = standardHeight;
+	for (const banner of roselandBanners) {
+		const r = 1 - banner.index * 0.2;
+		const x = rect.x;
+		const y = (top.y + top.height) * r + (window.innerHeight - maxHeight) * (1 - r) + maxHeight - standardHeight;
+		if (!banner.noDisplay) banner.style.display = 'block';
+		if (banner.tagName == 'IMG') {
+			banner.width = standardWidth;
+			banner.height = standardHeight;
+			banner.style.transform = `translate(${x}px, ${y}px)`;
+		} else {
+			const scale = standardWidth / 960;
+			banner.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+		}
+	}
+	{
+		const displayHeight = standardHeight / 3.375;
+		{
+			const r = 0.2;
+			const x = rect.x;
+			const y = (top.y + top.height) * r + (window.innerHeight - maxHeight) * (1 - r) + maxHeight - standardHeight;
+			cloudContainer.style.width = `${standardWidth}px`;
+			cloudContainer.style.height = `${standardHeight}px`;
+			cloudContainer.style.transform = `translate(${x}px, ${y}px)`;
+			cloudContainer.style.display = 'block';
+		}
+		{
+			const r = 0.3;
+			const x = rect.x;
+			const y = (top.y + top.height) * r + (window.innerHeight - maxHeight) * (1 - r) + maxHeight - standardHeight;
+			cloudContainer2.style.width = `${standardWidth}px`;
+			cloudContainer2.style.height = `${standardHeight}px`;
+			cloudContainer2.style.transform = `translate(${x}px, ${y}px)`;
+			cloudContainer2.style.display = 'block';
+		}
+		for (const cloud of bannerClouds) {
+			cloud.width = standardWidth;
+			cloud.height = displayHeight;
+		}
+	}
+	{
+		const r = 1.2;
+		const x = rect.x;
+		const y = (top.y + top.height) * r + (window.innerHeight - maxHeight) * (1 - r) + maxHeight - standardHeight;
+		leafContainer.style.width = `${standardWidth}px`;
+		leafContainer.style.height = `${standardHeight}px`;
+		leafContainer.style.transform = `translate(${x}px, ${y}px)`;
+		leafContainer.style.display = 'block';
+		for (const leaf of bannerLeaves) {
+			leaf.width = standardWidth;
+			leaf.height = standardHeight;
+		}
+	}
+	bannerContainer.style.height = `${maxHeight}px`;
+	bannerContainer.style.visibility = 'visible';
+}
+window.addEventListener('resize', updateBanner2);
+window.addEventListener('scroll', updateBanner2);
+
+function setupRipples() {
+	const elements = document.getElementsByClassName('ripples');
+	for (const element of elements) {
+		element.addEventListener('mouseenter', function(event) {
+			const ripple = document.createElement('span');
+			ripple.classList.add('ripple');
+
+			const rect = element.getBoundingClientRect();
+			const size = Math.min(window.innerHeight, Math.max(rect.width, rect.height));
+			const x = event.clientX - rect.left - (size / 2);
+			const y = event.clientY - rect.top - (size / 2);
+
+			ripple.style.width = ripple.style.height = `${size}px`;
+			ripple.style.left = `${x}px`;
+			ripple.style.top = `${y}px`;
+			element.appendChild(ripple);
+
+			ripple.addEventListener('animationend', () => {
+				ripple.remove();
+			});
+		});
+	}
+}
+setupRipples();
+
+const MINHEIGHT = Number.parseFloat(window.getComputedStyle(document.body).height);
+// document.body.style.height = MINHEIGHT;
+
+updateScroll();
+const debouncedScroll = debounce(updateScroll, 250);
+window.addEventListener('resize', () => { requestAnimationFrame(debouncedScroll) });
+window.addEventListener('scroll', updateScroll);
+
+{
+	function callback(entries, observer) {
+		entries.forEach((entry) => {
+			entry.target.onscreen = entry.isIntersecting;
+		});
+	}
+	const options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.01,
+	};
+	const observer = new IntersectionObserver(callback, options);
+
+	const selectors = Array.from(document.getElementsByClassName('bullet'));
+	selectors.push(...document.getElementsByClassName('stamp'));
+	selectors.push(...document.getElementsByClassName('blurred'));
+	selectors.forEach((box) => { observer.observe(box) });
+}
+{
+	function callback(entries, observer) {
+		entries.forEach((entry) => {
+			const aps = entry.isIntersecting ? 'running' : 'paused';
+			function applyChildren(e) {
+				for (const c of e.children) {
+					applyChildren(c);
+				}
+				e.style.animationPlayState = aps;
+			}
+			applyChildren(entry.target);
+		});
+	}
+	const options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.01,
+	};
+	const observer = new IntersectionObserver(callback, options);
+
+	const selectors = Array.from(document.getElementsByClassName('sub-anim'));
+	selectors.push(...document.getElementsByClassName('title'));
+	selectors.forEach((box) => { observer.observe(box) });
+}
+
+generateStars();
+animateUpdate();
+
+if (ISIOS) {
+	Array.from(document.getElementsByTagName('img')).forEach((img) => {
+		const avifSrc = img.getAttribute('src');
+		if (avifSrc && avifSrc.endsWith('.avif')) {
+			const fallbackSrc = avifSrc.replace('.avif', '.webp'); // or another format
+			img.setAttribute('src', fallbackSrc);
+		}
+	});
+}
+</script>
+</html>

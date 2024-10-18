@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define a filter for the blur effect -->
+  <defs>
+    <filter id="fuzzy" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+  </defs>
+
+  <!-- Draw the rectangle with rounded corners and apply the blur filter -->
+  <rect x="10" y="10" width="200" height="200" rx="40" ry="40" fill="black" filter="url(#fuzzy)" />
+</svg>
