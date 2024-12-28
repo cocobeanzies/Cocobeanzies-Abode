@@ -96,12 +96,12 @@
 			text-align: left;
 			align-items: center;
 			justify-content: center;
+			position: relative;
 			padding: 10px;
 			padding-left: 0px;
 			margin-bottom: 10px;
 			background-color: #400080c0;
 			border-radius: 0px 20px 0px 20px;
-			position: relative;
 			border: solid 2px #00ffffc0;
 			animation: borderAnimation 3s infinite;
 		}
@@ -4221,6 +4221,7 @@ function setupGallery() {
 					} else {
 						image.className = 'soft-edge';
 					}
+					image.style.willChange = 'transform';
 					debouncedGalleryScroll();
 				});
 				if (!image.isCloud) {
@@ -4471,6 +4472,7 @@ function setupBanner2() {
 		banner.style.left = '0px';
 		banner.style.top = '0px';
 		banner.index = i;
+		banner.style.willChange = 'transform';
 		bannerContainer.appendChild(banner);
 		roselandBanners.push(banner);
 		i++;
@@ -4492,6 +4494,7 @@ function setupBanner2() {
 		grad.style.zIndex = '202';
 		grad.style.mixBlendMode = 'overlay';
 		grad.index = sun.index;
+		grad.style.willChange = 'transform';
 		bannerContainer.appendChild(grad);
 		roselandBanners.push(grad);
 	}
@@ -4504,6 +4507,7 @@ function setupBanner2() {
 	cloudContainer.style.zIndex = '90';
 	cloudContainer.style.position = 'fixed';
 	cloudContainer.style.overflow = 'clip';
+	cloudContainer.style.willChange = 'transform';
 	bannerContainer.appendChild(cloudContainer);
 	cloudContainer2 = document.createElement('div');
 	cloudContainer2.className = 'non-selectable';
@@ -4514,6 +4518,7 @@ function setupBanner2() {
 	cloudContainer2.style.zIndex = '91';
 	cloudContainer2.style.position = 'fixed';
 	cloudContainer2.style.overflow = 'clip';
+	cloudContainer2.style.willChange = 'transform';
 	bannerContainer.appendChild(cloudContainer2);
 	for (let i = 0; i < 8; i++) {
 		const clouds = document.createElement('img');
@@ -4567,6 +4572,7 @@ function setupBanner2() {
 		critterGlow.style.mixBlendMode = 'plus-lighter';
 		critterGlow.index = 0;
 		critterGlow.noDisplay = true;
+		critterGlow.style.willChange = 'transform';
 		bannerContainer.appendChild(critterGlow);
 		roselandBanners.push(critterGlow);
 
@@ -4582,6 +4588,7 @@ function setupBanner2() {
 		bannerGlow.style.clipPath = 'url(#roselandGlowClipPath)';
 		bannerGlow.index = 0;
 		bannerGlow.style.pointerEvents = 'auto';
+		bannerGlow.style.willChange = 'transform';
 		bannerContainer.appendChild(bannerGlow);
 		roselandBanners.push(bannerGlow);
 		bannerGlow.addEventListener('mouseover', () => {
@@ -4606,6 +4613,7 @@ function setupBanner2() {
 		noseGlow.style.mixBlendMode = 'plus-lighter';
 		noseGlow.index = 0;
 		noseGlow.noDisplay = true;
+		noseGlow.style.willChange = 'transform';
 		bannerContainer.appendChild(noseGlow);
 		roselandBanners.push(noseGlow);
 
@@ -4620,6 +4628,7 @@ function setupBanner2() {
 		bannerGlow2.style.clipPath = 'url(#roselandGlowClipPath2)';
 		bannerGlow2.index = 0;
 		bannerGlow2.style.pointerEvents = 'auto';
+		bannerGlow2.style.willChange = 'transform';
 		bannerContainer.appendChild(bannerGlow2);
 		roselandBanners.push(bannerGlow2);
 		bannerGlow2.addEventListener('mouseover', () => {
@@ -4644,6 +4653,7 @@ function setupBanner2() {
 	leafContainer.style.maskImage = 'linear-gradient(transparent, white, white, white)';
 	leafContainer.style.maskType = 'alpha';
 	leafContainer.style.maskMode = 'alpha';
+	leafContainer.style.willChange = 'transform';
 	bannerContainer.appendChild(leafContainer);
 	for (let i = 0; i < bannerLC; i++) {
 		leaf = document.createElement('img');
