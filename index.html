@@ -1567,6 +1567,8 @@ const STYLES = [
 "JAWS.avif"
 "Silli_Mlep.avif"
 "Silli_Mlep_Rainbow.avif"
+"Silli_BOUNCE.avif"
+"AAAAAAAAAAAAAA.avif"
 "Smiler_Gif_1.avif"
 "Smiler_Gif_2.avif"
 "Smiler_Gif_3.avif"
@@ -2334,7 +2336,7 @@ function spawnStamp(parent, mode, rowIndex) {
 		const animation = stamp.animate(transforms, { duration: time * fpsDelay, easing: 'linear' });
 		stamp.anim = animation;
 		animation.onfinish = () => {
-			const explosion = { x: x1, y: y1, width: stampWidth, height: stampHeight };
+			const explosion = { x: x1, y: y1, width: stampWidth * stampScale, height: stampHeight * stampScale };
 			if (explosion.x < 0) explosion.x = -explosion.width / 2;
 			if (explosion.y < 0) explosion.y = -explosion.height / 2;
 			if (explosion.x + explosion.width > window.innerWidth) explosion.x = window.innerWidth - explosion.width / 2;
@@ -4253,7 +4255,7 @@ function setupGallery() {
 						scale = Math.random() + 0.5;
 					}
 					image.scrollSpeed = scale;
-					image.scale = image.isCloud ? 4 : 2;
+					image.scale = image.isCloud ? 4 : 1.5;
 					image.style.display = 'none';
 					image.style.visibility = 'hidden';
 					image.style.opacity = '0';
