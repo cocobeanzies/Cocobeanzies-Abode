@@ -1278,6 +1278,7 @@ const STAMPS = `
 "tumblr_de7dca64087a1f7edd81c196a6b7fefb_69065524_400.webp"
 "tumblr_610cd57266d0eddb5ad14e4ad3d734f6_fd8ad068_400.webp"
 "tumblr_e0f91ea56f7a1f200c7f0a5fe4ae6ccd_1392f4de_640.webp"
+"tumblr_a4b8d6495d1270b0d98bb1bdc80e5689_5fddcfef_100.webp"
 "vehicle-vehicular-manslaughter...23A22https3A2F2Ftenor.gif"
 "world-so-scary-mononykus.gif"
 "2024-04-02_18-54-10.gif"
@@ -4184,7 +4185,7 @@ function setupGallery() {
 						}
 						endOpacity = `${r}`;
 					}
-					if (anim) {
+					if (1) {
 						const animation = image.animate([
 							{ visibility: 'visible', opacity: '0' },
 							{ opacity: endOpacity }
@@ -4203,7 +4204,7 @@ function setupGallery() {
 						image.style.opacity = endOpacity;
 					}
 				}
-				image.appear = appear;
+				image.appear = (() => { image.style.display = 'block'; requestAnimationFrame(appear) });
 				image.onload = (() => {
 					const originalWidth = image.naturalWidth;
 					const originalHeight = image.naturalHeight;
@@ -4240,7 +4241,7 @@ function setupGallery() {
 				}
 				image.index = i + j / (cloudCount + 1);
 				image.isVisible = true;
-				image.reset = () => {
+				image.reset = (init) => {
 					if (!image.isVisible) return;
 					if (image.anim) image.anim.cancel();
 					image.anim = null;
