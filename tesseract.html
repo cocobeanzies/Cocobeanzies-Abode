@@ -20,8 +20,10 @@
 
   <script>
     // Grab texture URL and load it.
-    <!-- let TEXTURE_URL = document.getElementById('texture-data').textContent.trim(); -->
-	TEXTURE_URL = "https://cdn.discordapp.com/emojis/1296007151902265384.webp?size=160"
+	var url = window.location;
+	let params = new URLSearchParams(url.search);
+	console.log(params);
+	TEXTURE_URL = params.get("texture") || document.getElementById('texture-data').textContent.trim();
     const loader = new THREE.TextureLoader();
     let faceTexture;
     loader.load(TEXTURE_URL, (texture) => {
