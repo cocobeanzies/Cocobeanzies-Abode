@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example Frontend App</title>
+  <style>
+    /* Basic styles for our simple page switching */
+    .page {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+    nav button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation buttons to switch pages -->
+  <nav>
+    <button onclick="showPage('loginPage')">Login</button>
+    <button onclick="showPage('profilePage')">Profile</button>
+    <button onclick="showPage('settingsPage')">Settings</button>
+  </nav>
+
+  <!-- Login Page -->
+  <div id="loginPage" class="page active">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label>
+        Username:
+        <input type="text" name="username" required>
+      </label>
+      <br>
+      <label>
+        Password:
+        <input type="password" name="password" required>
+      </label>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <!-- Profile Page -->
+  <div id="profilePage" class="page">
+    <h1>Profile</h1>
+    <div id="profileData">
+      <!-- Profile information will be injected here -->
+    </div>
+  </div>
+
+  <!-- Settings Page -->
+  <div id="settingsPage" class="page">
+    <h1>Settings</h1>
+    <form id="settingsForm">
+      <label>
+        Email:
+        <input type="email" name="email">
+      </label>
+      <br>
+      <label>
+        Notification Preferences:
+        <select name="notifications">
+          <option value="all">All</option>
+          <option value="important">Important only</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <br>
+      <button type="submit">Save Settings</button>
+    </form>
+  </div>
+
+  <script>
+    // Helper function to show one "page" and hide others
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      // If the profile page is shown, fetch the latest profile data
+      if (pageId === 'profilePage') {
+        fetchProfile();
+      }
+    }
+
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const loginData = {
+        username: formData.get('username'),
+        password: formData.get('password')
+      };
+
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(loginData)
+        });
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Login successful!');
+          // Store the token for future requests (e.g., in localStorage)
+          localStorage.setItem('authToken', result.token);
+          showPage('profilePage'); // Redirect to profile page after login
+        } else {
+          alert('Login failed: ' + (result.message || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login.');
+      }
+    });
+
+    // Fetch profile data from the backend
+    async function fetchProfile() {
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch('/api/profile', {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch profile data');
+        }
+        const profileData = await response.json();
+        displayProfile(profileData);
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+        document.getElementById('profileData').innerText = 'Error loading profile.';
+      }
+    }
+
+    // Display profile data in the Profile page
+    function displayProfile(data) {
+      const profileDiv = document.getElementById('profileData');
+      profileDiv.innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <!-- Add additional profile fields as needed -->
+      `;
+    }
+
+    // Handle settings form submission
+    document.getElementById('settingsForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const settingsData = {
+        email: formData.get('email'),
+        notifications: formData.get('notifications')
+      };
+
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch('/api/settings', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(settingsData)
+        });
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Settings saved successfully!');
+        } else {
+          alert('Error saving settings: ' + (result.message || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('Error saving settings:', error);
+        alert('An error occurred while saving settings.');
+      }
+    });
+  </script>
+</body>
+</html>
