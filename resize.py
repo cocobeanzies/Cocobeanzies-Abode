@@ -115,7 +115,7 @@ def start_proc(sfn, dfn, im, fmt, w, h, alpha, animated, lossless):
 		args = ["ffmpeg", "-y", "-i", sfn, "-max_muxing_queue_size", "99999"]
 	true_lossless = lossless and not animated
 	if fmt == "webp":
-		args.extend(("-vf", f"scale={w}:{h}:flags=area", "-c:v", "libwebp_anim" if animated else "libwebp", "-pix_fmt", ("bgra" if alpha else "bgr24") if true_lossless else ("yuva420p" if alpha else "yuv420p"), "-lossless", *(("1",) if true_lossless else ("0", "-quality", "90" if true_lossless else "75")), "-compression_level", "6", "-loop", "0"))
+		args.extend(("-vf", f"scale={w}:{h}:flags=area", "-c:v", "libwebp_anim" if animated else "libwebp", "-pix_fmt", ("bgra" if alpha else "bgr24") if true_lossless else ("yuva420p" if alpha else "yuv420p"), "-lossless", *(("1",) if true_lossless else ("0", "-quality", "90" if true_lossless else "75")), "-compression_level", "5", "-loop", "0"))
 	elif fmt == "avif":
 		pix = "bgrp" if true_lossless else "yuv420p"
 		bitrate = 16 * 1024 * 1024 if true_lossless else 1024 * 1024
