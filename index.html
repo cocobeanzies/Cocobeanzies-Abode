@@ -3669,7 +3669,7 @@ function updateCanvas() {
 			const tailIndex = ii;
 			const headIndex = Math.min(Math.floor((i - star.eaten) + skip), trail.length - 1);
 			const nextIndex = Math.floor((i - star.eaten) + skip * 2);
-			const inFront = headIndex >= trail.length - skip;
+			const inFront = headIndex > trail.length - skip;
 			const [tx, ty, tz] = trail[tailIndex];
 			const [hx, hy, hz] = trail[headIndex];
 			const [nx, ny, nz] = nextIndex >= trail.length ? [] : trail[nextIndex];
@@ -3732,7 +3732,7 @@ function updateCanvas() {
 				cols.push(...tailColour);
 			}
 
-			if (i >= trail.length * (1 - glowStart)) {
+			if (i + star.eaten >= trail.length * (1 - glowStart)) {
 				let angle;
 				if (inFront) {
 					angle = Math.PI * 3 / 4;
