@@ -1893,7 +1893,7 @@ function playAudio(name, position, callback, loop) {
 	let independent = loop == false;
 	function func() {
 		if (audio.cpfunc) {
-			audio.removeEventListener('canplay', func);
+			audio.removeEventListener('loadeddata', func);
 			audio.cpfunc = null;
 		}
 		player.audio = audio;
@@ -1915,7 +1915,7 @@ function playAudio(name, position, callback, loop) {
 	}
 	if (independent) {
 		audio = document.createElement('audio');
-		audio.addEventListener('canplay', audio.play);
+		audio.addEventListener('loadeddata', callback ? () => {callback(audio.play)} : audio.play);
 		audio.src = "https://cocobeanzies.mizabot.xyz/music/" + name + ".webm";
 	} else if (info) {
 		[player, audio] = info;
@@ -1923,7 +1923,7 @@ function playAudio(name, position, callback, loop) {
 	} else {
 		player = document.createElement('div');
 		audio = document.createElement('audio');
-		audio.addEventListener('canplay', func);
+		audio.addEventListener('loadeddata', callback ? () => {callback(func)} : func);
 		audio.cpfunc = true;
 		if (!independent) audio.setAttribute('loop', true);
 		players[name] = [player, audio];
@@ -2001,6 +2001,7 @@ rightRain.held = 0;
 
 var synchronisedSource = null;
 function playStampVideo(video, audio) {
+	video += `?v=${new Date().getTime()}`;
 	if (synchronisedSource != video) {
 		synchronisedSource = video;
 	} else {
@@ -2008,14 +2009,22 @@ function playStampVideo(video, audio) {
 	}
 	let callback = null;
 	if (synchronisedSource && isVisible(leftBar) && isVisible(rightBar)) {
-		callback = () => {
+		callback = (func) => {
+			function callFunc() {
+				if (!func) return;
+				const call = func;
+				func = null;
+				call();
+			}
 			for (const stamp of document.getElementsByClassName('stamp')) {
+				stamp.onload = callFunc;
 				stamp.src = synchronisedSource;
 				stamp.setAttribute('loading', 'eager');
 				stamp.shape = 'star';
 			}
 			const temp = [];
 			for (const stamp of stampsToReuse) {
+				stamp.onload = callFunc;
 				stamp.src = synchronisedSource;
 				stamp.setAttribute('loading', 'eager');
 				stamp.shape = 'star';
@@ -2048,13 +2057,13 @@ function hideToReuse() {
 }
 
 function peepysTheme() {
-	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFJiaygxg.webp' + `?v=${new Date().getTime()}`, 'peepys-theme');
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFJiaygxg.webp', 'peepys-theme');
 }
 function rickRoll() {
-	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFF4TEJmg.webp' + `?v=${new Date().getTime()}`, 'rickroll');
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/BiFF4TEJmg.webp', 'rickroll');
 }
 function badApple() {
-	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/E38090E69DB1E696B9E3..E5BDB1E7B5B5E38091.webp' + `?v=${new Date().getTime()}`, 'bad-apple');
+	playStampVideo('https://cocobeanzies.mizabot.xyz/stamps/E38090E69DB1E696B9E3..E5BDB1E7B5B5E38091.webp', 'bad-apple');
 }
 
 const stampSoft = 192;
@@ -2152,6 +2161,7 @@ function spawnStamp(parent, mode, rowIndex) {
 		stamp.reused = true;
 		if (stamp.anim) stamp.anim.cancel();
 		stamp.anim = null;
+		stamp.onload = null;
 		while (reuse.length >= stampHard) {
 			reuse.shift().remove();
 		}
@@ -3564,7 +3574,7 @@ function animateUpdate() {
 }
 const starExit = 400;
 function updateCanvas() {
-	if (!camera || !scene || !renderer) return;
+	if (!camera || !scene || !renderer || document.hidden) return;
 	const timestamp = Date.now();
 	const verts = [];
 	const cols = [];
@@ -3573,7 +3583,7 @@ function updateCanvas() {
 	const removed = [];
 	const rect = starContainer.getBoundingClientRect();
 	const radius = Math.max(blackHole.radius, 0);
-	const gravity = 1000000 * (1 + radius * radius * radius / 4096);
+	const gravity = 1000000 * (1 + radius * radius * radius / 4096 / 2);
 	const x = blackHole.radius > 0 ? blackHole.posX : mouseX;
 	const y = blackHole.radius > 0 ? blackHole.posY : mouseY
 	shootingStars.forEach((star) => {
@@ -3583,6 +3593,35 @@ function updateCanvas() {
 		const delay = (timestamp - star.prev) / 1000;
 		star.prev = timestamp;
 		const trail = star.trail;
+		const roche_limit = star.scale * radius * 8;
+		function eat_star(star, r) {
+			if (r > 0) {
+				if (star.scale >= Math.max(shootingStars.length / 256, 1 / 4)) {
+					let z = Math.random() * Math.PI * 2;
+					for (let i = 0; i < 2; i++) {
+						const max_offset = roche_limit / 8;
+						const vmult = (Math.random() + 7) / 8;
+						const star2 = {
+							timestamp: timestamp,
+							prev: timestamp,
+							scale: star.scale / 2,
+							x: star.x,
+							y: star.y,
+							vx: Math.cos(z) * 4 + star.vx * vmult,
+							vy: Math.sin(z) * 4 + star.vy * vmult,
+							eaten: 0,
+							trail: [],
+							times: []
+						}
+						shootingStars.push(star2);
+						z += Math.PI;
+						star.scale -= star2.scale;
+					}
+				}
+			} else {
+				star.eaten++;
+			}
+		}
 		if (!star.eaten) {
 			let rem = delay;
 			let steps = 0;
@@ -3596,15 +3635,14 @@ function updateCanvas() {
 					const dx = mx - star.x;
 					const dy = my - star.y;
 					const z = Math.atan2(dy, dx);
-					const r2 = 1 + dx * dx + dy * dy - radius;
-					if (r2 <= 0) {
-						star.eaten++;
-						break;
+					const r2 = (radius ? 0 : 1) + dx * dx + dy * dy - radius;
+					if (r2 < roche_limit) {
+						eat_star(star, r2);
 					}
 
 					const v2 = 1 + star.vx * star.vx + star.vy * star.vy;
 					// Adaptive timestep
-					dd = Math.min(dd, Math.sqrt(r2) / Math.sqrt(v2) / 64 / Math.max(1, radius / 4));
+					dd = Math.min(dd, Math.sqrt(r2) / Math.sqrt(v2) * 16 / Math.sqrt(gravity));
 
 					ax = gravity * Math.cos(z) / r2;
 					ay = gravity * Math.sin(z) / r2;
@@ -3624,10 +3662,9 @@ function updateCanvas() {
 					const dx = mx - star.x;
 					const dy = my - star.y;
 					const z = Math.atan2(dy, dx);
-					const r2 = 1 + dx * dx + dy * dy - radius;
-					if (r2 <= 0) {
-						star.eaten++;
-						break;
+					const r2 = (radius ? 0 : 1) + dx * dx + dy * dy - radius;
+					if (r2 < roche_limit) {
+						eat_star(star, r2);
 					}
 					ax2 = gravity * Math.cos(z) / r2;
 					ay2 = gravity * Math.sin(z) / r2;
@@ -3646,6 +3683,7 @@ function updateCanvas() {
 				}
 				steps++;
 				rem -= dd;
+				if (star.eaten) break;
 			}
 			const speed = Math.sqrt(star.vx * star.vx + star.vy * star.vy);
 			const maxLength = 256;
@@ -3665,10 +3703,11 @@ function updateCanvas() {
 
 		// Terraria Rainbow Rod effect; create a pentagon at the head, trapezoids at each body, and triangle at the tail
 		// Trail effect has a layered glow for 1/3 of the length
-		const skip = Math.max(1, trail.length / 16);
+		const skip = Math.max(1, trail.length / 32);
 		const width = star.scale / 1024 * sceneResMult;
-		const glow = Math.cbrt(speed) / star.scale / 3;
+		const glow = Math.min(24, Math.sqrt(speed + 4)) / star.scale / 8;
 		const glowStart = 1 / 3;
+		const brightness = Math.min(1, Math.sqrt(star.scale));
 		for (let i = (trail.length - 1) % skip + star.eaten * skip; i < trail.length - 1; i += skip) {
 			const ii = Math.floor(i - star.eaten);
 			const tailIndex = ii;
@@ -3755,8 +3794,8 @@ function updateCanvas() {
 				const t_ry = ty + Math.sin(z + angle) * tailSize2;
 				const t_lx = tx + Math.cos(z - angle) * tailSize2;
 				const t_ly = ty + Math.sin(z - angle) * tailSize2;
-				const headAlpha = ((ii + skip) / trail.length - (1 - glowStart)) / glowStart;
-				const tailAlpha = (ii - skip < trail.length * (1 - glowStart)) ? 0 : (i / trail.length - (1 - glowStart)) / glowStart;
+				const headAlpha = ((ii + skip) / trail.length - (1 - glowStart)) / glowStart * brightness;
+				const tailAlpha = (ii - skip < trail.length * (1 - glowStart)) ? 0 : (i / trail.length - (1 - glowStart)) / glowStart * brightness;
 				const headColour2 = [...headColour, headAlpha];
 				const tailColour2 = [...tailColour, tailAlpha];
 				const altAlpha = [...headColour, 0];
@@ -4776,7 +4815,7 @@ blackHole.style.display = 'none';
 blackHole.style.height = '128px';
 blackHole.posX = 0;
 blackHole.posY = 0;
-blackHole.size = 0;
+blackHole.mass = 0;
 blackHole.radius = 0;
 blackHole.rotation = 0;
 document.body.appendChild(blackHole)
@@ -4791,10 +4830,10 @@ function updateBlackHole() {
 		const rotation = mouseV[0];
 		blackHole.rotation = Math.max(-45, Math.min(45, blackHole.rotation * 0.99 + rotation / 10));
 	}
-	if (blackHole.size > 256) blackHole.size = 256;
-	const size = Math.sqrt(blackHole.size) / 16;
+	if (blackHole.mass > 512) blackHole.mass = 512;
+	const size = Math.cbrt(blackHole.mass) / 6;
 	blackHole.radius = size * 128;
-	blackHole.style.opacity = Math.min(0.9, size * 3);
+	blackHole.style.opacity = Math.min(0.8, blackHole.mass / 128);
 	blackHole.style.transform = `translate(-50.5%, -52%) scale(${size}) rotate(${blackHole.rotation}deg)`;
 }
 
@@ -4805,12 +4844,12 @@ window.onmousedown = () => {
 	HOLDING = true;
 	function func() {
 		if (HOLDING) {
-			blackHole.size = Math.max(blackHole.size + 1, 1);
+			blackHole.mass = Math.max(blackHole.mass + 1, 1);
 			updateBlackHole();
 			requestAnimationFrame(func)
 		} else {
-			blackHole.size -= 1;
-			if (blackHole.size <= 0) {
+			blackHole.mass -= 1;
+			if (blackHole.mass <= 0) {
 				blackHole.style.display = 'none';
 				blackHole.radius = 0;
 			} else {
@@ -4819,7 +4858,9 @@ window.onmousedown = () => {
 			}
 		}
 	}
-	requestAnimationFrame(func);
+	if (!blackHole.radius) {
+		func();
+	}
 }
 window.onmouseup = () => {
 	HOLDING = false;
