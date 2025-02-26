@@ -3669,12 +3669,12 @@ function updateCanvas() {
 		const width = star.scale / 1024 * sceneResMult;
 		const glow = Math.cbrt(speed) / star.scale / 3;
 		const glowStart = 1 / 3;
-		for (let i = star.eaten * skip; i < trail.length - 1; i += skip) {
+		for (let i = (trail.length - 1) % skip + star.eaten * skip; i < trail.length - 1; i += skip) {
 			const ii = Math.floor(i - star.eaten);
 			const tailIndex = ii;
 			const headIndex = Math.min(Math.floor((i - star.eaten) + skip), trail.length - 1);
 			const nextIndex = Math.floor((i - star.eaten) + skip * 2);
-			const inFront = headIndex > trail.length - skip;
+			const inFront = headIndex >= trail.length - 1;
 			const [tx, ty, tz] = trail[tailIndex];
 			const [hx, hy, hz] = trail[headIndex];
 			const [nx, ny, nz] = nextIndex >= trail.length ? [] : trail[nextIndex];
