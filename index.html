@@ -64,7 +64,7 @@
 			pointer-events: none;
 			margin: 0;
 			padding: 0;
-			color: white;
+			color: #f8efff;
 			font-size: 16px;
 			font-family: 'Handlee', 'YRDZST', cursive, sans-serif;
 			font-weight: 400;
@@ -3642,7 +3642,7 @@ function updateCanvas() {
 
 					const v2 = 1 + star.vx * star.vx + star.vy * star.vy;
 					// Adaptive timestep
-					dd = Math.min(dd, Math.sqrt(r2) / Math.sqrt(v2) * 16 / Math.sqrt(gravity));
+					dd = Math.min(dd, Math.max(shootingStars.length / 16777216, Math.sqrt(r2) / Math.sqrt(v2) * 16 / Math.sqrt(gravity)));
 
 					ax = gravity * Math.cos(z) / r2;
 					ay = gravity * Math.sin(z) / r2;
