@@ -3448,7 +3448,7 @@ function spawnParticle(shape, col, x, y, vx, vy, gravity, resistance, minDuratio
 var lastUpdate = 0;
 function animateUpdate() {
 	if (document.hidden) {
-		setTimeout(animateUpdate, 1000);
+		requestAnimationFrame(() => setTimeout(animateUpdate, 500));
 		return;
 	}
 	const currentTime = document.timeline.currentTime;
@@ -3602,7 +3602,7 @@ function updateCanvas() {
 						const max_offset = roche_limit / 8;
 						const vmult = (Math.random() + 7) / 8;
 						const star2 = {
-							timestamp: timestamp,
+							timestamp: timestamp + star.scale / 2,
 							prev: timestamp,
 							scale: star.scale / 2,
 							x: star.x,
@@ -3622,7 +3622,8 @@ function updateCanvas() {
 				star.eaten++;
 			}
 		}
-		if (!star.eaten) {
+		if (delay > 1) eat_star(star);
+		else if (!star.eaten) {
 			let rem = delay;
 			let steps = 0;
 			while (rem > 0) {
