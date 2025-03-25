@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image Matching Challenge</title>
+	<style>
+		/* Base styles */
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+		}
+
+		/* Button styles */
+		.challenge-button {
+			background-color: #4285f4;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: background-color 0.3s;
+		}
+		.challenge-button:hover {
+			background-color: #3367d6;
+		}
+
+		/* Overlay styles */
+		.overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 1000;
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* Popup container styles */
+		.popup {
+			background-color: white;
+			padding: 25px;
+			border-radius: 8px;
+			width: 80%;
+			max-width: 1080px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.popup-header {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+
+		.popup-content {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		/* Image container styles */
+		.image-section {
+			width: 48%;
+			border: 1px solid #ddd;
+			padding: 15px;
+			border-radius: 5px;
+			min-height: 320px;
+		}
+
+		.section-title {
+			margin-top: 0;
+			font-size: 18px;
+			text-align: center;
+			color: #333;
+		}
+
+		/* Draggable item styles */
+		.image-item {
+			margin: 5px;
+			border: 2px solid #ddd;
+			border-radius: 6px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			cursor: move;
+		}
+
+		.source-item {
+			width: 144px;
+			height: 144px;
+			cursor: grab;
+			z-index: 1;
+		}
+
+		.target-slot {
+			width: 232px;
+			height: 232px;
+			background-color: #eaeaea;
+			border: 2px dashed #aaa;
+		}
+
+		.target-slot img {
+			pointer-events: none;
+			width: 232px;
+			height: 232px;
+		}
+
+		.source-item img {
+			pointer-events: none;
+			width: 120px;
+			height: 120px;
+		}
+
+		.matched {
+			border-color: #4CAF50;
+			position: absolute;
+		}
+
+		.matched img {
+			pointer-events: none;
+			width: 96px;
+			height: 96px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Main button to trigger the challenge -->
+	<button class="challenge-button" id="startChallenge">Verify You're Human</button>
+
+	<!-- Overlay and popup container -->
+	<div class="overlay" id="challengeOverlay">
+		<div class="popup">
+			<div class="popup-header">
+				<h2>Match the Images</h2>
+				<p>Drag images from the left to match their corresponding images on the right</p>
+			</div>
+			<div class="popup-content">
+				<!-- Source images (left side) -->
+				<div class="image-section" id="sourceImages">
+				</div>
+
+				<!-- Target slots (right side) -->
+				<div class="image-section" id="targetSlots">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Sound element -->
+	<audio id="successSound" src="/music/fnaf-nose-honk.webm"></audio>
+
+	<script>
+		// Function to apply the Fisher-Yates Shuffle
+		function shuffle(array) {
+
+			// Iterate over the array in reverse order
+			for (let i = array.length - 1; i > 0; i--) {
+
+				// Generate Random Index
+				const j = Math.floor(Math.random() * (i + 1));
+
+				// Swap elements
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const startButton = document.getElementById('startChallenge');
+			const overlay = document.getElementById('challengeOverlay');
+			const successSound = document.getElementById('successSound');
+
+			// Open the challenge popup
+			startButton.addEventListener('click', () => {
+				overlay.style.display = 'flex';
+			});
+
+			// Reset the challenge
+			function resetChallenge() {
+				Array.from(document.getElementsByClassName('target-slot')).forEach((e) => {e.remove()});
+				Array.from(document.getElementsByClassName('source-item')).forEach((e) => {e.remove()});
+				totalMatches = Math.floor(Math.random() * 2 + 5);
+				const sources = [];
+				const targets = [];
+				for (let i = 0; i < totalMatches; i++) {
+					const id = Math.floor(Math.random() * 6);
+					{
+						const div = document.createElement('div');
+						div.className = 'image-item';
+						div.classList.add('source-item');
+						div.setAttribute('draggable', 'true');
+						div.setAttribute('data-match', id);
+						const img = document.createElement('img');
+						const imgi = IMAGES[id];
+						img.src = `/captcha/${imgi}.png`;
+						div.appendChild(img);
+						sources.push(div);
+					}
+					{
+						const div = document.createElement('div');
+						div.className = 'image-item';
+						div.classList.add('target-slot');
+						div.setAttribute('data-match', id);
+						div.isMatched = 0;
+						const img = document.createElement('img');
+						const imgi = IMAGES[id];
+						img.src = `/captcha/${imgi}.gif`;
+						div.appendChild(img);
+						targets.push(div);
+					}
+				}
+				const herrings = Math.floor(Math.random() * 2 + 3);
+				for (let i = 0; i < herrings; i++) {
+					const id = Math.floor(Math.random() * 6);
+					{
+						const div = document.createElement('div');
+						div.className = 'image-item';
+						div.classList.add('source-item');
+						div.setAttribute('draggable', 'true');
+						div.setAttribute('data-match', id);
+						const img = document.createElement('img');
+						const imgi = IMAGES[id];
+						img.src = `/captcha/${imgi}.png`;
+						div.appendChild(img);
+						sources.push(div);
+					}
+				}
+				shuffle(sources);
+				shuffle(targets);
+				sources.forEach((e) => {document.getElementById('sourceImages').appendChild(e)});
+				targets.forEach((e) => {document.getElementById('targetSlots').appendChild(e)});
+				// Drag and drop functionality
+				const sourceItems = document.querySelectorAll('.source-item');
+				const targetSlots = document.querySelectorAll('.target-slot');
+
+				sourceItems.forEach(item => {
+					item.addEventListener('dragstart', dragStart);
+					item.addEventListener('dragend', dragEnd);
+				});
+
+				targetSlots.forEach(slot => {
+					slot.addEventListener('dragover', dragOver);
+					slot.addEventListener('dragenter', dragEnter);
+					slot.addEventListener('dragleave', dragLeave);
+					slot.addEventListener('drop', drop);
+				});
+			}
+
+			var totalMatches = 0;
+			function calculateScore() {
+				let score = 0;
+				Array.from(document.getElementsByClassName('target-slot')).forEach((e) => {score += e.isMatched});
+				console.log(`Score: ${score}`);
+				if (score === totalMatches) {
+					successSound.play();
+					setTimeout(() => {
+						alert('Great job! All matches are correct.');
+						overlay.style.display = 'none';
+						resetChallenge();
+					}, 500);
+				}
+			}
+
+			function dragStart(e) {
+				e.target.style.backgroundColor = '#ff0000';
+				e.target.wasDragged = false;
+				e.dataTransfer.setData('text/plain', e.target.dataset.match);
+				setTimeout(() => {
+					e.target.classList.add('dragging');
+				}, 0);
+			}
+			function dragEnd(e) {
+				e.target.style.backgroundColor = 'transparent';
+				if (e.target.wasDragged) return;
+				e.target.parentElement.isMatched = 0;
+				e.target.remove();
+				e.target.classList.remove('matched');
+				document.getElementById('sourceImages').appendChild(e.target);
+				calculateScore();
+			}
+
+			function dragOver(e) {
+				e.preventDefault();
+			}
+
+			function dragEnter(e) {
+				e.preventDefault();
+				this.classList.add('drag-over');
+			}
+
+			function dragLeave(e) {
+				this.classList.remove('drag-over');
+			}
+
+			function drop(e) {
+				e.preventDefault();
+				this.classList.remove('drag-over');
+				
+				const sourceMatch = e.dataTransfer.getData('text/plain');
+				const targetMatch = this.dataset.match;
+				
+				if (this.children.length > 1) {
+					e = this.children[1];
+					e.remove();
+					e.classList.remove('matched');
+					document.getElementById('sourceImages').appendChild(e);
+				}
+				const sourceDraggedItem = document.querySelector(`.source-item[data-match="${sourceMatch}"]`);
+				sourceDraggedItem.remove();
+				sourceDraggedItem.wasDragged = true;
+				sourceDraggedItem.classList.add('matched');
+				this.appendChild(sourceDraggedItem);
+				this.isMatched = sourceMatch === targetMatch ? 1 : -1;
+				if (this.isMatched) {
+					calculateScore();
+				}
+			}
+
+			const IMAGES = [
+				'left',
+				'up',
+				'right',
+				'down',
+				'inn',
+				'out',
+			];
+			resetChallenge();
+		});
+	</script>
+</body>
+</html>
