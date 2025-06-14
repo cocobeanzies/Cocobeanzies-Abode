@@ -140,7 +140,7 @@ def start_proc(sfn, dfn, im, fmt, w, h, alpha, animated, lossless):
 	else:
 		raise NotImplementedError(fmt)
 	args.append(dfn)
-	print(sfn, dfn, fmt, w, h, alpha, animated, lossless, args)
+	print(sfn, dfn, fmt, w, h, alpha, animated, lossless, args, encoding="utf-8")
 	if is_png:
 		proc = subprocess.Popen(args, stdin=subprocess.PIPE)
 		proc.stdin.write(np.asanyarray(im).data)
