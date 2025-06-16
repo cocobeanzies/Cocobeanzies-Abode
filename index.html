@@ -586,6 +586,24 @@
 				0 0 16px #e0ffff,
 				0 0 24px #ffffff;
 		}
+		.pulse {
+			animation: pulsing 6s infinite;
+		}
+		@keyframes pulsing {
+			0%, 100% {
+				text-shadow:
+					0 0 4px #c0ffff,
+					0 0 8px #e0ffff,
+					0 0 12px #ffffff;
+			}
+			25% {
+				text-shadow:
+					0 0 6px #c0ffff,
+					0 0 12px #d0ffff,
+					0 0 18px #e0ffff,
+					0 0 24px #ffffff;
+			}
+		}
 
 		.emoji {
 			width: 1em;
@@ -959,10 +977,10 @@
 	</div>
 	<div id="content" class="sub-anim">
 		<h1 id="titles" class="heading">
-			<div class="bullet"></div><span>Coco</span>
-			<div class="bullet"></div><span>they/them</span>
-			<div class="bullet"></div><span>non-binary</span>
-			<div class="bullet"></div><span>non-theistic</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -6s">Coco</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -5s">they/them</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -4s">non-binary</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -3s">non-theistic</span>
 			<div class="bullet"></div>
 		</h1>
 		<h1 id="socials">
@@ -1070,8 +1088,8 @@
 	</div>
 	<div id="content3">
 		<h1 class="heading">
-			<div class="bullet"></div><span>Art Styles</span>
-			<div class="bullet"></div><span>Commissions</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -6s">Art Styles</span>
+			<div class="bullet"></div><span class="pulse" style="animation-delay: -3s">Commissions</span>
 			<div class="bullet"></div>
 		</h1>
 		<div class="container">
