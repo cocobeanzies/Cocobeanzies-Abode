@@ -1,4 +1,5 @@
 import os
+os.environ["PYTHONUTF8"] = "1"
 from math import *
 from PIL import Image
 import numpy as np
@@ -140,7 +141,7 @@ def start_proc(sfn, dfn, im, fmt, w, h, alpha, animated, lossless):
 	else:
 		raise NotImplementedError(fmt)
 	args.append(dfn)
-	print(" ".join(map(str, (sfn, dfn, fmt, w, h, alpha, animated, lossless, args))).encode("utf-8", "surrogatepass").decode("utf-8", "replace"))
+	print(" ".join(map(str, (sfn, dfn, fmt, w, h, alpha, animated, lossless, args))))
 	if is_png:
 		proc = subprocess.Popen(args, stdin=subprocess.PIPE)
 		proc.stdin.write(np.asanyarray(im).data)
