@@ -1,9 +1,10 @@
 import os
 os.environ["PYTHONUTF8"] = "1"
+import json
 from math import *
-from PIL import Image
-import numpy as np
 import subprocess
+import numpy as np
+from PIL import Image
 
 def max_size(w, h, maxsize, force=False):
 	s = w * h
@@ -327,6 +328,51 @@ for info in inputs.split("\n\n"):
 			else:
 				animated = True
 			start_proc(sfn, dfn, im2, fmt, w, h, alpha, animated, lossless)
+
+with open("index.html", "r+", encoding="utf-8") as f:
+	text = f.read()
+	first, content = text.split("//// BEGIN DYNAMIC CONTENT", 1)
+	content, last = text.split("//// END DYNAMIC CONTENT", 1)
+
+	content = f"""//// BEGIN DYNAMIC CONTENT
+
+const STAMPS = {json.dumps(sorted(os.listdir("stamps")))};
+
+const JWST = {json.dumps(sorted(os.listdir("jwst")))};
+
+""" + """/// Style Gallery
+const STYLES = [
+	{
+		name: "Lineless Rendered",
+		path: "lineless-rendered",
+		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-rendered")))) + """,
+		shuffle: true
+	}, {
+		name: "Lineless Cell Shade",
+		path: "lineless-cell-shade",
+		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-cell-shade")))) + """,
+		shuffle: true
+	}, {
+		name: "Lined Cell Shade",
+		path: "lined-cell-shade",
+		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade")))) + """,
+		shuffle: true
+	}, {
+		name: "Animated",
+		path: "animated",
+		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated")))) + """,
+		shuffle: true,
+		animated: true
+	}
+]
+
+//// END DYNAMIC CONTENT
+"""
+
+	text = first + content + last
+	f.seek(0)
+	f.truncate(len(text))
+	f.write(text)
 
 for proc in procs:
 	proc.wait()
