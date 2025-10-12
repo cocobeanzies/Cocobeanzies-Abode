@@ -331,8 +331,25 @@ for info in inputs.split("\n\n"):
 
 with open("index.html", "r+", encoding="utf-8") as f:
 	text = f.read()
-	first, content = text.split("//// BEGIN DYNAMIC CONTENT", 1)
-	content, last = text.split("//// END DYNAMIC CONTENT", 1)
+	first, content = text.split("<!-- BEGIN DYNAMIC IMAGES -->", 1)
+	images, content = content.split("<!-- END DYNAMIC IMAGES -->", 1)
+	middle, content = content.split("//// BEGIN DYNAMIC CONTENT", 1)
+	content, last = content.split("//// END DYNAMIC CONTENT", 1)
+
+	image_map = {
+		"lineless-rendered": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-rendered"))),
+		"lineless-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-cell-shade"))),
+		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade"))),
+		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated"))),
+	}
+	imagelist = "".join(f'<img id="{k}/{v}" style="display:none" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0]} by Cocobeanzies">' for k in image_map for v in image_map[k])
+	images = f"""<!-- BEGIN DYNAMIC IMAGES -->
+
+{imagelist}
+
+<!-- END DYNAMIC IMAGES -->
+
+"""
 
 	content = f"""//// BEGIN DYNAMIC CONTENT
 
@@ -345,31 +362,35 @@ const STYLES = [
 	{
 		name: "Lineless Rendered",
 		path: "lineless-rendered",
-		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-rendered")))) + """,
+		images: """ + json.dumps(image_map["lineless-rendered"]) + """,
 		shuffle: true
 	}, {
 		name: "Lineless Cell Shade",
 		path: "lineless-cell-shade",
-		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-cell-shade")))) + """,
+		images: """ + json.dumps(image_map["lineless-cell-shade"]) + """,
 		shuffle: true
 	}, {
 		name: "Lined Cell Shade",
 		path: "lined-cell-shade",
-		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade")))) + """,
+		images: """ + json.dumps(image_map["lined-cell-shade"]) + """,
 		shuffle: true
 	}, {
 		name: "Animated",
 		path: "animated",
-		images: """ + json.dumps(sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated")))) + """,
+		images: """ + json.dumps(image_map["animated"]) + """,
 		shuffle: true,
 		animated: true
 	}
 ]
 
 //// END DYNAMIC CONTENT
+
 """
 
-	text = first + content + last
+	text = first + images + middle + content + last.strip()
+	# with open("test.html", "w", encoding="utf-8") as f:
+		# f.write(text)
+	# raise
 	f.seek(0)
 	f.truncate(len(text))
 	f.write(text)
