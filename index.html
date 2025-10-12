@@ -3939,19 +3939,19 @@ function updateGalleryScroll(cancelAfter) {
 	lastScroll = currentTime;
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	const reqHeight = snakeGame.isRendered ? 2000 : 1600;
-	if (reqHeight - scrollTop > window.innerHeight) {
-		STYLES.forEach((style) => {
-			style.elements.forEach((image) => {
-				image.reset();
-			});
-		});
-		content2.style.display = 'none';
-		background.style.backgroundImage = 'none';
-		background.style.backgroundColor = '#1f003f';
-		return;
-	}
+	// if (reqHeight - scrollTop > window.innerHeight) {
+	// 	STYLES.forEach((style) => {
+	// 		style.elements.forEach((image) => {
+	// 			image.reset();
+	// 		});
+	// 	});
+	// 	content2.style.display = 'none';
+	// 	background.style.backgroundImage = 'none';
+	// 	background.style.backgroundColor = '#1f003f';
+	// 	return;
+	// }
 	function updateScrollDown() {
-		content2.style.display = 'block';
+		// content2.style.display = 'block';
 		const rect = content2.getBoundingClientRect();
 		const start = -rect.y - imageScale;
 		const end = -rect.y + window.innerHeight + imageScale;
