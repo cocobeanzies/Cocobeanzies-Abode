@@ -3742,9 +3742,7 @@ function setupGallery() {
 				} else {
 					fn2 = url2.split("/styles/", 2)[1];
 					image = document.getElementById(fn2);
-					temp = fn2.split("/", 2)[1].split(".");
-					temp.pop();
-					image.alt = temp.join(".").replaceAll("_", " ") + " by Cocobeanzies";
+					if (!image) return;
 					full_url = "https://cocobeanzies.mizabot.xyz/styles-full/" + fn2;
 				}
 				image.isCloud = j;
