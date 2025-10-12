@@ -342,7 +342,7 @@ with open("index.html", "r+", encoding="utf-8") as f:
 		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade"))),
 		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated"))),
 	}
-	imagelist = "".join(f'<img id="{k}/{v}" style="display:none" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0]} by Cocobeanzies">' for k in image_map for v in image_map[k])
+	imagelist = "".join(f'<img id="{k}/{v}" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0]} by Cocobeanzies">' for k in image_map for v in image_map[k])
 	images = f"""<!-- BEGIN DYNAMIC IMAGES -->
 
 {imagelist}
@@ -387,7 +387,7 @@ const STYLES = [
 
 """
 
-	text = first + images + middle + content + last.strip()
+	text = first + images + middle.lstrip() + content + last.strip()
 	# with open("test.html", "w", encoding="utf-8") as f:
 		# f.write(text)
 	# raise
