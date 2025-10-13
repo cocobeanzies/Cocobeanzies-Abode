@@ -343,7 +343,7 @@ with open("index.html", "r+", encoding="utf-8") as f:
 		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade"))),
 		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated"))),
 	}
-	imagelist = "".join(f'<img id="{(k + "/" + v).replace("-", "$")}" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0]} by Cocobeanzies">' for k in image_map for v in image_map[k])
+	imagelist = "\n".join(f'<img id="{(k + "/" + v).replace("\"", "$")}" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("_", " ")} by Cocobeanzies">' for k in image_map for v in image_map[k])
 	images = f"""<!-- BEGIN DYNAMIC IMAGES -->
 
 {imagelist}
@@ -395,6 +395,22 @@ const STYLES = [
 	f.seek(0)
 	f.truncate(len(text))
 	f.write(text)
+
+images = "\n".join(f"""<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/{k}/{v}</image:loc>
+<image:caption>{v.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("_", " ")} by Cocobeanzies</image:caption>
+<image:title>{v.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("_", " ")}</image:title>
+</image:image>""" for k in image_map for v in image_map[k])
+with open("sitemap.xml", "w", encoding="utf-8") as f:
+	f.write(f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://cocobeanzies.mizabot.xyz</loc>
+{images}
+  </url>
+</urlset>""")
 
 for proc in procs:
 	proc.wait()
