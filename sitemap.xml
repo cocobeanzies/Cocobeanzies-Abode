@@ -250,6 +250,11 @@
 <image:title>Bad Dog</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Beach.webp</image:loc>
+<image:caption>Beach by Cocobeanzies</image:caption>
+<image:title>Beach</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Celestial Elegance.webp</image:loc>
 <image:caption>Celestial Elegance by Cocobeanzies</image:caption>
 <image:title>Celestial Elegance</image:title>
@@ -403,6 +408,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Training Session.webp</image:loc>
 <image:caption>Training Session by Cocobeanzies</image:caption>
 <image:title>Training Session</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Underwater.webp</image:loc>
+<image:caption>Underwater by Cocobeanzies</image:caption>
+<image:title>Underwater</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Wanderlust.webp</image:loc>
