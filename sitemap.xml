@@ -75,6 +75,11 @@
 <image:title>Crown</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless-cell-shade/DDI.webp</image:loc>
+<image:caption>DDI by Cocobeanzies</image:caption>
+<image:title>DDI</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless-cell-shade/Eevee.webp</image:loc>
 <image:caption>Eevee by Cocobeanzies</image:caption>
 <image:title>Eevee</image:title>
@@ -300,6 +305,11 @@
 <image:title>Check</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Coco1.webp</image:loc>
+<image:caption>Coco1 by Cocobeanzies</image:caption>
+<image:title>Coco1</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Crowpen.webp</image:loc>
 <image:caption>Crowpen by Cocobeanzies</image:caption>
 <image:title>Crowpen</image:title>
@@ -360,6 +370,11 @@
 <image:title>Jitter</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Jord.webp</image:loc>
+<image:caption>Jord by Cocobeanzies</image:caption>
+<image:title>Jord</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Kiwa!.webp</image:loc>
 <image:caption>Kiwa! by Cocobeanzies</image:caption>
 <image:title>Kiwa!</image:title>
@@ -393,6 +408,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Ribbons!.webp</image:loc>
 <image:caption>Ribbons! by Cocobeanzies</image:caption>
 <image:title>Ribbons!</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Sewer Dweller 2.webp</image:loc>
+<image:caption>Sewer Dweller 2 by Cocobeanzies</image:caption>
+<image:title>Sewer Dweller 2</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Siilence.webp</image:loc>
@@ -468,6 +488,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Wanderlust.webp</image:loc>
 <image:caption>Wanderlust by Cocobeanzies</image:caption>
 <image:title>Wanderlust</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Wildflower.webp</image:loc>
+<image:caption>Wildflower by Cocobeanzies</image:caption>
+<image:title>Wildflower</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/✨2025-05-02 🖌️3.webp</image:loc>
