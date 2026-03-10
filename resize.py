@@ -337,11 +337,17 @@ with open("index.html", "r+", encoding="utf-8") as f:
 	middle, content = content.split("//// BEGIN DYNAMIC CONTENT", 1)
 	content, last = content.split("//// END DYNAMIC CONTENT", 1)
 
+	def try_listdir(path):
+		try:
+			return os.listdir(path)
+		except FileNotFoundError:
+			return []
+
 	image_map = {
-		"lineless-rendered": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-rendered"))),
-		"lineless-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lineless-cell-shade"))),
-		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), os.listdir("styles/lined-cell-shade"))),
-		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), os.listdir("styles/animated"))),
+		"lineless-rendered": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lineless-rendered"))),
+		"lineless-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lineless-cell-shade"))),
+		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lined-cell-shade"))),
+		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), try_listdir("styles/animated"))),
 	}
 	imagelist = "\n".join(f'<img id="{(k + "/" + v).replace("\"", "$")}" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("_", " ")} by Cocobeanzies">' for k in image_map for v in image_map[k])
 	images = f"""<!-- BEGIN DYNAMIC IMAGES -->
@@ -407,7 +413,7 @@ with open("sitemap.xml", "w", encoding="utf-8") as f:
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://cocobeanzies.mizabot.xyz</loc>
+	<loc>https://cocobeanzies.mizabot.xyz</loc>
 {images}
   </url>
 </urlset>""")
