@@ -344,9 +344,8 @@ with open("index.html", "r+", encoding="utf-8") as f:
 			return []
 
 	image_map = {
-		"lineless-rendered": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lineless-rendered"))),
-		"lineless-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lineless-cell-shade"))),
-		"lined-cell-shade": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lined-cell-shade"))),
+		"lineless": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lineless"))),
+		"lined": sorted(filter((lambda fn: fn.endswith(".webp")), try_listdir("styles/lined"))),
 		"animated": sorted(filter((lambda fn: fn.endswith(".avif")), try_listdir("styles/animated"))),
 	}
 	imagelist = "\n".join(f'<img id="{(k + "/" + v).replace("\"", "$")}" loading="lazy" src="/styles/{k}/{v}" alt="{v.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("_", " ")} by Cocobeanzies">' for k in image_map for v in image_map[k])
@@ -367,22 +366,17 @@ const JWST = {json.dumps(sorted(os.listdir("jwst")))};
 """ + """/// Style Gallery
 const STYLES = [
 	{
-		name: "Lineless Rendered",
-		path: "lineless-rendered",
-		images: """ + json.dumps(image_map["lineless-rendered"]) + """,
+		name: "Lineless, Cell Shade or Rendering",
+		path: "lineless",
+		images: """ + json.dumps(image_map["lineless"]) + """,
 		shuffle: true
 	}, {
-		name: "Lineless Cell Shade",
-		path: "lineless-cell-shade",
-		images: """ + json.dumps(image_map["lineless-cell-shade"]) + """,
+		name: "Lined, Typically Cell Shade",
+		path: "lined",
+		images: """ + json.dumps(image_map["lined"]) + """,
 		shuffle: true
 	}, {
-		name: "Lined Cell Shade",
-		path: "lined-cell-shade",
-		images: """ + json.dumps(image_map["lined-cell-shade"]) + """,
-		shuffle: true
-	}, {
-		name: "Animated",
+		name: "Animated, Pixel or Frame-by-Frame",
 		path: "animated",
 		images: """ + json.dumps(image_map["animated"]) + """,
 		shuffle: true,

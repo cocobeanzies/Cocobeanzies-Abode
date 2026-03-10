@@ -1104,12 +1104,12 @@
 	</div>
 <!-- BEGIN DYNAMIC IMAGES -->
 
-<img id="lineless-cell-shade/Haruko.webp" loading="lazy" src="/styles/lineless-cell-shade/Haruko.webp" alt="Haruko by Cocobeanzies">
-<img id="lined-cell-shade/Comet's Shy Wave.webp" loading="lazy" src="/styles/lined-cell-shade/Comet's Shy Wave.webp" alt="Comet's Shy Wave by Cocobeanzies">
-<img id="lined-cell-shade/Hewo!.webp" loading="lazy" src="/styles/lined-cell-shade/Hewo!.webp" alt="Hewo! by Cocobeanzies">
-<img id="lined-cell-shade/Konata!.webp" loading="lazy" src="/styles/lined-cell-shade/Konata!.webp" alt="Konata! by Cocobeanzies">
-<img id="lined-cell-shade/Little Enida.webp" loading="lazy" src="/styles/lined-cell-shade/Little Enida.webp" alt="Little Enida by Cocobeanzies">
-<img id="lined-cell-shade/The Rainbow Graduate!.webp" loading="lazy" src="/styles/lined-cell-shade/The Rainbow Graduate!.webp" alt="The Rainbow Graduate! by Cocobeanzies">
+<img id="lineless/Haruko.webp" loading="lazy" src="/styles/lineless/Haruko.webp" alt="Haruko by Cocobeanzies">
+<img id="lined/Comet's Shy Wave.webp" loading="lazy" src="/styles/lined/Comet's Shy Wave.webp" alt="Comet's Shy Wave by Cocobeanzies">
+<img id="lined/Hewo!.webp" loading="lazy" src="/styles/lined/Hewo!.webp" alt="Hewo! by Cocobeanzies">
+<img id="lined/Konata!.webp" loading="lazy" src="/styles/lined/Konata!.webp" alt="Konata! by Cocobeanzies">
+<img id="lined/Little Enida.webp" loading="lazy" src="/styles/lined/Little Enida.webp" alt="Little Enida by Cocobeanzies">
+<img id="lined/The Rainbow Graduate!.webp" loading="lazy" src="/styles/lined/The Rainbow Graduate!.webp" alt="The Rainbow Graduate! by Cocobeanzies">
 <img id="animated/Bnu.avif" loading="lazy" src="/styles/animated/Bnu.avif" alt="Bnu by Cocobeanzies">
 <img id="animated/Bnu2.avif" loading="lazy" src="/styles/animated/Bnu2.avif" alt="Bnu2 by Cocobeanzies">
 <img id="animated/Kingu.avif" loading="lazy" src="/styles/animated/Kingu.avif" alt="Kingu by Cocobeanzies">
@@ -1130,22 +1130,17 @@ const JWST = ["EIGER1.avif", "EIGER1.webp", "JADES2.avif", "JADES2.webp", "L1527
 /// Style Gallery
 const STYLES = [
 	{
-		name: "Lineless Rendered",
-		path: "lineless-rendered",
-		images: [],
-		shuffle: true
-	}, {
-		name: "Lineless Cell Shade",
-		path: "lineless-cell-shade",
+		name: "Lineless, Cell Shade or Rendering",
+		path: "lineless",
 		images: ["Haruko.webp"],
 		shuffle: true
 	}, {
-		name: "Lined Cell Shade",
-		path: "lined-cell-shade",
+		name: "Lined, Typically Cell Shade",
+		path: "lined",
 		images: ["Comet's Shy Wave.webp", "Hewo!.webp", "Konata!.webp", "Little Enida.webp", "The Rainbow Graduate!.webp"],
 		shuffle: true
 	}, {
-		name: "Animated",
+		name: "Animated, Pixel or Frame-by-Frame",
 		path: "animated",
 		images: ["Bnu.avif", "Bnu2.avif", "Kingu.avif", "Waterfall_Animation.avif"],
 		shuffle: true,
@@ -3721,12 +3716,27 @@ function setupGallery() {
 		content2.appendChild(subtitle);
 		newHeight += imageSep;
 		style.top = newHeight;
-		Array.from(style.name).forEach((c, i) => {
+		[name1, name2] = style.name.split(',', 2);
+		name1 += ' ­';
+		Array.from(name1).forEach((c, i) => {
+			const ch = document.createElement('span');
+			if (c != ' ' && c != '­') ch.className = 'subtext';
+			ch.textContent = c;
+			const d = Math.abs((i - style.name.length + 1) / (style.name.length - 1) + 0.5) * 2 / 20 + n - STYLES.length;
+			ch.style.animationDelay = `${d}s`;
+			subtitle.appendChild(ch);
+		});
+		Array.from(name2).forEach((c, i) => {
+			i += name1.length;
 			const ch = document.createElement('span');
 			if (c != ' ') ch.className = 'subtext';
 			ch.textContent = c;
 			const d = Math.abs((i - style.name.length + 1) / (style.name.length - 1) + 0.5) * 2 / 20 + n - STYLES.length;
+			if (c != ' ') ch.style.display = 'inline-block';
 			ch.style.animationDelay = `${d}s`;
+			ch.style.fontSize = '24px';
+			ch.style.transform = 'translateY(-6px)';
+			if (c == 'a') ch.style.width = '12px';
 			subtitle.appendChild(ch);
 		});
 		style.positions = [];
