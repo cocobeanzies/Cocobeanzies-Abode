@@ -140,6 +140,11 @@
 <image:title>Golden</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless-cell-shade/Haruko.webp</image:loc>
+<image:caption>Haruko by Cocobeanzies</image:caption>
+<image:title>Haruko</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless-cell-shade/Kali Says Hi!.webp</image:loc>
 <image:caption>Kali Says Hi! by Cocobeanzies</image:caption>
 <image:title>Kali Says Hi!</image:title>
@@ -315,6 +320,11 @@
 <image:title>Coco1</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Comet's Shy Wave.webp</image:loc>
+<image:caption>Comet's Shy Wave by Cocobeanzies</image:caption>
+<image:title>Comet's Shy Wave</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Crowpen.webp</image:loc>
 <image:caption>Crowpen by Cocobeanzies</image:caption>
 <image:title>Crowpen</image:title>
@@ -355,6 +365,11 @@
 <image:title>Fang</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Hewo!.webp</image:loc>
+<image:caption>Hewo! by Cocobeanzies</image:caption>
+<image:title>Hewo!</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Hy.webp</image:loc>
 <image:caption>Hy by Cocobeanzies</image:caption>
 <image:title>Hy</image:title>
@@ -385,9 +400,19 @@
 <image:title>Kiwa!</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Konata!.webp</image:loc>
+<image:caption>Konata! by Cocobeanzies</image:caption>
+<image:title>Konata!</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Lavender.webp</image:loc>
 <image:caption>Lavender by Cocobeanzies</image:caption>
 <image:title>Lavender</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Little Enida.webp</image:loc>
+<image:caption>Little Enida by Cocobeanzies</image:caption>
+<image:title>Little Enida</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Manatee.webp</image:loc>
@@ -480,6 +505,11 @@
 <image:title>Thankfulness</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/The Rainbow Graduate!.webp</image:loc>
+<image:caption>The Rainbow Graduate! by Cocobeanzies</image:caption>
+<image:title>The Rainbow Graduate!</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined-cell-shade/Toffee.webp</image:loc>
 <image:caption>Toffee by Cocobeanzies</image:caption>
 <image:title>Toffee</image:title>
@@ -535,6 +565,16 @@
 <image:title>Are You Serious...</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Bnu.avif</image:loc>
+<image:caption>Bnu by Cocobeanzies</image:caption>
+<image:title>Bnu</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Bnu2.avif</image:loc>
+<image:caption>Bnu2 by Cocobeanzies</image:caption>
+<image:title>Bnu2</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Comet_Chibi.avif</image:loc>
 <image:caption>Comet Chibi by Cocobeanzies</image:caption>
 <image:title>Comet Chibi</image:title>
@@ -553,6 +593,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Headbop.avif</image:loc>
 <image:caption>Headbop by Cocobeanzies</image:caption>
 <image:title>Headbop</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Kingu.avif</image:loc>
+<image:caption>Kingu by Cocobeanzies</image:caption>
+<image:title>Kingu</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Left_Right_Left_Right.avif</image:loc>
@@ -603,6 +648,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Silli_Yapping_1.avif</image:loc>
 <image:caption>Silli Yapping 1 by Cocobeanzies</image:caption>
 <image:title>Silli Yapping 1</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Waterfall_Animation.avif</image:loc>
+<image:caption>Waterfall Animation by Cocobeanzies</image:caption>
+<image:title>Waterfall Animation</image:title>
 </image:image>
   </url>
 </urlset>
