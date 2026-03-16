@@ -5,6 +5,11 @@
   <url>
 	<loc>https://cocobeanzies.mizabot.xyz</loc>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Andre.webp</image:loc>
+<image:caption>Andre by Cocobeanzies</image:caption>
+<image:title>Andre</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Haruko.webp</image:loc>
 <image:caption>Haruko by Cocobeanzies</image:caption>
 <image:title>Haruko</image:title>
@@ -28,6 +33,16 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Little Enida.webp</image:loc>
 <image:caption>Little Enida by Cocobeanzies</image:caption>
 <image:title>Little Enida</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Silliam.webp</image:loc>
+<image:caption>Silliam by Cocobeanzies</image:caption>
+<image:title>Silliam</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Spacey Jackal.webp</image:loc>
+<image:caption>Spacey Jackal by Cocobeanzies</image:caption>
+<image:title>Spacey Jackal</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/The Rainbow Graduate!.webp</image:loc>
