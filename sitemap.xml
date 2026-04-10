@@ -15,6 +15,21 @@
 <image:title>Haruko</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Mae.webp</image:loc>
+<image:caption>Mae by Cocobeanzies</image:caption>
+<image:title>Mae</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Wowzie.webp</image:loc>
+<image:caption>Wowzie by Cocobeanzies</image:caption>
+<image:title>Wowzie</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Bubble!.webp</image:loc>
+<image:caption>Bubble! by Cocobeanzies</image:caption>
+<image:title>Bubble!</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Clione.webp</image:loc>
 <image:caption>Clione by Cocobeanzies</image:caption>
 <image:title>Clione</image:title>
@@ -68,6 +83,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Bnu2.avif</image:loc>
 <image:caption>Bnu2 by Cocobeanzies</image:caption>
 <image:title>Bnu2</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Fimsh Brained.avif</image:loc>
+<image:caption>Fimsh Brained by Cocobeanzies</image:caption>
+<image:title>Fimsh Brained</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Kingu.avif</image:loc>
