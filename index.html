@@ -1094,6 +1094,7 @@
 <img id="lineless/Andre.webp" loading="lazy" src="/styles/lineless/Andre.webp" alt="Andre by Cocobeanzies">
 <img id="lineless/Haruko.webp" loading="lazy" src="/styles/lineless/Haruko.webp" alt="Haruko by Cocobeanzies">
 <img id="lineless/Mae.webp" loading="lazy" src="/styles/lineless/Mae.webp" alt="Mae by Cocobeanzies">
+<img id="lineless/The Touch of Color.webp" loading="lazy" src="/styles/lineless/The Touch of Color.webp" alt="The Touch of Color by Cocobeanzies">
 <img id="lineless/Wowzie.webp" loading="lazy" src="/styles/lineless/Wowzie.webp" alt="Wowzie by Cocobeanzies">
 <img id="lined/Bubble!.webp" loading="lazy" src="/styles/lined/Bubble!.webp" alt="Bubble! by Cocobeanzies">
 <img id="lined/Clione.webp" loading="lazy" src="/styles/lined/Clione.webp" alt="Clione by Cocobeanzies">
@@ -1102,6 +1103,7 @@
 <img id="lined/Hewo!.webp" loading="lazy" src="/styles/lined/Hewo!.webp" alt="Hewo! by Cocobeanzies">
 <img id="lined/Konata!.webp" loading="lazy" src="/styles/lined/Konata!.webp" alt="Konata! by Cocobeanzies">
 <img id="lined/Little Enida.webp" loading="lazy" src="/styles/lined/Little Enida.webp" alt="Little Enida by Cocobeanzies">
+<img id="lined/Nostalgia Wind.webp" loading="lazy" src="/styles/lined/Nostalgia Wind.webp" alt="Nostalgia Wind by Cocobeanzies">
 <img id="lined/Silliam.webp" loading="lazy" src="/styles/lined/Silliam.webp" alt="Silliam by Cocobeanzies">
 <img id="lined/Spacey Jackal.webp" loading="lazy" src="/styles/lined/Spacey Jackal.webp" alt="Spacey Jackal by Cocobeanzies">
 <img id="lined/The Rainbow Graduate!.webp" loading="lazy" src="/styles/lined/The Rainbow Graduate!.webp" alt="The Rainbow Graduate! by Cocobeanzies">
@@ -1143,12 +1145,12 @@ const STYLES = [
 	{
 		name: "Lineless, Cell Shade or Rendering",
 		path: "lineless",
-		images: ["Andre.webp", "Haruko.webp", "Mae.webp", "Wowzie.webp"],
+		images: ["Andre.webp", "Haruko.webp", "Mae.webp", "The Touch of Color.webp", "Wowzie.webp"],
 		shuffle: true
 	}, {
 		name: "Lined, Typically Cell Shade",
 		path: "lined",
-		images: ["Bubble!.webp", "Clione.webp", "Comet's Shy Wave.webp", "Enida.webp", "Hewo!.webp", "Konata!.webp", "Little Enida.webp", "Silliam.webp", "Spacey Jackal.webp", "The Rainbow Graduate!.webp"],
+		images: ["Bubble!.webp", "Clione.webp", "Comet's Shy Wave.webp", "Enida.webp", "Hewo!.webp", "Konata!.webp", "Little Enida.webp", "Nostalgia Wind.webp", "Silliam.webp", "Spacey Jackal.webp", "The Rainbow Graduate!.webp"],
 		shuffle: true
 	}, {
 		name: "Animated, Pixel or Frame-by-Frame",
@@ -3156,7 +3158,11 @@ function animateUpdate() {
 }
 const starExit = 400;
 function updateCanvas() {
-	if (!camera || !scene || !renderer || document.hidden) return;
+	if (!camera || !scene || !renderer || document.hidden) {
+		shootingStars.length = 0;
+		if (renderer) renderer.clear();
+		return;
+	}
 	const timestamp = Date.now();
 	const verts = [];
 	const cols = [];
@@ -3441,9 +3447,9 @@ function generateStars() {
 			timestamp: timestamp,
 			prev: timestamp,
 			scale: scale,
-			x: Math.random() * rect.width + rect.x,
-			y: -150,
-			vx: (Math.random() * 15 - 120) * scale,
+			x: Math.random() * (rect.width + 128 / 340 * (rect.height + 60)),
+			y: -60,
+			vx: (Math.random() * 16 - 120) * scale,
 			vy: (Math.random() * 40 + 320) * scale,
 			eaten: 0,
 			trail: [],
@@ -3604,11 +3610,11 @@ function setupScene() {
 	const material2 = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, side: THREE.DoubleSide });
 	const triangle2 = new THREE.Mesh(geometry2, material2);
 	scene.add(triangle2);
-	const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-	directionalLight.position.set(5, 5, 5);
-	scene.add(directionalLight);
-	const ambientLight = new THREE.AmbientLight(0x404040);
-	scene.add(ambientLight);
+	// const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+	// directionalLight.position.set(5, 5, 5);
+	// scene.add(directionalLight);
+	// const ambientLight = new THREE.AmbientLight(0x404040);
+	// scene.add(ambientLight);
 }
 setupScene();
 function resizeCanvas() {
@@ -3638,7 +3644,9 @@ function resizeCanvas() {
 			const s = 1 / sceneResMult;
 			starContainer.style.transform = `scale(${s})`;
 		}
+		renderer.clear();
 	}
+	shootingStars.length = 0;
 }
 resizeCanvas();
 const debouncedResizeCanvas = debounce(resizeCanvas, 100);

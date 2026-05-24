@@ -20,6 +20,11 @@
 <image:title>Mae</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/The Touch of Color.webp</image:loc>
+<image:caption>The Touch of Color by Cocobeanzies</image:caption>
+<image:title>The Touch of Color</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Wowzie.webp</image:loc>
 <image:caption>Wowzie by Cocobeanzies</image:caption>
 <image:title>Wowzie</image:title>
@@ -58,6 +63,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Little Enida.webp</image:loc>
 <image:caption>Little Enida by Cocobeanzies</image:caption>
 <image:title>Little Enida</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Nostalgia Wind.webp</image:loc>
+<image:caption>Nostalgia Wind by Cocobeanzies</image:caption>
+<image:title>Nostalgia Wind</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lined/Silliam.webp</image:loc>
