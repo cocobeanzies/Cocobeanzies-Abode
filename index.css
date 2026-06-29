@@ -60,6 +60,44 @@ body {
 	--sidebar-margin: clamp(96px, 12vw, 480px);
 }
 
+#volume-control {
+	/* -webkit-appearance: none; */
+	accent-color: #bf7fff;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	width: 75%;
+	/* height: 8px;
+	border-radius: 5px;
+	outline: none;
+	transition: background 0.3s ease;
+	background: linear-gradient(to right, #ff0000, #ffff00, #00ff00); */
+}
+/* #volume-control::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #333;
+	cursor: pointer;
+	border: 2px solid white;
+	box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+#volume-control::-moz-range-track {
+	height: 8px;
+	border-radius: 5px;
+	background: transparent;
+}
+#volume-control::-moz-range-thumb {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #333;
+	cursor: pointer;
+	border: 2px solid white;
+	box-shadow: 0 0 2px rgba(0,0,0,0.5);
+} */
+
 h1 {
 	margin: 10px;
 	font-weight: 600;

@@ -90,6 +90,7 @@ function runTetris() {
 	document.body.classList.add('mobile-styles');
 	document.getElementsByClassName('tetris-body')[0].style.display = 'flex';
 	document.getElementById('socials').style.display = 'none';
+	playAudio('tetoris')
 
 	// ─── Game State ──────────────────────────────────────────────
 	let board = [];
@@ -763,6 +764,7 @@ function runTetris() {
 		document.body.tetrisRendered = false;
 		LOADER_ANIM.cancel();
 		document.body.quitTetris = null;
+		playAudio('tetoris')
 	}
 	document.body.quitTetris = quit;
 

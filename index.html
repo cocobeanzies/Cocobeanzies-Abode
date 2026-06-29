@@ -60,6 +60,7 @@
 			<div class="bullet"></div><span class="pulse" style="animation-delay: -3s">non-theistic</span>
 			<div class="bullet"></div>
 		</h1>
+		<input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5">
 		<h1 id="socials">
 			<img id="worm-galaxy" class="snake-score" src="https://cocobeanzies.mizabot.xyz/pictures/galaxy.webp">
 			<span class="dog-worm"><b class="bob playable snake-game-trigger" style="margin-left: calc(-185px - 0.25em); margin-top: -15px; animation-delay: -9s">
@@ -241,6 +242,7 @@
 <img id="lineless/Mae.webp" loading="lazy" src="/styles/lineless/Mae.webp" alt="Mae by Cocobeanzies">
 <img id="lineless/The Touch of Color.webp" loading="lazy" src="/styles/lineless/The Touch of Color.webp" alt="The Touch of Color by Cocobeanzies">
 <img id="lineless/Wowzie.webp" loading="lazy" src="/styles/lineless/Wowzie.webp" alt="Wowzie by Cocobeanzies">
+<img id="lined/Art Fight Mascots.webp" loading="lazy" src="/styles/lined/Art Fight Mascots.webp" alt="Art Fight Mascots by Cocobeanzies">
 <img id="lined/Bubble!.webp" loading="lazy" src="/styles/lined/Bubble!.webp" alt="Bubble! by Cocobeanzies">
 <img id="lined/Clione.webp" loading="lazy" src="/styles/lined/Clione.webp" alt="Clione by Cocobeanzies">
 <img id="lined/Comet's Shy Wave.webp" loading="lazy" src="/styles/lined/Comet's Shy Wave.webp" alt="Comet's Shy Wave by Cocobeanzies">
@@ -295,7 +297,7 @@ const STYLES = [
 	}, {
 		name: "Lined, Typically Cell Shade",
 		path: "lined",
-		images: ["Bubble!.webp", "Clione.webp", "Comet's Shy Wave.webp", "Enida.webp", "Hewo!.webp", "Konata!.webp", "Little Enida.webp", "Nostalgia Wind.webp", "Silliam.webp", "Spacey Jackal.webp", "The Rainbow Graduate!.webp"],
+		images: ["Art Fight Mascots.webp", "Bubble!.webp", "Clione.webp", "Comet's Shy Wave.webp", "Enida.webp", "Hewo!.webp", "Konata!.webp", "Little Enida.webp", "Nostalgia Wind.webp", "Silliam.webp", "Spacey Jackal.webp", "The Rainbow Graduate!.webp"],
 		shuffle: true
 	}, {
 		name: "Animated, Pixel or Frame-by-Frame",
@@ -535,7 +537,7 @@ for (const k of Object.keys(prideFlags)) {
 	for (const hex of prideFlags[k]) {
 		const rgb = hex.replace(/^#/, '').match(/.{2}/g).map(x => parseInt(x, 16));
 		const hsl = rgbToHsl(...rgb);
-		if (hsl[2] < 15) hsl[2] = 15;
+		if (hsl[2] < 20) hsl[2] = 20;
 		temp2.push(hsl);
 		temp2.push(hsl);
 	}
@@ -721,6 +723,7 @@ function isVisible(element) {
 	return true;
 }
 
+const volumeControl = document.getElementById('volume-control');
 const playingAudio = [];
 const players = {};
 function playAudio(name, position, callback, loop) {
@@ -760,13 +763,25 @@ function playAudio(name, position, callback, loop) {
 	} else {
 		player = document.createElement('div');
 		audio = document.createElement('audio');
+		player.appendChild(audio)
 		audio.addEventListener('loadeddata', callback ? () => {callback(func)} : func);
 		audio.cpfunc = true;
 		if (!independent) audio.setAttribute('loop', true);
 		players[name] = [player, audio];
 		audio.src = "https://cocobeanzies.mizabot.xyz/music/" + name + ".webm";
 	}
+	audio.volume = volumeControl.value;
 }
+
+function changeVolume() {
+	const audios = document.querySelectorAll('audio');
+	audios.forEach(audio => audio.volume = volumeControl.value);
+	playingAudio.forEach(player => player.children[0].volume = volumeControl.value);
+	const value = volumeControl.value * 100;
+	// volumeControl.style.background = `linear-gradient(to right, #ff0000, #ffff00 ${value}%, #00ff00)`;
+}
+changeVolume();
+volumeControl.addEventListener('input', changeVolume);
 
 function inElement(point, element) {
 	const rect = element.getBoundingClientRect();
@@ -803,5 +818,7 @@ function lineIntersectsLine(l1Start, l1End, l2Start, l2End) {
 	const gamma = ((l1Start[1] - l1End[1]) * (l2End[0] - l1Start[0]) + (l1End[0] - l1Start[0]) * (l2End[1] - l1Start[1])) / det;
 	return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
 }
+
+var snakeGame = null;
 </script>
 </html>

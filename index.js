@@ -42,7 +42,7 @@ function playStampVideo(video, audio) {
 	if (synchronisedSource && isVisible(leftBar) && isVisible(rightBar)) {
 		callback = (func) => {
 			function callFunc() {
-				if (!func) return;
+				if (typeof func !== 'function') return;
 				const call = func;
 				func = null;
 				call();
@@ -892,6 +892,7 @@ function updateCanvas() {
 							y: star.y,
 							vx: Math.cos(z) * 4 + star.vx * vmult,
 							vy: Math.sin(z) * 4 + star.vy * vmult,
+							flag: randomPrideFlag(),
 							eaten: 0,
 							trail: [],
 							times: []
@@ -1691,7 +1692,7 @@ function updateGalleryScroll(cancelAfter) {
 	const isFast = currentTime - lastScroll < 30;
 	lastScroll = currentTime;
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	const reqHeight = snakeGame.isRendered ? 2000 : 1600;
+	const reqHeight = snakeGame && snakeGame.isRendered ? 2000 : 1600;
 	// if (reqHeight - scrollTop > window.innerHeight) {
 	// 	STYLES.forEach((style) => {
 	// 		style.elements.forEach((image) => {
