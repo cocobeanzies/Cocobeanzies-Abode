@@ -20,9 +20,24 @@
 <image:title>Haruko</image:title>
 </image:image>
 <image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Jellie.webp</image:loc>
+<image:caption>Jellie by Cocobeanzies</image:caption>
+<image:title>Jellie</image:title>
+</image:image>
+<image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Mae.webp</image:loc>
 <image:caption>Mae by Cocobeanzies</image:caption>
 <image:title>Mae</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Peak.webp</image:loc>
+<image:caption>Peak by Cocobeanzies</image:caption>
+<image:title>Peak</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/Spawning Grounds.webp</image:loc>
+<image:caption>Spawning Grounds by Cocobeanzies</image:caption>
+<image:title>Spawning Grounds</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/lineless/The Touch of Color.webp</image:loc>
@@ -113,6 +128,11 @@
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Kingu.avif</image:loc>
 <image:caption>Kingu by Cocobeanzies</image:caption>
 <image:title>Kingu</image:title>
+</image:image>
+<image:image>
+<image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Little Guy.avif</image:loc>
+<image:caption>Little Guy by Cocobeanzies</image:caption>
+<image:title>Little Guy</image:title>
 </image:image>
 <image:image>
 <image:loc>https://cocobeanzies.mizabot.xyz/styles/animated/Waterfall_Animation.avif</image:loc>
