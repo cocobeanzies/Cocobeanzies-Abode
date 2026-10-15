@@ -113,12 +113,12 @@ def start_proc(sfn, dfn, im, fmt, w, h, alpha, animated, lossless):
 		procs.pop(0).wait()
 	is_png = sfn.endswith(".png")
 	if is_png:
-		args = ["ffmpeg", "-hide_banner", "-y", "-f", "rawvideo", "-r", "1", "-pix_fmt", "rgba" if im.mode == "RGBA" else "rgb24", "-video_size", "x".join(map(str, im.size)), "-i", "-", "-max_muxing_queue_size", "99999"]
+		args = ["ffmpeg", "-hide_banner", "-y", "-f", "rawvideo", "-r", "1", "-pix_fmt", "rgba" if im.mode == "RGBA" else "rgb24", "-video_size", "x".join(map(str, im.size)), "-i", "-"]
 	else:
-		args = ["ffmpeg", "-hide_banner", "-y", "-i", sfn, "-max_muxing_queue_size", "99999"]
+		args = ["ffmpeg", "-hide_banner", "-y", "-i", sfn]
 	true_lossless = lossless and not animated
 	if fmt == "webp":
-		args.extend(("-vf", f"scale={w}:{h}:flags=area", "-c:v", "libwebp_anim" if animated else "libwebp", "-pix_fmt", ("bgra" if alpha else "bgr24") if true_lossless else ("yuva420p" if alpha else "yuv420p"), "-lossless", *(("1",) if true_lossless else ("0", "-quality", "90")), "-compression_level", "5", "-loop", "0"))
+		args.extend(("-vf", f"scale={w}:{h}:flags=area", "-c:v", "libwebp_anim" if animated else "libwebp", "-pix_fmt", ("bgra" if alpha else "bgr24") if true_lossless else ("yuva420p" if alpha else "yuv420p"), "-lossless", *(("1",) if true_lossless else ("0", "-quality", "90" if true_lossless else "75")), "-compression_level", "5", "-loop", "0"))
 	elif fmt == "avif":
 		pix = "bgrp" if true_lossless else "yuv420p"
 		bitrate = 16 * 1024 * 1024 if true_lossless else 1024 * 1024
